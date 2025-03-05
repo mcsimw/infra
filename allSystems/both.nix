@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   time.timeZone = lib.mkDefault "Canada/Eastern";
-  security.sudo.wheelNeedsPassword = lib.mkDefault true;
+  security.sudo.wheelNeedsPassword = lib.mkDefault false;
   environment.systemPackages = with pkgs; [
     kakoune
   ];
