@@ -27,6 +27,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=master";
+    nix = {
+      url = "github:nixos/nix?ref=master";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-23-11.follows = "nixpkgs";
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+      };
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
