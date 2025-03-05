@@ -8,5 +8,4 @@
     "sr_mod"
   ];
   virtualisation.vmware.guest.enable = true;
-
 }

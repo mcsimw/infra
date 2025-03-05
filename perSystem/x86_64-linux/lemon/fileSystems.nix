@@ -1,4 +1,8 @@
+{ inputs, ... }:
 {
+  imports = [
+    inputs.disk-abstractions.nixosModules.zfsonix
+  ];
   zfsonix = {
     enable = true;
     diskName = "lemon";

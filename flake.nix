@@ -4,6 +4,7 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      flake.nixosModules.systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
       imports = [
         inputs.nix-genesis.flakeModules.compootuers
         inputs.treefmt-nix.flakeModule
@@ -54,9 +55,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence = {
-      url = "github:nix-community/impermanence";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    impermanence.url = "github:nix-community/impermanence";
   };
 }
