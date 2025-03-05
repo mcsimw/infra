@@ -6,7 +6,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       flake.nixosModules.systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
       imports = [
-        inputs.nix-genesis.flakeModules.compootuers
+        inputs.genesis-nix.flakeModules.compootuers
         inputs.treefmt-nix.flakeModule
         ./packages
       ];
@@ -52,8 +52,8 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    nix-genesis = {
-      url = "github:mcsimw/nix-genesis";
+    genesis-nix = {
+      url = "github:mcsimw/genesis-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -76,8 +76,18 @@
     };
     emacs = {
       url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
     };
+    wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "";
+      };
+    };
+    nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 }

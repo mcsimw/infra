@@ -10,6 +10,8 @@
           inputs.nix.overlays.default
           inputs.neovim.overlays.default
           inputs.emacs.overlays.default
+          inputs.wayland.overlays.default
+          inputs.nyx.overlays.default
         ];
       };
     };
