@@ -8,6 +8,8 @@
         config.allowUnfree = true;
         overlays = [
           inputs.nix.overlays.default
+          inputs.neovim.overlays.default
+          inputs.emacs.overlays.default
         ];
       };
     };
