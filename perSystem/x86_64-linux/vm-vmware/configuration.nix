@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  users.users.mcsimw = {
-    isNormalUser = true;
-    password = "1";
-    extraGroups = [ "wheel" ];
-  };
   environment.systemPackages = with pkgs; [
     wget
   ];
