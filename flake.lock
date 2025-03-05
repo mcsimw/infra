@@ -1,0 +1,190 @@
+{
+  "nodes": {
+    "disk-abstractions": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nix-genesis": "nix-genesis",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741187755,
+        "narHash": "sha256-N15NaJcA0tNnToKuAfJHlIz4VINO/Lyc6JLFvBhGNOc=",
+        "owner": "mcsimw",
+        "repo": "disk-abstractions",
+        "rev": "9300aade0fb32a5e8696f8148bf8a71b0768985c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mcsimw",
+        "repo": "disk-abstractions",
+        "type": "github"
+      }
+    },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740485968,
+        "narHash": "sha256-WK+PZHbfDjLyveXAxpnrfagiFgZWaTJglewBWniTn2Y=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "19c1140419c4f1cdf88ad4c1cfb6605597628940",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740872218,
+        "narHash": "sha256-ZaMw0pdoUKigLpv9HiNDH2Pjnosg7NBYMJlHTIsHEUo=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "3876f6b87db82f33775b1ef5ea343986105db764",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1737831083,
+        "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
+    "nix-genesis": {
+      "inputs": {
+        "flake-parts": [
+          "disk-abstractions",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "disk-abstractions",
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "disk-abstractions",
+          "flake-parts"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740507078,
+        "narHash": "sha256-KnVdmtTL0G/9fF2WZ4EB1Lwpws03wuyh2DpfyMBQctQ=",
+        "owner": "mcsimw",
+        "repo": "nix-genesis",
+        "rev": "94ff2d4ab3d31d041f4191016c5695d8c58a36e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mcsimw",
+        "repo": "nix-genesis",
+        "type": "github"
+      }
+    },
+    "nix-genesis_2": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741187475,
+        "narHash": "sha256-Rcl5FFGmosKpLtnXqdw4YR5d5YX1YJEoJhqId1gLtak=",
+        "owner": "mcsimw",
+        "repo": "nix-genesis",
+        "rev": "ed2befd54bae16068d8186e1ac259bb00297eb04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mcsimw",
+        "repo": "nix-genesis",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1741191458,
+        "narHash": "sha256-8HsbWwrt+DAYoonDeXOr/yPGh0kfDpAmflCBHmXOPh4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1dff9b49f7f0ca0abc623e5a763a53cdf290b3dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "disk-abstractions": "disk-abstractions",
+        "disko": "disko",
+        "flake-parts": "flake-parts",
+        "impermanence": "impermanence",
+        "nix-genesis": "nix-genesis_2",
+        "nixpkgs": "nixpkgs",
+        "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739829690,
+        "narHash": "sha256-mL1szCeIsjh6Khn3nH2cYtwO5YXG6gBiTw1A30iGeDU=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "3d0579f5cc93436052d94b73925b48973a104204",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
