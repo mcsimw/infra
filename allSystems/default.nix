@@ -10,4 +10,5 @@
     extraGroups = [ "wheel" ];
     uid = 1000;
   };
+  systemd.oomd.enable = false;
 }
