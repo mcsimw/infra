@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+  boot.zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   time.timeZone = lib.mkDefault "Canada/Eastern";
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
   environment.systemPackages = with pkgs; [
@@ -17,5 +19,4 @@
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
     ];
   };
-  boot.zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
 }

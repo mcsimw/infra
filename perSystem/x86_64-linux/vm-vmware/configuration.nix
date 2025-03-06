@@ -9,5 +9,4 @@
   };
   services.openssh.enable = true;
   system.stateVersion = "25.05";
-  boot.initrd.systemd.enable = true;
 }

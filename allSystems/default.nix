@@ -3,6 +3,7 @@
   imports = [
     inputs.disko.nixosModules.default
     inputs.impermanence.nixosModules.default
+    inputs.nixpkgs.nixosModules.readOnlyPkgs
   ];
   users.users.mcsimw = {
     isNormalUser = true;
@@ -10,4 +11,5 @@
     extraGroups = [ "wheel" ];
     uid = 1000;
   };
+
 }
