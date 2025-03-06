@@ -50,6 +50,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
+        genesis-nix.follows = "genesis-nix";
       };
     };
     genesis-nix = {
@@ -65,7 +66,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
-    neovim = {
+    neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
         flake-parts.follows = "flake-parts";
@@ -74,14 +75,14 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    emacs = {
+    emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    wayland = {
+    nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
         nixpkgs.follows = "nixpkgs";
