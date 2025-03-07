@@ -3,27 +3,37 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      flake.nixosModules.systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
-      imports = [
-        inputs.genesis-nix.flakeModules.compootuers
-        inputs.treefmt-nix.flakeModule
-        ./packages
-      ];
-      compootuers = {
-        perSystem = ./perSystem;
-        allSystems = ./allSystems;
-      };
-      perSystem.treefmt = {
-        projectRootFile = "flake.nix";
-        programs = {
-          nixfmt.enable = true;
-          deadnix.enable = true;
-          statix.enable = true;
-          dos2unix.enable = true;
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { ... }:
+      {
+        flake = {
+          nixosModules.systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
+          #          vaultix = {
+          #            nodes = self.nixosConfigurations;
+          #            identity = "/home/who/key";
+          #          };
         };
-      };
-    };
+        imports = [
+          inputs.genesis-nix.flakeModules.compootuers
+          inputs.treefmt-nix.flakeModule
+          ./packages
+          inputs.vaultix.flakeModules.default
+        ];
+        compootuers = {
+          perSystem = ./perSystem;
+          allSystems = ./allSystems;
+        };
+        perSystem.treefmt = {
+          projectRootFile = "flake.nix";
+          programs = {
+            nixfmt.enable = true;
+            deadnix.enable = true;
+            statix.enable = true;
+            dos2unix.enable = true;
+          };
+        };
+      }
+    );
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=master";
@@ -89,6 +99,16 @@
         flake-compat.follows = "";
       };
     };
-    nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nyx = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.home-manager.follows = "";
+    };
+    vaultix = {
+      url = "github:milieuim/vaultix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 }

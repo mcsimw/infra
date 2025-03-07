@@ -4,6 +4,7 @@
     inputs.disko.nixosModules.default
     inputs.impermanence.nixosModules.default
     inputs.nixpkgs.nixosModules.readOnlyPkgs
+    #    inputs.vaultix.nixosModules.default
   ];
   users.users.mcsimw = {
     isNormalUser = true;
@@ -11,5 +12,4 @@
     extraGroups = [ "wheel" ];
     uid = 1000;
   };
-
 }
