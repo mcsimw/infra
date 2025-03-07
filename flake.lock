@@ -31,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741223474,
-        "narHash": "sha256-+z9625nDdwd15JSHasi4T/OTKpcE85+rtrq+nWwiqtI=",
+        "lastModified": 1741351867,
+        "narHash": "sha256-ce9Dn80lfBj4nzAsok1ArW3CU+kbux6v+VpU9Sikntw=",
         "owner": "mcsimw",
         "repo": "disk-abstractions",
-        "rev": "b62cda74aa5cadde1de1486ae5aa43112b103264",
+        "rev": "bc371b7dd37ad3e36696871da5d3be10a0812bb3",
         "type": "github"
       },
       "original": {

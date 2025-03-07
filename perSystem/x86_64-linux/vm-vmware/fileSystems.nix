@@ -10,4 +10,11 @@
     ashift = "12";
     swapSize = "8G";
   };
+  services = {
+    fstrim.enable = true;
+    zfs = {
+      trim.enable = true;
+      autoScrub.enable = true;
+    };
+  };
 }
