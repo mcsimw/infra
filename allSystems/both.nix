@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     kakoune
   ];
+  networking.useNetworkd = true;
   environment.variables.EDITOR = lib.mkForce "kak";
   systemd.oomd.enable = lib.mkDefault false;
   nix.settings = {

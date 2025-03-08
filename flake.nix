@@ -7,7 +7,11 @@
       { ... }:
       {
         flake = {
-          nixosModules.systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
+          nixosModules = {
+            systemd-bootloader = ./nixosModules/systemd-bootloader.nix;
+            git-user = ./nixosModules/userModules/git.nix;
+          };
+
           #          vaultix = {
           #            nodes = self.nixosConfigurations;
           #            identity = "/home/who/key";
@@ -109,6 +113,10 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
+    };
+    wrapper-manager = {
+      url = "github:viperML/wrapper-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
