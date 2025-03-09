@@ -10,9 +10,6 @@
           nixosModules = {
             systemd-bootloader = ./modules/nixosModules/systemd-bootloader.nix;
           };
-          #          userModules = {
-          #            git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
-          #          };
           userModules =
             let
               defaultModules = {
