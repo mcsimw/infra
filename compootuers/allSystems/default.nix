@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
   imports = [
     inputs.disko.nixosModules.default
@@ -6,7 +6,7 @@
     inputs.nixpkgs.nixosModules.readOnlyPkgs
     #    inputs.vaultix.nixosModules.default
 
-    inputs.userModules.git
+    self.userModules.git
   ];
   users.users.mcsimw = {
     isNormalUser = true;

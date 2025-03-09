@@ -1,10 +1,10 @@
 { self, ... }:
 {
   imports = [
-    ./configuration.nix
-    ./hardware-configuration.nix
+    ./conf.nix
+    ./hardware.nix
     ./fileSystems.nix
-    ./users.nix
     self.nixosModules.systemd-bootloader
+    self.mcsimwModules.git
   ];
 }

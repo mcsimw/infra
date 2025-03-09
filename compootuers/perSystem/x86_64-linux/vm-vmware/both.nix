@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hardware-configuration.nix
-    ./configuration.nix
+    ./hardware.nix
+    ./conf.nix
   ];
 }
