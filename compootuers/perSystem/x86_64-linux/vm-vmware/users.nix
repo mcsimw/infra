@@ -1,10 +1,6 @@
-{ self, inputs, ... }:
+{ self, ... }:
 {
   imports = [
-    self.nixosModules.git-user
+    self.mcsimwModules.git
   ];
-  lemon.git.users.mcsimw = {
-    enable = true;
-    config = "${inputs.dotfiles-legacy.outPath}/.config/git/config";
-  };
 }
