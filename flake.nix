@@ -4,22 +4,17 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { lib, self, ... }:
+      { lib, ... }:
       {
         flake = {
           nixosModules = {
             systemd-bootloader = ./modules/nixosModules/systemd-bootloader.nix;
           };
           userModules = {
-            git = lib.modules.importApply ./modules/userModules/git.nix {
-              inherit inputs;
-            };
+            git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
           };
           mcsimwModules = {
-            git = lib.modules.importApply ./modules/mcsimwModules/git.nix {
-              inherit inputs;
-              localFlake = self;
-            };
+            git = lib.modules.importApply ./modules/mcsimwModules/git.nix { inherit inputs; };
           };
           #          vaultix = {
           #            nodes = self.nixosConfigurations;

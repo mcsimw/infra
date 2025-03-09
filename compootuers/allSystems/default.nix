@@ -5,6 +5,8 @@
     inputs.impermanence.nixosModules.default
     inputs.nixpkgs.nixosModules.readOnlyPkgs
     #    inputs.vaultix.nixosModules.default
+
+    inputs.userModules.git
   ];
   users.users.mcsimw = {
     isNormalUser = true;
