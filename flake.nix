@@ -10,12 +10,31 @@
           nixosModules = {
             systemd-bootloader = ./modules/nixosModules/systemd-bootloader.nix;
           };
-          userModules = {
-            git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
-          };
-          mcsimwModules = {
-            git = lib.modules.importApply ./modules/mcsimwModules/git.nix { inherit inputs; };
-          };
+          #          userModules = {
+          #            git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
+          #          };
+          userModules =
+            let
+              defaultModules = {
+                git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
+              };
+            in
+            defaultModules
+            // {
+              default.imports = builtins.attrValues defaultModules;
+            };
+
+          mcsimwModules =
+            let
+              defaultModules = {
+                git = lib.modules.importApply ./modules/mcsimwModules/git.nix { inherit inputs; };
+              };
+            in
+            defaultModules
+            // {
+              default.imports = builtins.attrValues defaultModules;
+            };
+
           #          vaultix = {
           #            nodes = self.nixosConfigurations;
           #            identity = "/home/who/key";
