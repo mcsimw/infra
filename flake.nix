@@ -118,5 +118,9 @@
       url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dotfiles-legacy = {
+      url = "github:mcsimw/.dotfiles-legacy";
+      flake = false;
+    };
   };
 }

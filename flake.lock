@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "dotfiles-legacy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741531185,
+        "narHash": "sha256-nTVnbZ7smtP2g/XeiOexRiA6Ot096kJ+F7GJd9uGF4A=",
+        "owner": "mcsimw",
+        "repo": ".dotfiles-legacy",
+        "rev": "a00e7651d56c2a6ca2b05c49f68966dc72862f74",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mcsimw",
+        "repo": ".dotfiles-legacy",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -589,6 +605,7 @@
       "inputs": {
         "disk-abstractions": "disk-abstractions",
         "disko": "disko",
+        "dotfiles-legacy": "dotfiles-legacy",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts",
         "genesis-nix": "genesis-nix",
