@@ -24,8 +24,8 @@
           inputs.vaultix.flakeModules.default
         ];
         compootuers = {
-          perSystem = ./perSystem;
-          allSystems = ./allSystems;
+          perSystem = ./compootuers/perSystem;
+          allSystems = ./compootuers/allSystems;
         };
         perSystem.treefmt = {
           projectRootFile = "flake.nix";
