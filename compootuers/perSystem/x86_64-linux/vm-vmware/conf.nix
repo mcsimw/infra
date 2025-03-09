@@ -4,7 +4,6 @@
     wget
   ];
   programs = {
-    steam.enable = true;
     neovim.enable = true;
   };
   services.openssh.enable = true;

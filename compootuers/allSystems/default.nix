@@ -7,6 +7,8 @@
     #    inputs.vaultix.nixosModules.default
 
     self.userModules.git
+
+    self.mcsimwModules.git
   ];
   users.users.mcsimw = {
     isNormalUser = true;
