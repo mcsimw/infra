@@ -1,10 +1,11 @@
+{ self, ... }:
 { pkgs, ... }:
 {
   imports = [
     ./base.nix
   ];
   environment.systemPackages = with pkgs; [
-    dwl
+    self.packages.${pkgs.system}.dwl
     foot
     wl-clipboard-rs
     wmenu

@@ -1,5 +1,6 @@
+{ self, lib, ... }:
 {
   flake.nixosModules = {
-    dwl = ./dwl.nix;
+    dwl = lib.modules.importApply ./dwl.nix { inherit self; };
   };
 }

@@ -1,4 +1,8 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  ...
+}:
 {
   flake.nixosModules =
     let
@@ -14,5 +18,6 @@
     // {
       mcsimw-default.imports = builtins.attrValues defaultModules;
       mcsimw-wlroots.imports = builtins.attrValues wlroots;
+      mcsimw-mkUser = ./mkUser.nix;
     };
 }

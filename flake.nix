@@ -9,8 +9,8 @@
         imports = [
           inputs.genesis-nix.flakeModules.compootuers
           inputs.treefmt-nix.flakeModule
-          ./packages
           inputs.vaultix.flakeModules.default
+          ./packages
           ./nixosModules
         ];
 
