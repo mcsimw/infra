@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  imports = [
+    ./base.nix
+  ];
   environment.systemPackages = with pkgs; [
     dwl
     foot
