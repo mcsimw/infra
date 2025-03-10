@@ -3,6 +3,6 @@
     ./users
     ./mcsimw
     ./desktop
-    ./bootloader
+    ./bootloaders
   ];
 }
