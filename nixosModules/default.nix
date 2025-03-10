@@ -2,7 +2,7 @@
   imports = [
     ./users
     ./mcsimw
-    ./desktop
+    ./desktops
     ./bootloaders
   ];
 }
