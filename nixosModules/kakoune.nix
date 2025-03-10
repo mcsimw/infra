@@ -25,7 +25,6 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ kakoune ];
-
     environment.variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkForce "kak");
   };
 }

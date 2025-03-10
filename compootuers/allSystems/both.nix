@@ -8,6 +8,17 @@
   imports = [
     self.nixosModules.kakoune
   ];
+  programs.tmux.enable = true;
+  environment.systemPackages = with pkgs; [
+    onefetch
+    fastfetch
+    btop
+    unzip
+    unrar
+    p7zip
+    texliveFull
+    dysk
+  ];
   lemon.programs.kakoune = {
     enable = true;
     defaultEditor = true;

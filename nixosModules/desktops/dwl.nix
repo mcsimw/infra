@@ -2,14 +2,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./base.nix
+    self.nixosModules.desktop-base
+    self.nixosModules.wlroots
   ];
-  environment.systemPackages = with pkgs; [
-    self.packages.${pkgs.system}.dwl
-    foot
-    wl-clipboard-rs
-    wmenu
-    sway-contrib.grimshot
-    slurp
-  ];
+  environment.systemPackages = [ self.packages.${pkgs.system}.dwl ];
 }
