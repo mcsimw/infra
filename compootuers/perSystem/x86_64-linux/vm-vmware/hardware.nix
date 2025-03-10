@@ -19,5 +19,4 @@
     enable = true;
     scheduler = "scx_bpfland";
   };
-
 }

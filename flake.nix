@@ -4,49 +4,21 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { lib, ... }:
+      { ... }:
       {
-        flake = {
-          nixosModules = {
-            systemd-bootloader = ./modules/nixosModules/systemd-bootloader.nix;
-          };
-          userModules =
-            let
-              defaultModules = {
-                git = lib.modules.importApply ./modules/userModules/git.nix { inherit inputs; };
-              };
-            in
-            defaultModules
-            // {
-              default.imports = builtins.attrValues defaultModules;
-            };
-
-          mcsimwModules =
-            let
-              defaultModules = {
-                git = lib.modules.importApply ./modules/mcsimwModules/git.nix { inherit inputs; };
-              };
-            in
-            defaultModules
-            // {
-              default.imports = builtins.attrValues defaultModules;
-            };
-
-          #          vaultix = {
-          #            nodes = self.nixosConfigurations;
-          #            identity = "/home/who/key";
-          #          };
-        };
         imports = [
           inputs.genesis-nix.flakeModules.compootuers
           inputs.treefmt-nix.flakeModule
           ./packages
           inputs.vaultix.flakeModules.default
+          ./nixosModules
         ];
+
         compootuers = {
           perSystem = ./compootuers/perSystem;
           allSystems = ./compootuers/allSystems;
         };
+
         perSystem.treefmt = {
           projectRootFile = "flake.nix";
           programs = {
@@ -141,6 +113,14 @@
     dotfiles-legacy = {
       url = "github:mcsimw/.dotfiles-legacy";
       flake = false;
+    };
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

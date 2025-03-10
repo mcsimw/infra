@@ -3,6 +3,9 @@
   perSystem =
     { pkgs, system, ... }:
     {
+      packages = {
+        dwl = pkgs.callPackage ./dwl.nix { };
+      };
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
