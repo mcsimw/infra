@@ -7,7 +7,7 @@
   flake.nixosModules =
     let
       defaultModules = {
-        mcsimw-default = lib.modules.importApply ./git.nix { inherit inputs; };
+        mcsimw-git = lib.modules.importApply ./git.nix { inherit inputs; };
       };
       wlroots = {
         mcsimw-foot = lib.modules.importApply ./foot.nix { inherit inputs; };

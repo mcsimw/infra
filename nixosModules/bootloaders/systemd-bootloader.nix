@@ -1,5 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
+  imports = [ ./efi.nix ];
   boot.loader = {
     systemd-boot = {
       enable = lib.mkForce true;
@@ -7,5 +8,4 @@
     };
     efi.canTouchEfiVariables = lib.mkForce true;
   };
-  environment.systemPackages = [ pkgs.efibootmgr ];
 }

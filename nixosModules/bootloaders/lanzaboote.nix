@@ -1,13 +1,19 @@
 { self, ... }:
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     self.lanzaboote.nixosModules.lanzaboote
+    ./efi.nix
   ];
-  boot.loader.efi.canTouchEfiVariables = false;
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/secureboot";
+  environment.systemPackages = [
+    pkgs.sbctl
+  ];
+  boot = {
+    loader.efi.canTouchEfiVariables = lib.mkForce true;
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
   };
 }

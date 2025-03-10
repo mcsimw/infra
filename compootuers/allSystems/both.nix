@@ -1,14 +1,24 @@
-{ lib, pkgs, ... }:
 {
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
-  boot.zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
+  lib,
+  pkgs,
+  self,
+  ...
+}:
+{
+  imports = [
+    self.nixosModules.kakoune
+  ];
+  lemon.programs.kakoune = {
+    enable = true;
+    defaultEditor = true;
+  };
+  boot = {
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+    zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
+  };
   time.timeZone = lib.mkDefault "Canada/Eastern";
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
-  environment.systemPackages = with pkgs; [
-    kakoune
-  ];
   networking.useNetworkd = true;
-  environment.variables.EDITOR = lib.mkForce "kak";
   systemd.oomd.enable = lib.mkDefault false;
   nix.settings = {
     substituters = [

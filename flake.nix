@@ -126,7 +126,8 @@
       url = "github:nix-community/lanzaboote";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-	flake-parts.follows = "flake-parts";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "";
       };
     };
   };
