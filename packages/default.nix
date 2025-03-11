@@ -48,7 +48,7 @@
               };
             }).config.build.packages;
 
-          # packages that depend of wrappers
+          # packages that depend on wrappers
           stage3 = stage2 // {
 
           };
