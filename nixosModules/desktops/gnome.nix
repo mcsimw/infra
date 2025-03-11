@@ -8,7 +8,7 @@
     udev.packages = [ pkgs.gnome-settings-daemon ];
     dbus.packages = with pkgs; [ gnome2.GConf ];
   };
-   environment.gnome.excludePackages = with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     orca
     evince
     # file-roller

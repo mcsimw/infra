@@ -2,9 +2,7 @@
   lib,
   fetchFromGitea,
   installShellFiles,
-  libX11,
   libinput,
-  libxcb,
   libxkbcommon,
   pixman,
   pkg-config,
@@ -15,7 +13,6 @@
   wayland-scanner,
   wlroots,
   writeText,
-  xcbutilwm,
   xwayland,
   # Boolean flags
   enableXWayland ? true,
@@ -32,6 +29,7 @@
   # Deprecated options
   # Remove them before next version of either Nixpkgs or dwl itself
   conf ? null,
+  pkgs,
 }:
 
 # If we set withCustomConfigH, let's not forget configH
@@ -57,7 +55,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [
       libinput
-      libxcb
+      pkgs.xorg.libxcb
       libxkbcommon
       pixman
       wayland
@@ -65,8 +63,8 @@ stdenv.mkDerivation (finalAttrs: {
       wlroots
     ]
     ++ lib.optionals enableXWayland [
-      libX11
-      xcbutilwm
+      pkgs.xorg.libX11
+      pkgs.xorg.xcbutilwm
       xwayland
     ];
 
