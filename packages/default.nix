@@ -1,4 +1,3 @@
-# A lot of this is adapted from viperML's dotfiles (https://github.com/viperML/dotfiles) under EUPL-1.2.
 {
   config,
   inputs,
