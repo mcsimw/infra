@@ -2,7 +2,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }:
 {
@@ -10,53 +9,12 @@
     {
       pkgs,
       system,
-      inputs',
       ...
     }:
     {
-      packages = lib.fix (
-        _self:
-        let
-          stage1 = lib.fix (
-            self':
-            let
-              callPackage = lib.callPackageWith <| pkgs // self';
-
-              auto = lib.pipe (builtins.readDir ./.) [
-                (lib.filterAttrs (_name: value: value == "directory"))
-                (builtins.mapAttrs (name: _: callPackage ./${name} { }))
-              ];
-            in
-            auto
-            // {
-              dwl = callPackage ./dwl.nix {
-                inherit pkgs;
-              };
-            }
-          );
-          stage2 =
-            stage1
-            // (inputs.wrapper-manager.lib {
-              pkgs = pkgs // stage1;
-              modules = lib.pipe (builtins.readDir ../wrapped-packages) [
-                (lib.filterAttrs (_name: value: value == "directory"))
-                builtins.attrNames
-                (map (n: ../wrapped-packages/${n}))
-              ];
-              specialArgs = {
-                inherit inputs';
-              };
-            }).config.build.packages;
-
-          # packages that depend on wrappers
-          stage3 = stage2 // {
-
-          };
-        in
-        stage3
-      );
-
-      # Provide pkgs to the module system
+      packages = {
+        dwl = pkgs.callPackage ./dwl.nix { };
+      };
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;

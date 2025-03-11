@@ -9,7 +9,7 @@
   stdenv,
   testers,
   wayland,
-  wayland-protocols,
+  new-wayland-protocols,
   wayland-scanner,
   wlroots,
   writeText,
@@ -29,7 +29,9 @@
   # Deprecated options
   # Remove them before next version of either Nixpkgs or dwl itself
   conf ? null,
-  pkgs,
+  libX11,
+  xcbutilwm,
+  libxcb,
 }:
 
 # If we set withCustomConfigH, let's not forget configH
@@ -55,16 +57,16 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [
       libinput
-      pkgs.xorg.libxcb
+      libxcb
       libxkbcommon
       pixman
       wayland
-      wayland-protocols
+      new-wayland-protocols
       wlroots
     ]
     ++ lib.optionals enableXWayland [
-      pkgs.xorg.libX11
-      pkgs.xorg.xcbutilwm
+      libX11
+      xcbutilwm
       xwayland
     ];
 

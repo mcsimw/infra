@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ lib, self, ... }:
 {
-  imports = [ ./efi.nix ];
+  imports = [ self.nixosModules.efi-packages ];
   boot.loader = {
     systemd-boot = {
       enable = lib.mkForce true;

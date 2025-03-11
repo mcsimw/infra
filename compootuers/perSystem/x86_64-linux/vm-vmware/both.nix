@@ -3,6 +3,7 @@
   pkgs,
   inputs',
   system,
+  packages,
   ...
 }:
 {
@@ -13,7 +14,6 @@
   ];
   environment.systemPackages = with pkgs; [
     wget
-    inputs'.browser-previews.packages.google-chrome-dev
     qutebrowser
   ];
   programs = {
