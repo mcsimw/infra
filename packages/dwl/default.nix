@@ -9,7 +9,7 @@
   stdenv,
   testers,
   wayland,
-  new-wayland-protocols,
+  wayland-protocols,
   wayland-scanner,
   wlroots,
   writeText,
@@ -59,7 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
       libxkbcommon
       pixman
       wayland
-      new-wayland-protocols
+      wayland-protocols
       wlroots
     ]
     ++ lib.optionals enableXWayland [

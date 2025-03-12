@@ -88,17 +88,7 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "";
-      };
-    };
-    nyx = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.home-manager.follows = "";
-    };
+    nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     vaultix = {
       url = "github:milieuim/vaultix";
       inputs = {
@@ -127,6 +117,13 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        flake-compat.follows = "";
+      };
+    };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "";
       };
     };

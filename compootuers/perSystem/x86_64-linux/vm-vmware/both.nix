@@ -1,9 +1,9 @@
 {
-  self,
   pkgs,
   inputs',
   system,
   packages,
+  self,
   ...
 }:
 {

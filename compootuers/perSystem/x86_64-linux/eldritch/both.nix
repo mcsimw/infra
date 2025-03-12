@@ -1,8 +1,6 @@
 {
   self,
-  pkgs,
   inputs',
-  system,
   packages,
   ...
 }:
@@ -11,10 +9,6 @@
     ./hardware.nix
 
     self.nixosModules.dwl
-  ];
-  environment.systemPackages = with pkgs; [
-    wget
-    qutebrowser
   ];
   programs = {
     neovim.enable = true;
