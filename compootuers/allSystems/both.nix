@@ -18,6 +18,7 @@
     p7zip
     texliveFull
     dysk
+    wget
   ];
   lemon.programs.kakoune = {
     enable = true;
