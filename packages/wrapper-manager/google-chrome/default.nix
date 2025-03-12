@@ -6,7 +6,7 @@
 }:
 {
   wrappers.google-chrome = {
-    basePackage = inputs'.browser-previews.packages.${pkgs.system}.google-chrome-dev;
+    basePackage = inputs'.browser-previews.packages.google-chrome-dev;
     flags = [
       "--enable-features=${
         lib.concatStringsSep "," [
