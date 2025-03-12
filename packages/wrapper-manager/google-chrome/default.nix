@@ -1,7 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs',
+  ...
+}:
 {
   wrappers.google-chrome = {
-    basePackage = pkgs.google-chrome;
+    basePackage = inputs'.browser-previews.packages.${pkgs.system}.google-chrome-dev;
     flags = [
       "--enable-features=${
         lib.concatStringsSep "," [
