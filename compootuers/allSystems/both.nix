@@ -2,12 +2,13 @@
   lib,
   pkgs,
   self,
-  inputs',
+  inputs,
   ...
 }:
 {
   imports = [
     self.nixosModules.kakoune
+    inputs.nyx.nixosModules.mesa-git
   ];
   programs.tmux.enable = true;
   environment.systemPackages = with pkgs; [
@@ -26,8 +27,8 @@
     defaultEditor = true;
   };
   boot = {
-    kernelPackages = lib.mkDefault inputs'.nyx.legacyPackages.linuxPackages_cachyos;
-    zfs.package = lib.mkOverride 99 inputs'.nyx.packages.zfs_cachyos;
+    kernelPackages = pkgs.linuxPackages_cachyos;
+    zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
   time.timeZone = lib.mkDefault "Canada/Eastern";
   security.sudo.wheelNeedsPassword = lib.mkDefault false;

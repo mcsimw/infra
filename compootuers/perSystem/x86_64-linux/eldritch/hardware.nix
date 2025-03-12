@@ -1,5 +1,9 @@
-{ inputs', lib, ... }:
+{ lib, pkgs, ... }:
 {
+  chaotic.mesa-git = {
+    enable = true;
+    fallbackSpecialisation = false;
+  };
   hardware = {
     cpu.intel.updateMicrocode = true;
     amdgpu = {
@@ -10,7 +14,7 @@
   };
   powerManagement.cpuFreqGovernor = "performance";
   boot = {
-    kernelPackages = lib.mkOverride 99 inputs'.nyx.legacyPackages.linuxPackages_cachyos-rc;
+    kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
     initrd = {
       systemd.enable = true;
       availableKernelModules = [

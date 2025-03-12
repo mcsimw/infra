@@ -21,6 +21,7 @@
           inputs.neovim-nightly-overlay.overlays.default
           inputs.emacs-overlay.overlays.default
           inputs.nixpkgs-wayland.overlays.default
+          inputs.nyx.overlays.cache-friendly
         ];
 
         config.allowUnfree = true;

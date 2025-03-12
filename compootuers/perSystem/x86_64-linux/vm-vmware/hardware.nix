@@ -1,8 +1,8 @@
-{ lib, inputs', ... }:
+{ lib, pkgs, ... }:
 {
   virtualisation.vmware.guest.enable = true;
   boot = {
-    kernelPackages = lib.mkOverride 99 inputs'.nyx.legacyPackages.linuxPackages_cachyos-rc;
+    kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
     initrd = {
       systemd.enable = true;
       availableKernelModules = [
@@ -17,6 +17,7 @@
   };
   services.scx = {
     enable = true;
+    package = pkgs.scx-full_git;
     scheduler = "scx_bpfland";
   };
 }

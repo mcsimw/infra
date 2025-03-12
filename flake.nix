@@ -88,7 +88,10 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nyx = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.home-manager.follows = "";
+    };
     vaultix = {
       url = "github:milieuim/vaultix";
       inputs = {
