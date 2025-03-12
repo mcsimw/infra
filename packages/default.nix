@@ -56,8 +56,10 @@
                 inherit inputs' inputs;
               };
             }).config.build.packages;
+
+          stage3 = stage2;
         in
-        stage2
+        stage3
       );
     };
 }
