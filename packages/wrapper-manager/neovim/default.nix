@@ -1,3 +1,4 @@
+# Shamelessly borrowed from viperML's dotfiles (https://github.com/viperML/dotfiles) under EUPL-1.2.
 {
   pkgs,
   lib,
@@ -29,12 +30,12 @@
         start = {
           inherit (pkgs.vimPlugins)
             lz-n
+            nvim-web-devicons
+	    gruvbox-nvim
             ;
 
-          ts-grammars = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-
-          viper-init-plugin = ./viper-init-plugin;
-          viper-pre-init-plugin = pkgs.runCommandLocal "viper-pre-init-plugin" { } ''
+          mcsimw-init = ./mcsimw-init;
+          mcsimw-pre-init = pkgs.runCommandLocal "mcsimw-pre-init" { } ''
             mkdir -p $out/plugin
 
             tee $out/plugin/init.lua <<EOF
@@ -52,13 +53,13 @@
           '';
         };
 
-        opt = (builtins.removeAttrs nvPlugins (builtins.attrNames p.start)) // {
+        opt = {
           inherit (pkgs.vimPlugins)
             nvim-treesitter
 
+            nvim-ts-autotag
             nvim-treesitter-context
             nvim-treesitter-textobjects
-
             ;
         };
       });
@@ -122,7 +123,7 @@
           force = true;
         };
         NVIM_APPNAME = {
-          value = "nvim-viper";
+          value = "nvim-mcsimw";
         };
         NVIM_NODE.value = lib.getExe (pkgs.nodejs.override { enableNpm = false; });
       };
