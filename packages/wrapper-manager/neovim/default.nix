@@ -31,7 +31,7 @@
           inherit (pkgs.vimPlugins)
             lz-n
             nvim-web-devicons
-	    gruvbox-nvim
+            gruvbox-nvim
             ;
 
           mcsimw-init = ./mcsimw-init;
@@ -112,6 +112,7 @@
     in
     {
       inherit basePackage;
+      pathAdd = [ pkgs.ripgrep ];
       env = {
         NVIM_SYSTEM_RPLUGIN_MANIFEST = {
           value =

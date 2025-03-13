@@ -1,7 +1,7 @@
 {
   self,
-  packages,
   pkgs,
+  packages,
   ...
 }:
 {
@@ -10,14 +10,15 @@
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
   ];
-  environment.systemPackages =
-    (with packages; [ google-chrome ])
-    ++ (with pkgs; [
-      heroic
-      mangohud
-      obs
-    ]);
+  environment.systemPackages = with pkgs; [
+    heroic
+    zeroad
+    mangohud
+    obs-studio
+    dolphin-emu
+  ];
   programs = {
     steam.enable = true;
   };
+  users.users.mcsimw.packages = [ packages.neovim ];
 }

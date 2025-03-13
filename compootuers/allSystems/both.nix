@@ -21,6 +21,12 @@
     texliveFull
     dysk
     wget
+    ripgrep
+    eza
+    fd
+    nethack
+    neomutt
+    file
   ];
   lemon.programs.kakoune = {
     enable = true;
