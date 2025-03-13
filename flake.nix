@@ -107,10 +107,7 @@
       url = "github:mcsimw/.dotfiles-legacy";
       flake = false;
     };
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    browser-previews.url = "github:nix-community/browser-previews";
     flake-firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";

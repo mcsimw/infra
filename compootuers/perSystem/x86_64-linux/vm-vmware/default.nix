@@ -5,5 +5,5 @@
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
   ];
-  users.users.mcsimw.packages = [ packages.neovim ];
+  users.users.mcsimw.packages = with packages; [ neovim foot ];
 }

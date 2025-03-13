@@ -14,11 +14,10 @@
     heroic
     zeroad
     mangohud
+    gamescope
     obs-studio
     dolphin-emu
   ];
-  programs = {
-    steam.enable = true;
-  };
-  users.users.mcsimw.packages = [ packages.neovim ];
+  programs.steam.enable = true;
+  users.users.mcsimw.packages = with packages; [ neovim foot ];
 }

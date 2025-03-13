@@ -27,5 +27,9 @@
       gimp
       krita
       inkscape
+      ani-cli
     ]);
+  fonts.packages = with pkgs; [
+    spleen
+  ];
 }
