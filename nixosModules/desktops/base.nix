@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs', self', ... }:
 { pkgs, ... }:
 {
   hardware.graphics = {
@@ -17,11 +17,11 @@
     dconf.enable = true;
     firefox = {
       enable = true;
-      package = inputs.flake-firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+      package = inputs'.flake-firefox-nightly.packages.firefox-nightly-bin;
     };
   };
   environment.systemPackages =
-    (with self.packages.${pkgs.system}; [ google-chrome ])
+    (with self'.packages; [ google-chrome ])
     ++ (with pkgs; [
       mpv
       gimp

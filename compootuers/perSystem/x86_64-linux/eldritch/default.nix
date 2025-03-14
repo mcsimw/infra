@@ -19,5 +19,8 @@
     dolphin-emu
   ];
   programs.steam.enable = true;
-  users.users.mcsimw.packages = with packages; [ neovim foot ];
+  users.users.mcsimw.packages = with packages; [
+    neovim
+    foot
+  ];
 }

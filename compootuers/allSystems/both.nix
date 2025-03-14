@@ -28,6 +28,8 @@
     neomutt
     file
     yt-dlp
+    trash-cli
+    nnn
   ];
   lemon.programs.kakoune = {
     enable = true;
