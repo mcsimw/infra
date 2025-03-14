@@ -5,5 +5,6 @@
   imports = [
     ./desktops
     ./bootloaders
+    ./users
   ];
 }

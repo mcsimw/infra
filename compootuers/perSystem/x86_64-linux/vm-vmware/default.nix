@@ -1,7 +1,7 @@
 {
   packages,
-  pkgs,
   self,
+  lib,
   ...
 }:
 {
@@ -9,19 +9,15 @@
     ./hardware.nix
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
-    (import ../../../../nixosModules/_mkUser.nix {
-      name = "lemon";
-      uid = 1003;
-      shell = packages.nushell;
-      envShell = pkgs.nushell;
-      description = "lemon man";
-      keys = [ ]; # No SSH keys
-      packages = [ pkgs.fish ]; # User gets `fish` shell as a package
-      hashedPassword = null;
-    })
   ];
   users.users.mcsimw.packages = with packages; [
     neovim
     foot
   ];
+  systemd.targets = {
+    sleep.enable = lib.mkForce false;
+    suspend.enable = lib.mkForce false;
+    hibernate.enable = lib.mkForce false;
+    hybrid-sleep.enable = lib.mkForce false;
+  };
 }
