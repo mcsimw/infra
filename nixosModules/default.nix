@@ -1,7 +1,5 @@
 {
-  flake.nixosModules = {
-    kakoune = ./kakoune.nix;
-  };
+  flake.nixosModules.kakoune = ./kakoune.nix;
   imports = [
     ./desktops
     ./bootloaders
