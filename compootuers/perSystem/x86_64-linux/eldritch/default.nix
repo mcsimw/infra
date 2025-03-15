@@ -19,5 +19,4 @@
     dolphin-emu
   ];
   programs.steam.enable = true;
-  users.users.mcsimw.packages = with packages; [ foot ];
 }

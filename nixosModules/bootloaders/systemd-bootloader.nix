@@ -1,4 +1,4 @@
-{ lib, self, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   boot.loader = {
     systemd-boot = {
