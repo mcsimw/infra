@@ -8,6 +8,7 @@
 let
   cfg = config.myShit.users.mcsimw.enable;
   dwlEnabled = lib.attrByPath ["myShit" "dwl" "enable"] false config;
+  neovimEnabled = lib.attrByPath ["programs" "neovim" "enable"] false config;
 in
 {
   options.myShit.users.mcsimw.enable = lib.mkOption {
@@ -28,11 +29,10 @@ in
       packages = with self'.packages; [
         git
         nushell
-        neovim
       ] ++ lib.optionals dwlEnabled [
         google-chrome
 	foot
-      ];
+      ] ++ lib.optionals neovimEnabled [ neovim ];
       shell = "/etc/profiles/per-user/mcsimw/bin/nu";
     };
   };

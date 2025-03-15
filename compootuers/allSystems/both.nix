@@ -10,7 +10,10 @@
     self.nixosModules.kakoune
     inputs.nyx.nixosModules.mesa-git
   ];
-  programs.tmux.enable = true;
+  programs = {
+    tmux.enable = true;
+    neovim.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     onefetch
     fastfetch

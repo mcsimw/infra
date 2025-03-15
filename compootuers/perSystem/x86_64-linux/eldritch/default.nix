@@ -10,6 +10,7 @@
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
   ];
+  hardware.xpadneo.enable = true;
   environment.systemPackages = with pkgs; [
     heroic
     zeroad
@@ -18,5 +19,8 @@
     obs-studio
     dolphin-emu
   ];
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extest.enable = true;
+  };
 }

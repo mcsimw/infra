@@ -33,9 +33,25 @@
       krita
       inkscape
       ani-cli
+      nautilus
     ]);
 
-  fonts.packages = with pkgs; [
-    spleen
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    fontconfig = {
+      hinting.enable = false;
+      defaultFonts = {
+        serif = [  "Inter" ];
+        sansSerif = [  "Inter" ];
+        monospace = [ "Ubuntu Mono" ];
+      };
+    };
+    packages = with pkgs; [
+      spleen
+      vistafonts
+      corefonts
+      inter
+      iosevka
+    ];
+  };
 }
