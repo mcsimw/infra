@@ -10,9 +10,6 @@
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
   ];
-  users.users.mcsimw.packages = with packages; [
-    foot
-  ];
   systemd.targets = {
     sleep.enable = lib.mkForce false;
     suspend.enable = lib.mkForce false;
