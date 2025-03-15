@@ -23,6 +23,7 @@
     wget
     ripgrep
     eza
+    bat
     fd
     nethack
     neomutt
@@ -30,6 +31,7 @@
     yt-dlp
     trash-cli
     nnn
+    fzf
   ];
   lemon.programs.kakoune = {
     enable = true;

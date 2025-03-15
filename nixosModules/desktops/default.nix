@@ -5,9 +5,9 @@
 }:
 {
   flake.nixosModules = {
-    dwl = moduleWithSystem ({ self' }: import ./dwl.nix { inherit self self'; });
+    desktop-base = moduleWithSystem ({ self', inputs' }: import ./base.nix { inherit inputs'; });
     wlroots = ./wlroots.nix;
-    desktop-base = moduleWithSystem ({ self', inputs' }: import ./base.nix { inherit self' inputs'; });
+    dwl = moduleWithSystem ({ self' }: import ./dwl.nix { inherit self self'; });
     gnome = ./gnome.nix;
   };
 }

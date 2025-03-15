@@ -11,7 +11,6 @@
     self.nixosModules.systemd-bootloader
   ];
   users.users.mcsimw.packages = with packages; [
-    neovim
     foot
   ];
   systemd.targets = {

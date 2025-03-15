@@ -102,11 +102,11 @@
     "dotfiles-legacy": {
       "flake": false,
       "locked": {
-        "lastModified": 1741956801,
-        "narHash": "sha256-uHpyb1GWZoGqLglTMpi8gXGFqNTRZryzanGWqk1gIDQ=",
+        "lastModified": 1742053590,
+        "narHash": "sha256-q7+Ku0feU76i+l1bAezddZG7OguiIfWxA4MFMULDdTk=",
         "owner": "mcsimw",
         "repo": ".dotfiles-legacy",
-        "rev": "e8e20be1e6d68409f42e3fe99bc639119cb15a21",
+        "rev": "856574d36ef1ebed68c5fcdd7de526c608f2637e",
         "type": "github"
       },
       "original": {
