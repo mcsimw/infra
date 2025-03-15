@@ -3,10 +3,10 @@
 {
   imports = with self; [
     lanzaboote.nixosModules.lanzaboote
-    nixosModules.efi-packages
   ];
   environment.systemPackages = [
     pkgs.sbctl
+    efibootmgr
   ];
   boot = {
     loader.efi.canTouchEfiVariables = lib.mkForce false;

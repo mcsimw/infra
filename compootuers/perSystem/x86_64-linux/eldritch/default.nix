@@ -19,8 +19,5 @@
     dolphin-emu
   ];
   programs.steam.enable = true;
-  users.users.mcsimw = with packages; {
-    foot
-    google-chrome
-  };
+  users.users.mcsimw.packages = with packages; [ foot ];
 }
