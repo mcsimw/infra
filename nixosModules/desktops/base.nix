@@ -41,8 +41,8 @@
     fontconfig = {
       hinting.enable = false;
       defaultFonts = {
-        serif = [  "Inter" ];
-        sansSerif = [  "Inter" ];
+        serif = [ "Inter" ];
+        sansSerif = [ "Inter" ];
         monospace = [ "Ubuntu Mono" ];
       };
     };
