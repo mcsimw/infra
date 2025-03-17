@@ -17,7 +17,14 @@
   config = lib.mkIf config.myShit.dwl.enable (
     lib.mkMerge [
       (import ./base.nix { inherit inputs' pkgs self'; })
-      (import ./wlroots.nix { inherit inputs' pkgs inputs; })
+      (import ./wlroots.nix {
+        inherit
+          inputs'
+          pkgs
+          inputs
+          config
+          ;
+      })
       {
         environment.systemPackages = [ pkgs.dwl ];
         xdg.portal.config.dwl.default = [

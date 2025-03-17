@@ -5,6 +5,8 @@
     fallbackSpecialisation = false;
   };
   hardware = {
+    bluetooth.enable = true;
+    xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
     amdgpu = {
       initrd.enable = true;

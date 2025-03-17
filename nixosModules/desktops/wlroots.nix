@@ -2,9 +2,11 @@
   inputs,
   inputs',
   pkgs,
+  config,
   ...
 }:
 {
+  services.blueman.enable = config.hardware.bluetooth.enable;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

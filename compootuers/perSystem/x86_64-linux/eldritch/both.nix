@@ -1,5 +1,6 @@
 {
   self,
+  pkgs,
   ...
 }:
 {
@@ -8,6 +9,18 @@
 
     self.nixosModules.dwl
   ];
-  services.openssh.enable = true;
   system.stateVersion = "25.05";
+  environment.systemPackages = with pkgs; [
+    heroic
+    zeroad
+    mangohud
+    gamescope
+    obs-studio
+    dolphin-emu
+    zoom-us
+  ];
+  programs.steam = {
+    enable = true;
+    extest.enable = true;
+  };
 }

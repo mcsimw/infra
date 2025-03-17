@@ -19,7 +19,10 @@
           allSystems = ./compootuers/allSystems;
         };
 
-        systems = ["aarch64-linux" "x86_64-linux"];
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+        ];
 
         perSystem =
           { system, ... }:

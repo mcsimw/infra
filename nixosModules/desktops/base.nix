@@ -39,6 +39,8 @@
         inkscape
         ani-cli
         nautilus
+        nyxt
+        qutebrowser
       ]);
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
@@ -48,10 +50,19 @@
     fontconfig = {
       hinting.enable = false;
       defaultFonts = {
-	serif = [ "Inter" "Symbols Nerd Font" ];
-	sansSerif = [ "Inter" "Symbols Nerd Font" ];
-	monospace = [ "Cascadia Code" "Symbols Nerd Font Mono" ];
-	emoji = [ "Apple Color Emoji" ];
+        serif = [
+          "Inter"
+          "Symbols Nerd Font"
+        ];
+        sansSerif = [
+          "Inter"
+          "Symbols Nerd Font"
+        ];
+        monospace = [
+          "Cascadia Code"
+          "Symbols Nerd Font Mono"
+        ];
+        emoji = [ "Apple Color Emoji" ];
       };
     };
     packages =
@@ -60,7 +71,7 @@
       ]
       ++ (with pkgs; [
         spleen
-	cascadia-code
+        cascadia-code
         vistafonts
         corefonts
         inter
