@@ -48,12 +48,16 @@
         monospace = [ "Ubuntu Mono" ];
       };
     };
-    packages = with pkgs; [
-      spleen
-      vistafonts
-      corefonts
-      inter
-      iosevka
-    ];
+    packages =
+      [
+        inputs'.apple-emoji-linux.packages.default
+      ]
+      ++ (with pkgs; [
+        spleen
+        vistafonts
+        corefonts
+        inter
+        iosevka
+      ]);
   };
 }

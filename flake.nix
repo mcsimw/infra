@@ -145,5 +145,12 @@
         flake-compat.follows = "";
       };
     };
+    apple-emoji-linux = {
+      url = "github:samuelngs/apple-emoji-linux";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "nixpkgs";
+      };
+    };
   };
 }

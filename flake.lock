@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "apple-emoji-linux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742190571,
+        "narHash": "sha256-r0xswLw6h4tk2Z2vLSl+5svhLZognn7/xqcmOSyUq0s=",
+        "owner": "samuelngs",
+        "repo": "apple-emoji-linux",
+        "rev": "3230b2ec06283a041073eb38e33ea0ef6a548487",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samuelngs",
+        "repo": "apple-emoji-linux",
+        "type": "github"
+      }
+    },
     "browser-previews": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -838,6 +861,7 @@
     },
     "root": {
       "inputs": {
+        "apple-emoji-linux": "apple-emoji-linux",
         "browser-previews": "browser-previews",
         "disk-abstractions": "disk-abstractions",
         "disko": "disko",

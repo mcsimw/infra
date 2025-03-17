@@ -10,6 +10,7 @@
     self.nixosModules.kakoune
     inputs.nyx.nixosModules.mesa-git
   ];
+  services.mpd.enable = true;
   programs = {
     tmux.enable = true;
     neovim.enable = true;
@@ -39,6 +40,7 @@
     trash-cli
     nnn
     fzf
+    ncmpcpp
   ];
   lemon.programs.kakoune = {
     enable = true;
