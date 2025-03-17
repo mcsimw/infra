@@ -23,18 +23,21 @@
     };
   };
 
-  environment.systemPackages =
-    [
-      inputs'.browser-previews.packages.google-chrome-dev
-    ]
-    ++ (with pkgs; [
-      mpv
-      gimp
-      krita
-      inkscape
-      ani-cli
-      nautilus
-    ]);
+  environment = {
+    systemPackages =
+      [
+        inputs'.browser-previews.packages.google-chrome-dev
+      ]
+      ++ (with pkgs; [
+        mpv
+        gimp
+        krita
+        inkscape
+        ani-cli
+        nautilus
+      ]);
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
 
   fonts = {
     enableDefaultPackages = true;

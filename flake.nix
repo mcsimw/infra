@@ -127,5 +127,6 @@
         flake-compat.follows = "";
       };
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/";
   };
 }

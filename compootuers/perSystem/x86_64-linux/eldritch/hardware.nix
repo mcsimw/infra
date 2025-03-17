@@ -15,15 +15,16 @@
   powerManagement.cpuFreqGovernor = "performance";
   boot = {
     kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
+    kernelModules = [ "kvm_intel" ];
     initrd = {
       systemd.enable = true;
       availableKernelModules = [
-        "ata_piix"
-        "uhci_hcd"
-        "ehci_pci"
+        "xhci_pci"
         "ahci"
         "nvme"
-        "sr_mod"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
       ];
     };
   };

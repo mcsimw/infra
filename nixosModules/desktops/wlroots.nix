@@ -5,6 +5,13 @@
   ...
 }:
 {
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    wlr.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     wlvncc
     inputs.nixpkgs.legacyPackages.${pkgs.system}.foot # nixpkgs-wayland's foot won't compile for now :(
