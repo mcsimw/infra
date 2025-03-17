@@ -30,7 +30,6 @@
       ]
       ++ (with pkgs; [
         mpv
-        gimp
         krita
         inkscape
         ani-cli

@@ -13,6 +13,10 @@
   programs = {
     tmux.enable = true;
     neovim.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
   environment.systemPackages = with pkgs; [
     onefetch
