@@ -23,14 +23,7 @@ in
       extraGroups = [ "wheel" ] ++ (import ./extraGroups.nix { inherit config lib; });
       uid = 1000;
       password = "1";
-      packages =
-        with self'.packages;
-        [
-          git
-        ]
-        ++ lib.optionals dwlEnabled [
-          foot
-        ];
+      packages = with self'.packages; [ git ] ++ lib.optionals dwlEnabled [ foot ];
     };
   };
 }

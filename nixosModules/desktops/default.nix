@@ -4,7 +4,7 @@
 }:
 {
   flake.nixosModules = {
-    dwl = moduleWithSystem ({ inputs' }: import ./dwl.nix { inherit inputs'; });
+    dwl = moduleWithSystem ({ inputs', self' }: import ./dwl.nix { inherit inputs' self'; });
     gnome = ./gnome.nix;
   };
 }

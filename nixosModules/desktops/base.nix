@@ -1,4 +1,8 @@
-{ inputs', pkgs }:
+{
+  inputs',
+  pkgs,
+  self',
+}:
 {
   hardware.graphics = {
     enable = true;
@@ -27,6 +31,7 @@
     systemPackages =
       [
         inputs'.browser-previews.packages.google-chrome-dev
+        self'.packages.gimp
       ]
       ++ (with pkgs; [
         mpv
