@@ -1,6 +1,12 @@
 { lib, pkgs, ... }:
 {
   virtualisation.vmware.guest.enable = true;
+  systemd.targets = {
+    sleep.enable = lib.mkForce false;
+    suspend.enable = lib.mkForce false;
+    hibernate.enable = lib.mkForce false;
+    hybrid-sleep.enable = lib.mkForce false;
+  };
   boot = {
     kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
     initrd = {

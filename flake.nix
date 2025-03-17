@@ -10,24 +10,46 @@
           inputs.genesis-nix.flakeModules.compootuers
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
-          ./packages
           ./nixosModules
+          ./packages
         ];
 
         compootuers = {
           perSystem = ./compootuers/perSystem;
           allSystems = ./compootuers/allSystems;
         };
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-        perSystem.treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            nixfmt.enable = true;
-            deadnix.enable = true;
-            statix.enable = true;
-            dos2unix.enable = true;
+        perSystem =
+          { system, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+              overlays = [
+                inputs.nix.overlays.default
+                inputs.neovim-nightly-overlay.overlays.default
+                inputs.emacs-overlay.overlays.default
+                inputs.nixpkgs-wayland.overlays.default
+                inputs.nyx.overlays.cache-friendly
+              ];
+
+            };
+            treefmt = {
+              projectRootFile = "flake.nix";
+              programs = {
+                nixfmt.enable = true;
+                deadnix.enable = true;
+                statix.enable = true;
+                dos2unix.enable = true;
+              };
+
+            };
           };
-        };
+
       }
     );
 
@@ -98,10 +120,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
-    };
-    wrapper-manager = {
-      url = "github:viperML/wrapper-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfiles-legacy = {
       url = "github:mcsimw/.dotfiles-legacy";

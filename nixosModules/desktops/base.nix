@@ -30,7 +30,7 @@
       ]
       ++ (with pkgs; [
         mpv
-        krita
+        #        krita
         inkscape
         ani-cli
         nautilus

@@ -1,4 +1,4 @@
-{ self', inputs' }:
+{ inputs' }:
 {
   pkgs,
   inputs,
@@ -19,7 +19,7 @@
       (import ./base.nix { inherit inputs' pkgs; })
       (import ./wlroots.nix { inherit inputs' pkgs inputs; })
       {
-        environment.systemPackages = [ self'.packages.dwl ];
+        environment.systemPackages = [ pkgs.dwl ];
         xdg.portal.config.dwl.default = [
           "wlr"
           "gtk"
