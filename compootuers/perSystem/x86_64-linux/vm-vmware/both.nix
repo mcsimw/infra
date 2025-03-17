@@ -10,13 +10,5 @@
 
     self.nixosModules.dwl
   ];
-  environment.systemPackages = with pkgs; [
-    wget
-    qutebrowser
-  ];
-  services = {
-    openssh.enable = true;
-    flatpak.enable = true;
-  };
   system.stateVersion = "25.05";
 }

@@ -17,6 +17,7 @@
     gamescope
     obs-studio
     dolphin-emu
+    zoom-us
   ];
   programs.steam = {
     enable = true;
