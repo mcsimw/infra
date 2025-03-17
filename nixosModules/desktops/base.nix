@@ -48,9 +48,10 @@
     fontconfig = {
       hinting.enable = false;
       defaultFonts = {
-        serif = [ "Inter" ];
-        sansSerif = [ "Inter" ];
-        monospace = [ "Ubuntu Mono" ];
+	serif = [ "Inter" "Symbols Nerd Font" ];
+	sansSerif = [ "Inter" "Symbols Nerd Font" ];
+	monospace = [ "Cascadia Code" "Symbols Nerd Font Mono" ];
+	emoji = [ "Apple Color Emoji" ];
       };
     };
     packages =
@@ -59,10 +60,12 @@
       ]
       ++ (with pkgs; [
         spleen
+	cascadia-code
         vistafonts
         corefonts
         inter
         iosevka
+        nerd-fonts.symbols-only
       ]);
   };
 }
