@@ -51,7 +51,7 @@
   time.timeZone = lib.mkDefault "Canada/Eastern";
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
   networking.useNetworkd = true;
-  systemd.oomd.enable = lib.mkForce false;
+  systemd.oomd.enable = lib.mkForce false; # https://github.com/systemd/systemd/pull/36718 Once this is merged to stable version of systemd, I will re-enable. For now, no condoms. I could fix it myself, but I'm lazy.
   nix.settings = {
     substituters = [
       "https://nix-community.cachix.org" # nix-community

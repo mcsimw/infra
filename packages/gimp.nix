@@ -6,7 +6,7 @@
 }:
 
 let
-  version = "3.0.0-RC3";
+  version = "3.0.0";
   arch =
     if system == "x86_64-linux" then
       "x86_64"
@@ -18,9 +18,9 @@ let
 
   hash =
     if system == "x86_64-linux" then
-      "sha256-OD9iXtN6LW0uXCK6rS8+O2xQ081RnrbgkGmQN4O8rHo="
+      "sha256-9S6+SYirgYYVVJ7N/7Jx5uIOnIQSkDXZOqpPtB+lqWo="
     else if system == "aarch64-linux" then
-      "sha256-MM14Xrf17dBEHmQiH9uR6cQTtnzfrwhtgMXt1fQavIk="
+      "sha256-ghHGVcOXIZCfNadPvXpAF6xQiOImT5G7hsqsBWkWMfw="
     else
       throw "Unsupported architecture: ${system}";
 

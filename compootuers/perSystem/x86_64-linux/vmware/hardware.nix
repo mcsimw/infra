@@ -1,5 +1,9 @@
 { lib, pkgs, ... }:
 {
+  chaotic.mesa-git = {
+    enable = true;
+    fallbackSpecialisation = false;
+  };
   virtualisation.vmware.guest.enable = true;
   systemd.targets = {
     sleep.enable = lib.mkForce false;
