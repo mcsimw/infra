@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib }:
 
 lib.concatLists [
   (lib.optional config.virtualisation.libvirtd.enable "libvirtd")
@@ -7,4 +7,5 @@ lib.concatLists [
   (lib.optional config.programs.adb.enable "adbusers")
   (lib.optional config.virtualisation.docker.enable "docker")
   (lib.optional config.services.pipewire.enable "audio")
+  (lib.optional config.programs.wireshark.enable "wireshark")
 ]

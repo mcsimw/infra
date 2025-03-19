@@ -20,9 +20,10 @@ in
     users.users.mcsimw = {
       description = "Maor Haimovitz";
       isNormalUser = true;
+      linger = true;
       extraGroups = [ "wheel" ] ++ (import ./extraGroups.nix { inherit config lib; });
       uid = 1000;
-      hashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
+      initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
       packages = with self'.packages; [ git ] ++ lib.optionals dwlEnabled [ foot ];
     };
   };

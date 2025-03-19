@@ -3,6 +3,7 @@
   pkgs,
   self,
   inputs,
+  inputs',
   ...
 }:
 {
@@ -18,28 +19,36 @@
       binfmt = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    onefetch
-    fastfetch
-    btop
-    unzip
-    unrar
-    p7zip
-    texliveFull
-    dysk
-    wget
-    ripgrep
-    eza
-    bat
-    fd
-    nethack
-    neomutt
-    file
-    yt-dlp
-    trash-cli
-    nnn
-    fzf
-  ];
+
+  environment.systemPackages =
+    with pkgs;
+    [
+      onefetch
+      fastfetch
+      btop
+      unzip
+      unrar
+      p7zip
+      texliveFull
+      dysk
+      wget
+      ripgrep
+      eza
+      bat
+      fd
+      nethack
+      neomutt
+      file
+      yt-dlp
+      trash-cli
+      nnn
+      fzf
+    ]
+    ++ (with inputs'.disko.packages; [
+      disko-install
+      disko
+    ]);
+
   lemon.programs.kakoune = {
     enable = true;
     defaultEditor = true;

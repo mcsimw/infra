@@ -4,7 +4,6 @@
     ./hardware.nix
     self.nixosModules.dwl
   ];
-  system.stateVersion = "25.05";
   environment.systemPackages = with pkgs; [
     heroic
     zeroad
@@ -14,8 +13,12 @@
     dolphin-emu
     zoom-us
   ];
-  programs.steam = {
-    enable = true;
-    extest.enable = true;
+  programs = {
+    steam = {
+      enable = true;
+      extest.enable = true;
+    };
+    wireshark.enable = true;
   };
+  system.stateVersion = "25.05";
 }
