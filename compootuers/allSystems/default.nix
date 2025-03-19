@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  config,
   ...
 }:
 {
@@ -13,27 +14,20 @@
     inputs.preservation.nixosModules.default
   ];
   preservation = {
-    enable = true;
     preserveAt."/persist" = {
-      files = [ ];
       directories = [
-        # no /var since regular mount
+        "/var/log"
+        "/var/lib/systemd/coredump"
       ];
-
-      users = {
-        root = {
-          home = "/root";
-          directories = [
-            {
-              directory = ".ssh";
-              mode = "0700";
-            }
-          ];
-          files = [
-            ".bash_history"
-          ];
-        };
-      };
+      files = [
+        {
+          file = "/var/lib/systemd/random-seed";
+          how = "symlink";
+          inInitrd = true;
+          configureParent = true;
+        }
+      ];
     };
   };
+#  system.etc.overlay.enable = config.boot.initrd.systemd.enable;
 }

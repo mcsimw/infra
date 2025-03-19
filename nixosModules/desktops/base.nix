@@ -45,10 +45,12 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
+  # Best font rendring
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
-      hinting.enable = false;
+      hinting.enable = false; # Fuck you blur
+      antialias = false; # Fuck you blur
       defaultFonts = {
         serif = [
           "Inter"

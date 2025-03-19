@@ -1,6 +1,7 @@
 {
   system,
   self,
+  pkgs,
   ...
 }:
 {
@@ -9,4 +10,7 @@
     self.nixosModules.dwl
   ];
   system.stateVersion = "25.05";
+  environment.systemPackages = with pkgs; [
+    libreoffice
+  ];
 }

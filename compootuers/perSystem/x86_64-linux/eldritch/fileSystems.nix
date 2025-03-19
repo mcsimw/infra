@@ -3,6 +3,7 @@
   imports = [
     inputs.disk-abstractions.nixosModules.zfsonix
   ];
+  preservation.enable = true;
   zfsonix = {
     enable = true;
     diskName = "lemon";

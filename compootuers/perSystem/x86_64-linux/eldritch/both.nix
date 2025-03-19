@@ -12,6 +12,7 @@
     obs-studio
     dolphin-emu
     zoom-us
+    libreoffice-fresh
   ];
   programs = {
     steam = {
