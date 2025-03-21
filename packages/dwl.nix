@@ -14,7 +14,6 @@
   wayland-protocols,
   wayland-scanner,
   wlroots,
-  writeText,
   xcbutilwm,
   xwayland,
 }:
@@ -37,34 +36,32 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
   ];
 
-  buildInputs =
-    [
-      libinput
-      libxcb
-      libxkbcommon
-      pixman
-      wayland
-      wayland-protocols
-      wlroots
-      libX11
-      xcbutilwm
-      xwayland
-    ];
+  buildInputs = [
+    libinput
+    libxcb
+    libxkbcommon
+    pixman
+    wayland
+    wayland-protocols
+    wlroots
+    libX11
+    xcbutilwm
+    xwayland
+  ];
 
   outputs = [
     "out"
     "man"
   ];
 
-  makeFlags =
-    [
-      "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
-      "WAYLAND_SCANNER=wayland-scanner"
-      "PREFIX=$(out)"
-      "MANDIR=$(man)/share/man"
-      ''XWAYLAND="-DXWAYLAND"''
-      ''XLIBS="xcb xcb-icccm"''
-    ];
+  makeFlags = [
+    "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
+    "WAYLAND_SCANNER=wayland-scanner"
+    "PREFIX=$(out)"
+    "MANDIR=$(man)/share/man"
+    ''XWAYLAND="-DXWAYLAND"''
+    ''XLIBS="xcb xcb-icccm"''
+  ];
 
   strictDeps = true;
 

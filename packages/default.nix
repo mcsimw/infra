@@ -13,6 +13,7 @@
         dwl = pkgs.callPackage ./dwl.nix { };
         gimp = pkgs.callPackage ./gimp.nix { inherit system; };
         foot = pkgs.callPackage ./foot.nix { inherit inputs inputs'; };
+        lucidia = pkgs.callPackage ./lucidia.nix { };
       };
     };
 }

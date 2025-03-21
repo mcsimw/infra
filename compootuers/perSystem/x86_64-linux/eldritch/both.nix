@@ -13,6 +13,7 @@
     dolphin-emu
     zoom-us
     libreoffice-fresh
+    dwarf-fortress
   ];
   programs = {
     steam = {

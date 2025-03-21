@@ -3,7 +3,9 @@
   imports = [
     inputs.disk-abstractions.nixosModules.zfsonix
   ];
+
   preservation.enable = true;
+
   zfsonix = {
     enable = true;
     diskName = "lemon";
@@ -11,6 +13,7 @@
     ashift = "12";
     swapSize = "8G";
   };
+
   services = {
     fstrim.enable = true;
     zfs = {

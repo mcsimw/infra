@@ -11,6 +11,7 @@
     self.nixosModules.kakoune
     inputs.nyx.nixosModules.mesa-git
   ];
+
   programs = {
     tmux.enable = true;
     neovim.enable = true;
@@ -19,6 +20,8 @@
       binfmt = true;
     };
   };
+
+#  nix.package = pkgs.nixVersions.latest;
 
   environment.systemPackages =
     with pkgs;
@@ -43,6 +46,7 @@
       trash-cli
       nnn
       fzf
+      (cataclysm-dda.override { tiles = false; })
     ]
     ++ (with inputs'.disko.packages; [
       disko-install
@@ -53,14 +57,20 @@
     enable = true;
     defaultEditor = true;
   };
+
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
+
   time.timeZone = lib.mkDefault "Canada/Eastern";
+
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
+
   networking.useNetworkd = true;
+
   systemd.oomd.enable = lib.mkForce false; # https://github.com/systemd/systemd/pull/36718 Once this is merged to stable version of systemd, I will re-enable. For now, no condoms. I could fix it myself, but I'm lazy.
+
   nix.settings = {
     substituters = [
       "https://nix-community.cachix.org" # nix-community
@@ -73,5 +83,6 @@
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=" # nixpkgs-wayland
     ];
   };
+
   services.openssh.enable = lib.mkDefault true;
 }

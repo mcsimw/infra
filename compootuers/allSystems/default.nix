@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  config,
   ...
 }:
 {
@@ -29,5 +28,4 @@
       ];
     };
   };
-#  system.etc.overlay.enable = config.boot.initrd.systemd.enable;
 }

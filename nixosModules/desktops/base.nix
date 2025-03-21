@@ -47,21 +47,22 @@
 
   # Best font rendring
   fonts = {
-    enableDefaultPackages = true;
     fontconfig = {
-      hinting.enable = false; # Fuck you blur
+      useEmbeddedBitmaps = true;
       antialias = false; # Fuck you blur
+      hinting.enable = false; # Fuck you blur
+      subpixel.lcdfilter = "none";
       defaultFonts = {
         serif = [
-          "Inter"
+          "Georgia"
           "Symbols Nerd Font"
         ];
         sansSerif = [
-          "Inter"
+          "Verdana"
           "Symbols Nerd Font"
         ];
         monospace = [
-          "Cascadia Code"
+          "Lucida Sans Typewriter"
           "Symbols Nerd Font Mono"
         ];
         emoji = [ "Apple Color Emoji" ];
@@ -70,15 +71,13 @@
     packages =
       [
         inputs'.apple-emoji-linux.packages.default
+        self'.packages.lucidia
       ]
       ++ (with pkgs; [
         spleen
-        cascadia-code
         vistafonts
         corefonts
-        inter
-        iosevka
-        nerd-fonts.symbols-only
+        freefont_ttf
       ]);
   };
 }

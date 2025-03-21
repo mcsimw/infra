@@ -56,9 +56,9 @@
     );
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs.url = "github:nixos/nixpkgs";
     nix = {
-      url = "github:nixos/nix?ref=master";
+      url = "github:nixos/nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-23-11.follows = "nixpkgs";
