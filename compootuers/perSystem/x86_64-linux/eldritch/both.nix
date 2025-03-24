@@ -14,6 +14,8 @@
     zoom-us
     libreoffice-fresh
     dwarf-fortress
+    vesktop
+    signal-desktop
   ];
   programs = {
     steam = {

@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.lemon.programs.kakoune;
+  cfg = config.myShit.programs.kakoune;
 in
 {
-  options.lemon.programs.kakoune = {
+  options.myShit.programs.kakoune = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

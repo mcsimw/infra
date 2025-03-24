@@ -21,8 +21,6 @@
     };
   };
 
-#  nix.package = pkgs.nixVersions.latest;
-
   environment.systemPackages =
     with pkgs;
     [
@@ -46,20 +44,27 @@
       trash-cli
       nnn
       fzf
+      cowsay
+      figlet
+      lolcat
+      gay
+      blahaj
+      sl
       (cataclysm-dda.override { tiles = false; })
     ]
     ++ (with inputs'.disko.packages; [
       disko-install
       disko
-    ]);
+    ])
+    ++ [ inputs'.nixos-search.packages.default ];
 
-  lemon.programs.kakoune = {
+  myShit.programs.kakoune = {
     enable = true;
     defaultEditor = true;
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
 

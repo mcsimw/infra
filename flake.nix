@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "MCSIMW's personal nix dotfiles";
 
   outputs =
     inputs:
@@ -154,6 +154,10 @@
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "nixpkgs";
       };
+    };
+    nixos-search = {
+      url = "github:diamondburned/nix-search";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
