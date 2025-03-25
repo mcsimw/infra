@@ -1,3 +1,0 @@
-{
-  isoImage.makeBiosBootable = false;
-}

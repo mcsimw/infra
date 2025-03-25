@@ -52,10 +52,6 @@
       sl
       (cataclysm-dda.override { tiles = false; })
     ]
-    ++ (with inputs'.disko.packages; [
-      disko-install
-      disko
-    ])
     ++ [ inputs'.nixos-search.packages.default ];
 
   myShit.programs.kakoune = {

@@ -73,55 +73,6 @@
         "type": "github"
       }
     },
-    "disk-abstractions": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "genesis-nix": [
-          "genesis-nix"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1742408011,
-        "narHash": "sha256-GPa1OgAAy9sfDCst8G6VudfdgglxJLv0T071iHqpPuk=",
-        "owner": "mcsimw",
-        "repo": "disk-abstractions",
-        "rev": "11edd2daf758b1611039fc28ccc008eeab6b1451",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mcsimw",
-        "repo": "disk-abstractions",
-        "type": "github"
-      }
-    },
-    "disko": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1741786315,
-        "narHash": "sha256-VT65AE2syHVj6v/DGB496bqBnu1PXrrzwlw07/Zpllc=",
-        "owner": "nix-community",
-        "repo": "disko",
-        "rev": "0d8c6ad4a43906d14abd5c60e0ffe7b587b213de",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "disko",
-        "type": "github"
-      }
-    },
     "dotfiles-legacy": {
       "flake": false,
       "locked": {
@@ -915,8 +866,6 @@
       "inputs": {
         "apple-emoji-linux": "apple-emoji-linux",
         "browser-previews": "browser-previews",
-        "disk-abstractions": "disk-abstractions",
-        "disko": "disko",
         "dotfiles-legacy": "dotfiles-legacy",
         "emacs-overlay": "emacs-overlay",
         "flake-firefox-nightly": "flake-firefox-nightly",

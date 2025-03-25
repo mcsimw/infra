@@ -74,15 +74,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disk-abstractions = {
-      url = "github:mcsimw/disk-abstractions";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-        genesis-nix.follows = "genesis-nix";
-      };
-    };
     genesis-nix = {
       url = "github:mcsimw/genesis-nix";
       inputs = {
@@ -91,11 +82,6 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    #    impermanence.url = "github:nix-community/impermanence";
     preservation.url = "github:nix-community/preservation";
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";

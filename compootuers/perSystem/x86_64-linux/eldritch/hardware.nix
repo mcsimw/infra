@@ -1,33 +1,38 @@
 { lib, pkgs, ... }:
 {
+  boot.initrd.availableKernelModules = [
+    "ata_piix"
+    "nvme"
+    "sr_mod"
+  ];
   chaotic.mesa-git = {
     enable = true;
     fallbackSpecialisation = false;
   };
   hardware = {
-    bluetooth.enable = true;
-    xpadneo.enable = true;
-    cpu.intel.updateMicrocode = true;
-    amdgpu = {
-      initrd.enable = true;
-      opencl.enable = true;
-    };
+    #    bluetooth.enable = true;
+    #    xpadneo.enable = true;
+    #    cpu.intel.updateMicrocode = true;
+    #    amdgpu = {
+    #      initrd.enable = true;
+    #      opencl.enable = true;
+    #    };
     enableAllFirmware = true;
   };
   powerManagement.cpuFreqGovernor = "performance";
   boot = {
     kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
-    kernelModules = [ "kvm_intel" ];
+    #    kernelModules = [ "kvm_intel" ];
     initrd = {
       systemd.enable = true;
-      availableKernelModules = [
-        "xhci_pci"
-        "ahci"
-        "nvme"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-      ];
+      #      availableKernelModules = [
+      #        "xhci_pci"
+      #        "ahci"
+      #        "nvme"
+      #        "usbhid"
+      #        "usb_storage"
+      #        "sd_mod"
+      #      ];
     };
   };
   services.scx = {
