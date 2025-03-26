@@ -22,6 +22,9 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/579b7e55-9283-4035-bd40-9d0319b15191"; }
+    { 
+      device = "/dev/disk/by-path/pci-0000:03:00.0-nvme-1-part2"; 
+      randomEncryption.enable = true;
+    }
   ];
 }
