@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
 {
+  virtualisation.vmware.guest.enable = true;
   boot.initrd.availableKernelModules = [
     "ata_piix"
     "nvme"
@@ -21,7 +22,6 @@
   };
   powerManagement.cpuFreqGovernor = "performance";
   boot = {
-    kernelPackages = lib.mkOverride 99 pkgs.linuxPackages_cachyos-rc;
     #    kernelModules = [ "kvm_intel" ];
     initrd = {
       systemd.enable = true;
