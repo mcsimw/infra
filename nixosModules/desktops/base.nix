@@ -39,7 +39,7 @@
         inkscape
         ani-cli
         nautilus
-        nyxt
+        #nyxt
         qutebrowser
       ]);
     sessionVariables.NIXOS_OZONE_WL = "1";

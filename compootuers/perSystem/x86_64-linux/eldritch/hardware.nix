@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   virtualisation.vmware.guest.enable = true;
   boot.initrd.availableKernelModules = [

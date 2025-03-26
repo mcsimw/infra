@@ -50,7 +50,6 @@
       gay
       blahaj
       sl
-      (cataclysm-dda.override { tiles = false; })
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

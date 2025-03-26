@@ -56,7 +56,7 @@
     );
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nix = {
       url = "github:nixos/nix";
       inputs = {
