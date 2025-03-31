@@ -1,30 +1,38 @@
 {
   preservation.enable = false;
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [
-      "size=3G"
-      "mode=755"
-    ];
-  };
+
+   fileSystems."/" =
+    { device = "none";
+      fsType = "tmpfs";
+      options = [ "size=3G" "mode=755" ]; # mode=755 so only root can write to those files
+    };
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/7d0f99e1-c064-47a2-95ae-098d179ccc50";
-    fsType = "xfs";
+    device = "lemon/nix";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir" ];
   };
+
+  fileSystems."/tmp" = {
+    device = "lemon/tmp";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir"];
+  };
+
+  fileSystems."/persist" = {
+    device = "lemon/persist";
+    fsType = "zfs";
+    options = [ "zfsutil" "X-mount.mkdir"];
+  };
+
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B1BE-ED34";
+    device = "/dev/disk/by-id/nvme-eui.fa50f69e53302a28000c296454310ffe-part1";
     fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
   };
 
   swapDevices = [
     {
-      device = "/dev/disk/by-path/pci-0000:03:00.0-nvme-1-part2";
-      randomEncryption.enable = true;
+      device = "nvme-eui.fa50f69e53302a28000c296454310ffe-part2";
+      randomEncryption = true;
     }
   ];
 }
