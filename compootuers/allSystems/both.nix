@@ -50,6 +50,7 @@
       gay
       blahaj
       sl
+      shpool
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 
