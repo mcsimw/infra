@@ -29,10 +29,10 @@
     fsType = "vfat";
   };
 
-  swapDevices = [
-    {
-      device = "nvme-eui.fa50f69e53302a28000c296454310ffe-part2";
-      randomEncryption = true;
-    }
-  ];
+#  swapDevices = [
+#    {
+#      device = "nvme-eui.fa50f69e53302a28000c296454310ffe-part2";
+#      randomEncryption = true;
+#    }
+#  ];
 }
