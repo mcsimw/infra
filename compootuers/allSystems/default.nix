@@ -12,7 +12,7 @@
     self.nixosModules.bluetooth
     inputs.preservation.nixosModules.default
   ];
-  userborn.enable = lib.mkDefault true;
+  services.userborn.enable = lib.mkDefault true;
   preservation = {
     preserveAt."/persist" = {
       directories = [
