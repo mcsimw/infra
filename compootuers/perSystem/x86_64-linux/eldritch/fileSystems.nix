@@ -64,7 +64,7 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-id/nvme-eui.fa50f69e53302a28000c296454310ffe-part1";
+      device = "/dev/disk/by-id/nvme-eui.a4142fc7459aa04f000c29699a5f1235-part1";
       fsType = "vfat";
       options = [
         "dmask=0022"
@@ -76,7 +76,7 @@
 
   swapDevices = [
     {
-      device = "/dev/disk/by-id/nvme-eui.fa50f69e53302a28000c296454310ffe-part2";
+      device = "/dev/disk/by-id/nvme-eui.a4142fc7459aa04f000c29699a5f1235-part2";
       randomEncryption = {
         enable = true;
         allowDiscards = true;
