@@ -344,11 +344,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742192671,
-        "narHash": "sha256-ahIPpDrBBN7q2q1Mblo5NxPe8LBJ1jMJl2Fp1EdLc2M=",
+        "lastModified": 1743530753,
+        "narHash": "sha256-vnWZoNgFCqviHExh68I6S8z1eoET1ddx53a1oqIbpIM=",
         "owner": "mcsimw",
         "repo": "genesis-nix",
-        "rev": "eaaef369271a145078867cd3e282ed6191b54dfd",
+        "rev": "0c339462e131f5cf923e3912c5725d687cef26c4",
         "type": "github"
       },
       "original": {
