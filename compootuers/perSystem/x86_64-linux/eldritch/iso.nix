@@ -1,3 +1,3 @@
 {
-  isoImage.makeBiosBootable = false;
+  isoImage.makeBiosBootable = lib.mkForce false;
 }

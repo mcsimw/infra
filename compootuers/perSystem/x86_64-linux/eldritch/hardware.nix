@@ -1,11 +1,6 @@
 { lib, ... }:
 {
   virtualisation.vmware.guest.enable = true;
-  boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "nvme"
-    "sr_mod"
-  ];
   chaotic.mesa-git = {
     enable = true;
     fallbackSpecialisation = false;
@@ -23,6 +18,7 @@
   powerManagement.cpuFreqGovernor = "performance";
   boot = {
     #    kernelModules = [ "kvm_intel" ];
+    kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
     initrd = {
       systemd.enable = true;
       #      availableKernelModules = [
@@ -33,6 +29,11 @@
       #        "usb_storage"
       #        "sd_mod"
       #      ];
+      availableKernelModules = [
+        "ata_piix"
+        "nvme"
+        "sr_mod"
+      ];
     };
   };
   services.scx = {
