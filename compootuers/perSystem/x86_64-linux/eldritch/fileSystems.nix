@@ -36,6 +36,15 @@
       ];
     };
 
+    "/mnt/lemon" = {
+      device = "lemon/self";
+      fsType = "zfs";
+      options = [
+        "zfsutil"
+        "X-mount.mkdir"
+      ];
+    };
+
     "/tmp" = {
       device = "lemon/tmp";
       fsType = "zfs";
@@ -57,13 +66,22 @@
     "/boot" = {
       device = "/dev/disk/by-id/nvme-eui.fa50f69e53302a28000c296454310ffe-part1";
       fsType = "vfat";
+      options = [
+        "dmask=0022"
+        "fmask=0022"
+        "umask=0077"
+      ];
     };
   };
 
   swapDevices = [
     {
       device = "/dev/disk/by-id/nvme-eui.fa50f69e53302a28000c296454310ffe-part2";
-      randomEncryption = true;
+      randomEncryption = {
+        enable = true;
+        allowDiscards = true;
+      };
+      discardPolicy = "both";
     }
   ];
 }
