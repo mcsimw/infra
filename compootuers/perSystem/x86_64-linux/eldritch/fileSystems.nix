@@ -21,6 +21,7 @@
     "/" = {
       device = "nyx/faketmpfs";
       fsType = "zfs";
+      neededForBoot = true;
       options = [
         "zfsutil"
         "X-mount.mkdir"
