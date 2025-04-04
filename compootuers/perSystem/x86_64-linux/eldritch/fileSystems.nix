@@ -12,14 +12,14 @@
   zfs-rollback = {
     enable = true;
     snapshot = "blank";
-    volume = "lemon/faketmpfs";
+    volume = "nyx/faketmpfs";
   };
 
   preservation.enable = false;
 
   fileSystems = {
     "/" = {
-      device = "lemon/faketmpfs";
+      device = "nyx/faketmpfs";
       fsType = "zfs";
       options = [
         "zfsutil"
@@ -28,7 +28,7 @@
     };
 
     "/nix" = {
-      device = "lemon/nix";
+      device = "nyx/nix";
       fsType = "zfs";
       options = [
         "zfsutil"
@@ -36,8 +36,8 @@
       ];
     };
 
-    "/mnt/lemon" = {
-      device = "lemon/self";
+    "/mnt/nyx" = {
+      device = "nyx/self";
       fsType = "zfs";
       options = [
         "zfsutil"
@@ -46,7 +46,7 @@
     };
 
     "/tmp" = {
-      device = "lemon/tmp";
+      device = "nyx/tmp";
       fsType = "zfs";
       options = [
         "zfsutil"
@@ -55,8 +55,9 @@
     };
 
     "/persist" = {
-      device = "lemon/persist";
+      device = "nyx/persist";
       fsType = "zfs";
+      neededForBoot = true;
       options = [
         "zfsutil"
         "X-mount.mkdir"
@@ -64,7 +65,7 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-id/nvme-eui.a4142fc7459aa04f000c29699a5f1235-part1";
+      device = "/dev/disk/by-partuuid/1842a05b-a2fa-4e8e-aa1c-a21d684f7087";
       fsType = "vfat";
       options = [
         "dmask=0022"
@@ -76,7 +77,7 @@
 
   swapDevices = [
     {
-      device = "/dev/disk/by-id/nvme-eui.a4142fc7459aa04f000c29699a5f1235-part2";
+      device = "/dev/disk/by-partuuid/69b2fba8-5e1a-444c-b065-f15cf7382bee";
       randomEncryption = {
         enable = true;
         allowDiscards = true;
