@@ -2,7 +2,6 @@
   lib,
   fetchFromGitea,
   installShellFiles,
-  libX11,
   libinput,
   libxcb,
   libxkbcommon,
@@ -14,8 +13,6 @@
   wayland-protocols,
   wayland-scanner,
   wlroots,
-  xcbutilwm,
-  xwayland,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -44,9 +41,6 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
     wayland-protocols
     wlroots
-    libX11
-    xcbutilwm
-    xwayland
   ];
 
   outputs = [
@@ -54,13 +48,15 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
+  postPatch = [
+    "cp ${./config.def.h} config.h"
+  ];
+
   makeFlags = [
     "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
     "WAYLAND_SCANNER=wayland-scanner"
     "PREFIX=$(out)"
     "MANDIR=$(man)/share/man"
-    ''XWAYLAND="-DXWAYLAND"''
-    ''XLIBS="xcb xcb-icccm"''
   ];
 
   strictDeps = true;
@@ -91,7 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
       - Tied to as few external dependencies as possible
     '';
     license = lib.licenses.gpl3Only;
-    maintainers = [ ];
+    maintainers = [ lib.maintainers.AndersonTorres ];
     inherit (wayland.meta) platforms;
     mainProgram = "dwl";
   };

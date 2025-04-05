@@ -51,6 +51,8 @@
       blahaj
       sl
       shpool
+      exfatprogs
+      amfora
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 
@@ -77,11 +79,13 @@
       "https://nix-community.cachix.org" # nix-community
       "https://chaotic-nyx.cachix.org" # chaotic nyx
       "https://nixpkgs-wayland.cachix.org" # nixpkgs-wayland
+      "https://wezterm.cachix.org" # wezterm
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" # nix-community
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8" # chaotic nyx
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=" # nixpkgs-wayland
+      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0=" # wezterm
     ];
   };
 

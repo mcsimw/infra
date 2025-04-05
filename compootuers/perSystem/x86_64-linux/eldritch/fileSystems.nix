@@ -15,7 +15,7 @@
     volume = "nyx/faketmpfs";
   };
 
-  preservation.enable = false;
+  preservation.enable = true;
 
   fileSystems = {
     "/" = {

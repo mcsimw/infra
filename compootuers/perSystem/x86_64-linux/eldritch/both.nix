@@ -1,4 +1,8 @@
-{ self, pkgs, ... }:
+{
+  self,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -6,11 +10,19 @@
   ];
   environment.systemPackages = with pkgs; [
     obs-studio
-    zoom-us
     libreoffice-fresh
-    vesktop
     signal-desktop
+    telegram-desktop_git
+    heroic
+    wireshark
   ];
-  programs.wireshark.enable = true;
+  programs = {
+    wireshark.enable = true;
+    virt-manager.enable = true;
+  };
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
   system.stateVersion = "25.05";
 }

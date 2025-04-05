@@ -66,6 +66,7 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    wezterm.url = "github:wezterm/wezterm?dir=nix";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

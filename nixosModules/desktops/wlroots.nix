@@ -19,7 +19,7 @@
     pwvucontrol_git
     wl-clipboard-rs
     wmenu
-    #sway-contrib.grimshot
+    sway-contrib.grimshot
     slurp
     imv
     zathura

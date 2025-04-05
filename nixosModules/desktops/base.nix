@@ -2,6 +2,7 @@
   inputs',
   pkgs,
   self',
+  ...
 }:
 {
   hardware.graphics = {
@@ -20,7 +21,18 @@
   };
 
   programs = {
-    dconf.enable = true;
+    dconf = {
+      enable = true;
+      profiles.user.databases = [
+        {
+          lockAll = true; # prevents overriding
+          settings = {
+            "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+            "org/gnome/desktop/wm/preferences".button-layout = "";
+          };
+        }
+      ];
+    };
     firefox = {
       enable = true;
       package = inputs'.flake-firefox-nightly.packages.firefox-nightly-bin;
@@ -35,12 +47,12 @@
       ]
       ++ (with pkgs; [
         mpv
-        krita
         inkscape
         ani-cli
         nautilus
         nyxt
         qutebrowser
+        inputs'.wezterm.packages.default
       ]);
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
