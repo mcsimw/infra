@@ -10,8 +10,8 @@
           inputs.genesis-nix.flakeModules.compootuers
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
-          ./nixosModules
-          ./packages
+          ./nix/nixosModules
+          ./nix/packages
         ];
 
         compootuers = {
@@ -115,10 +115,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
-    };
-    dotfiles-legacy = {
-      url = "github:mcsimw/.dotfiles-legacy";
-      flake = false;
     };
     browser-previews.url = "github:nix-community/browser-previews";
     flake-firefox-nightly = {
