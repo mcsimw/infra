@@ -14,7 +14,8 @@
         gimp = pkgs.callPackage ./gimp.nix { inherit system; };
         foot = pkgs.callPackage ./foot.nix { inherit inputs inputs'; };
         lucidia = pkgs.callPackage ./lucidia.nix { };
-        nvim = pkgs.callPackage ./nvim { };
+        #        nvim = pkgs.callPackage ./nvim { };
+        neovim = inputs.mnw.lib.wrap pkgs (import ./neovim pkgs);
       };
     };
 }

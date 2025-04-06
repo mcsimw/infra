@@ -49,6 +49,7 @@
                 deadnix.enable = true;
                 statix.enable = true;
                 dos2unix.enable = true;
+                stylua.enable = true;
               };
             };
           };
@@ -57,6 +58,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    mnw = {
+      url = "github:Gerg-L/mnw";
+    };
     nix = {
       url = "github:nixos/nix";
       inputs = {

@@ -41,7 +41,7 @@ in
       packages =
         [
           self'.packages.git
-          self'.packages.nvim
+          self'.packages.neovim
         ]
         ++ lib.optionals dwlEnabled [
           self'.packages.foot
