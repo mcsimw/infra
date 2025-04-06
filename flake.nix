@@ -58,6 +58,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    hyprland.url = "github:hyprwm/Hyprland";
     mnw = {
       url = "github:Gerg-L/mnw";
     };
