@@ -66,7 +66,7 @@
 
   fonts = {
     fontconfig = {
-      useEmbeddedBitmaps = true;
+      #      useEmbeddedBitmaps = true;
       antialias = false; # Fuck you blur
       hinting.enable = false; # Fuck you blur
       subpixel.lcdfilter = "none";
@@ -96,6 +96,7 @@
         vistafonts
         corefonts
         freefont_ttf
+        nerd-fonts.symbols-only
       ]);
   };
 }

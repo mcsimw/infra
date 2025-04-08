@@ -23,6 +23,7 @@
     win-virtio
     win-spice
     adwaita-icon-theme
+    snort
 
   ];
   programs = {

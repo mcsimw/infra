@@ -15,8 +15,8 @@
         ];
 
         compootuers = {
-          perSystem = ./compootuers/perSystem;
-          allSystems = ./compootuers/allSystems;
+          perSystem = ./nix/compootuers/perSystem;
+          allSystems = ./nix/compootuers/allSystems;
         };
 
         systems = [
@@ -61,6 +61,10 @@
     hyprland.url = "github:hyprwm/Hyprland";
     mnw = {
       url = "github:Gerg-L/mnw";
+    };
+    NixVirt = {
+      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix = {
       url = "github:nixos/nix";

@@ -57,6 +57,7 @@
       cryptsetup
       btrfs-progs
       xfsprogs
+      f2fs-tools
       rsync
     ]
     ++ [ inputs'.nixos-search.packages.default ];

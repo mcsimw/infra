@@ -14,6 +14,7 @@ pkgs: {
     pkgs.vimPlugins.lualine-nvim
     pkgs.vimPlugins.telescope-nvim
     pkgs.vimPlugins.harpoon2
+    pkgs.vimPlugins.oil-nvim
     pkgs.vimPlugins.vimtex
   ];
   extraBinPath = builtins.attrValues {
@@ -21,6 +22,7 @@ pkgs: {
       ripgrep
       fd
       zathura
+      latexrun
       ;
   };
   aliases = [ "vi" ];

@@ -26,5 +26,6 @@
     imv
     zathura
     swaybg
+    mako
   ];
 }
