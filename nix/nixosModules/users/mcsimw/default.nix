@@ -65,15 +65,7 @@ in
       extraGroups = [ "wheel" ] ++ (import ../extraGroups.nix { inherit config lib; });
       uid = 1000;
       initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
-      packages =
-        [
-#          self'.packages.git
-          self'.packages.neovim
-        ]
-        ++ lib.optionals dwlEnabled [
-#          self'.packages.foot
-          dwl
-        ];
+      packages = [ self'.packages.neovim ] ++ lib.optionals dwlEnabled [ dwl ];
     };
 
     systemd.tmpfiles.settings.preservation = {

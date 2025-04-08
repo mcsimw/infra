@@ -6,7 +6,7 @@
     self.nixosModules.systemd-bootloader
   ];
 
-    systemd.services.stow-dotfiles = {
+  systemd.services.stow-dotfiles = {
     description = "Stow dotfiles for mcsimw from /mnt/lemon/stow";
     wantedBy = [ "multi-user.target" ];
     after = [ "local-fs.target" ];
