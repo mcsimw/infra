@@ -83,7 +83,7 @@ in
         mode = "0755";
       };
       "/home/mcsimw/.local".d = {
-        user = "mscimw";
+        user = "mcsimw";
         group = "users";
         mode = "0755";
       };
