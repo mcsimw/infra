@@ -59,6 +59,7 @@
       xfsprogs
       f2fs-tools
       rsync
+      entr
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

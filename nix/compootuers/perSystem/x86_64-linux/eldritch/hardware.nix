@@ -18,7 +18,18 @@
   boot = {
     kernel.sysctl."vm.swapiness" = 10;
     kernelModules = [ "kvm_intel" ];
-    kernelParams = [ "zfs.zfs_arc_max=12884901888" ];
+    kernelParams = [
+      "zfs.zfs_arc_max=12884901888"
+      "mitigations=off"
+      "nopti"
+      "tsx=on"
+
+      # Laptops and dekstops don't need Watchdog
+      "nowatchdog"
+
+      # https://www.phoronix.com/news/Linux-Splitlock-Hurts-Gaming
+      "split_lock_detect=off"
+    ];
     initrd = {
       systemd.enable = true;
       availableKernelModules = [

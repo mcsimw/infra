@@ -9,20 +9,18 @@ pkgs: {
   };
   plugins = [
     ./init
+    pkgs.vimPlugins.lze
     pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     pkgs.vimPlugins.modus-themes-nvim
     pkgs.vimPlugins.lualine-nvim
     pkgs.vimPlugins.telescope-nvim
     pkgs.vimPlugins.harpoon2
     pkgs.vimPlugins.oil-nvim
-    pkgs.vimPlugins.vimtex
   ];
   extraBinPath = builtins.attrValues {
     inherit (pkgs)
       ripgrep
       fd
-      zathura
-      latexrun
       ;
   };
   aliases = [ "vi" ];

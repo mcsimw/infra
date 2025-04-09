@@ -58,6 +58,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+     vimtex = {
+      url = "github:lervag/vimtex";
+      flake = false;
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     mnw = {
       url = "github:Gerg-L/mnw";
