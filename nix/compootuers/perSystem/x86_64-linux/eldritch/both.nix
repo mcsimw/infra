@@ -16,7 +16,6 @@
     telegram-desktop_git
     heroic
     wireshark
-
     virt-viewer
     spice-protocol
     spice-gtk
@@ -24,7 +23,7 @@
     win-spice
     adwaita-icon-theme
     snort
-
+    kdePackages.kdenlive
   ];
   programs = {
     hyprland = {

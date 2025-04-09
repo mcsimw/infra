@@ -1372,7 +1372,6 @@
         "preservation": "preservation",
         "treefmt-nix": "treefmt-nix",
         "vaultix": "vaultix",
-        "vimtex": "vimtex",
         "wezterm": "wezterm"
       }
     },
@@ -1588,22 +1587,6 @@
       "original": {
         "owner": "milieuim",
         "repo": "vaultix",
-        "type": "github"
-      }
-    },
-    "vimtex": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743714778,
-        "narHash": "sha256-6EXl/f11H94OdVcIjdxEx1Ue6ECb8RMb3Phv4j5ylgM=",
-        "owner": "lervag",
-        "repo": "vimtex",
-        "rev": "a531f6bf9ce61172e4ea8eea2ecbf59fd08c232a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lervag",
-        "repo": "vimtex",
         "type": "github"
       }
     },

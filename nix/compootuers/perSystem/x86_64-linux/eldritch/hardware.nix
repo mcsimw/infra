@@ -1,15 +1,27 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  chaotic.mesa-git = {
-    enable = true;
-    fallbackSpecialisation = false;
-  };
 
   hardware = {
+    graphics = with lib; {
+      package = mkForce pkgs.mesa_git;
+      package32 = mkForce pkgs.mesa32_git;
+      extraPackages = with pkgs; [
+        mesa_git.opencl
+        mesa_git
+        vulkanPackages_latest.vulkan-loader
+        vulkanPackages_latest.vulkan-validation-layers
+        libva
+        libvdpau-va-gl
+      ];
+    };
     bluetooth.enable = true;
     xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
-    amdgpu.initrd.enable = true;
+    amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+    };
+
     enableAllFirmware = true;
   };
 

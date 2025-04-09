@@ -2,14 +2,12 @@
   lib,
   pkgs,
   self,
-  inputs,
   inputs',
   ...
 }:
 {
   imports = [
     self.nixosModules.kakoune
-    inputs.nyx.nixosModules.mesa-git
   ];
 
   programs = {

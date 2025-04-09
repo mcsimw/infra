@@ -1,7 +1,5 @@
-# Enable autocd
 shopt -s autocd
 
-# Disable history
 HISTSIZE=
 HISTFILESIZE=
 
@@ -20,5 +18,4 @@ git_branch() {
   fi
 }
 
-
-PS1="\[\e[35m\]\u\[\e[0m\]🫀\[\e[36m\]\h\[\e[0m\] 👉👌\[\e[97m\]\W\[\e[95m\] \$(git_branch)\[\e[0m\]🙇"
+PS1="\[\e[35m\]\u🫀\[\e[36m\]\h\[\e[0m\] 👉👌\[\e[97m\]\W\[\e[95m\] \$(git_branch)\[\e[0m\]🫦"
