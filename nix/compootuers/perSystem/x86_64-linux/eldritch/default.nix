@@ -4,6 +4,7 @@
     ./hardware.nix
     ./fileSystems.nix
     self.nixosModules.systemd-bootloader
+    self.nixosModules.virtualization
   ];
 
   systemd.services.stow-dotfiles = {
@@ -14,9 +15,6 @@
     serviceConfig = {
       Type = "oneshot";
       User = "mcsimw";
-
-      RequiresMountsFor = "/mnt/lemon /home/mcsimw";
-
       ExecStart = pkgs.writeShellScript "stow-dotfiles" ''
         set -e
         STOW_DIR="/mnt/nyx/.dotfiles/mcsimw"
@@ -33,4 +31,11 @@
       '';
     };
   };
+
+  preservation.preserveAt."/persist" = {
+    directories = [
+      "/var/lib/libvirt"
+    ];
+  };
+
 }

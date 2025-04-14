@@ -25,7 +25,7 @@
         ];
 
         perSystem =
-          { system, ... }:
+          { system, pkgs, ... }:
           {
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
@@ -39,6 +39,10 @@
                 inputs.nixpkgs-wayland.overlays.default
                 inputs.nyx.overlays.cache-friendly
               ];
+            };
+
+            devShells.default = pkgs.mkShellNoCC {
+              packages = [ pkgs.npins ];
             };
 
             treefmt = {
