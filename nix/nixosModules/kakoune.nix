@@ -12,19 +12,19 @@ in
   options.myShit.programs.kakoune = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Whether to enable Kakoune.";
     };
 
     defaultEditor = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Set Kakoune as the default editor.";
     };
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ kakoune ];
-    environment.variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkForce "kak");
+    environment.variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
   };
 }

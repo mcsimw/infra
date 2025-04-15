@@ -28,7 +28,10 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   boot = {
-    kernel.sysctl."vm.swapiness" = 10;
+    kernel.sysctl = {
+      "vm.swapiness" = 10;
+      "net.ipv6.conf.enp7s0.disable_ipv6" = true;
+    };
     kernelModules = [ "kvm_intel" ];
     kernelParams = [
       "zfs.zfs_arc_max=12884901888"

@@ -11,8 +11,7 @@
   ];
   environment.systemPackages = with pkgs; [
     obs-studio
-    libreoffice-fresh
-    signal-desktop-bin
+    signal-desktop-source
     telegram-desktop_git
     heroic
     wireshark
@@ -24,14 +23,8 @@
     })
   ];
   programs = {
-    hyprland = {
-      enable = true;
-      package = inputs'.hyprland.packages.hyprland;
-      portalPackage = inputs'.hyprland.packages.xdg-desktop-portal-hyprland;
-    };
     wireshark.enable = true;
     steam.enable = true;
-    starship.enable = true;
   };
 
   system.stateVersion = "25.05";

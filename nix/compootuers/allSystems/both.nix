@@ -8,6 +8,7 @@
 {
   imports = [
     self.nixosModules.kakoune
+    self.nixosModules.starship
   ];
 
   programs = {
@@ -16,6 +17,18 @@
     appimage = {
       enable = true;
       binfmt = true;
+    };
+    git = {
+      enable = true;
+      config = {
+        user = {
+          email = lib.mkDefault "maor@mcsimw.com";
+          name = lib.mkDefault "Maor Haimovitz";
+        };
+        init = {
+          defaultBranch = lib.mkDefault "master";
+        };
+      };
     };
   };
 
@@ -58,13 +71,9 @@
       f2fs-tools
       rsync
       entr
+      xdg-user-dirs
     ]
     ++ [ inputs'.nixos-search.packages.default ];
-
-  myShit.programs.kakoune = {
-    enable = true;
-    defaultEditor = true;
-  };
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
