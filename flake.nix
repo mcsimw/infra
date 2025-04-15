@@ -62,12 +62,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?rev=2631b0b7abcea6e640ce31cd78ea58910d31e650";
-    hyprland.url = "github:hyprwm/Hyprland";
     mnw.url = "github:Gerg-L/mnw";
-    NixVirt = {
-      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix = {
       url = "github:nixos/nix";
       inputs = {
@@ -77,7 +72,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    wezterm.url = "github:wezterm/wezterm?dir=nix";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

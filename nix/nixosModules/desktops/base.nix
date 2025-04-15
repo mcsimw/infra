@@ -58,7 +58,6 @@
         nautilus
         nyxt
         qutebrowser
-        inputs'.wezterm.packages.default
         bitwarden-desktop
       ]);
     sessionVariables.NIXOS_OZONE_WL = "1";
