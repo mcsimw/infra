@@ -4,7 +4,6 @@
   pkgs,
   ...
 }:
-
 let
   cfg = config.myShit.programs.kakoune;
 in
@@ -15,7 +14,6 @@ in
       default = true;
       description = "Whether to enable Kakoune.";
     };
-
     defaultEditor = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -24,7 +22,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ kakoune ];
-    environment.variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
+    environment = {
+      systemPackages = with pkgs; [ kakoune ];
+      variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
+    };
   };
 }

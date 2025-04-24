@@ -8,10 +8,15 @@
 {
   imports = [
     self.nixosModules.kakoune
-    self.nixosModules.starship
   ];
 
   programs = {
+    bash = {
+      promptInit = ''source ${self}/bash/promptInit.bash'';
+      interactiveShellInit = ''
+        source ${self}/bash/functions.bash
+      '';
+    };
     tmux.enable = true;
     neovim.enable = true;
     appimage = {
@@ -84,8 +89,6 @@
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
-  networking.useNetworkd = true;
-
   systemd.oomd.enable = lib.mkForce false; # https://github.com/systemd/systemd/pull/36718 Once this is merged to stable version of systemd, I will re-enable. For now, no condoms. I could fix it myself, but I'm lazy.
 
   nix.settings = {
@@ -101,5 +104,8 @@
     ];
   };
 
-  services.openssh.enable = lib.mkDefault true;
+  services = {
+    openssh.enable = lib.mkDefault true;
+    gpm.enable = lib.mkDefault true;
+  };
 }

@@ -1,9 +1,6 @@
-pkgs:
-let
-  opt = plugins: map (p: p // { optional = true; }) plugins;
-in
-{
+pkgs: {
   appName = "nvim-mcsimw";
+
   desktopEntry = false;
 
   providers = {
@@ -13,18 +10,26 @@ in
     nodeJs.enable = false;
   };
 
-  plugins =
-    [ ./. ]
-    ++ opt (
-      with pkgs.vimPlugins;
-      [
-        lz-n
-        nvim-treesitter.withAllGrammars
-        lualine-nvim
-        modus-themes-nvim
-        blink-cmp
-      ]
-    );
+  initLua = builtins.readFile ./init.lua;
+
+  plugins = builtins.map (p: p // { optional = true; }) (
+    (with pkgs.vimPlugins; [
+      modus-themes-nvim
+    ])
+    ++ [
+      (
+        pkgs.vimUtils.buildVimPlugin {
+          name = "yes";
+          src = ./.;
+          dontCheck = true;
+        }
+        // {
+          optional = true;
+        }
+      )
+    ]
+
+  );
 
   extraBinPath = builtins.attrValues {
     inherit (pkgs)

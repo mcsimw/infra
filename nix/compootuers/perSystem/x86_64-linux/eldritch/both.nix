@@ -1,7 +1,6 @@
 {
   self,
   pkgs,
-  inputs',
   ...
 }:
 {
@@ -11,21 +10,21 @@
   ];
   environment.systemPackages = with pkgs; [
     obs-studio
-    signal-desktop-source
-    telegram-desktop_git
-    heroic
+    signal-desktop-bin
+    telegram-desktop
     wireshark
-    adwaita-icon-theme
     snort
     kdePackages.kdenlive
     (cataclysm-dda.override {
       tiles = false;
     })
+    openmw
+    torzu
+    element-desktop
   ];
-  programs = {
-    wireshark.enable = true;
-    steam.enable = true;
-  };
+  programs.wireshark.enable = true;
+
+  networking.useNetworkd = true;
 
   system.stateVersion = "25.05";
 }

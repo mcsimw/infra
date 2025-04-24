@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   services.spice-vdagentd.enable = true;
+
   programs = {
     virt-manager.enable = true;
     dconf = {
@@ -26,6 +27,7 @@
     win-virtio
     win-spice
   ];
+
   virtualisation = {
     libvirtd = {
       enable = true;

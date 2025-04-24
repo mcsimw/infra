@@ -7,5 +7,6 @@
     };
     efi.canTouchEfiVariables = lib.mkForce true;
   };
+
   environment.systemPackages = [ pkgs.efibootmgr ];
 }

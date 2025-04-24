@@ -8,13 +8,6 @@
 let
   cfg = config.myShit.users.mcsimw.enable;
   dwlEnabled = lib.attrByPath [ "myShit" "dwl" "enable" ] false config;
-  #dwl = pkgs.writeShellScriptBin "dwl" ''
-  #  ${self'.packages.dwl}/bin/dwl -s "
-  #    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP=dwl;
-  #    systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE;
-  #    systemctl --user start yes.target;
-  #  "
-  #'';
   dwl = pkgs.writeShellApplication {
     name = "dwl";
     runtimeInputs = [
@@ -46,6 +39,7 @@ in
       wants = [ "graphical-session-pre.target" ];
       after = [ "graphical-session-pre.target" ];
     };
+
     preservation.preserveAt."/persist".users.mcsimw = {
       commonMountOptions = [
         "x-gvfs-hide"
@@ -58,11 +52,12 @@ in
         ".mozilla"
       ];
     };
+
     users.users.mcsimw = {
       description = "Maor Haimovitz";
       isNormalUser = true;
       linger = true;
-      extraGroups = [ "wheel" ] ++ (import ../extraGroups.nix { inherit config lib; });
+      extraGroups = [ "wheel" ] ++ (import ./extraGroups.nix { inherit config lib; });
       uid = 1000;
       initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
       packages = [ self'.packages.neovim ] ++ lib.optionals dwlEnabled [ dwl ];

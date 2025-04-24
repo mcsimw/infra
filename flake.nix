@@ -41,9 +41,7 @@
               ];
             };
 
-            devShells.default = pkgs.mkShellNoCC {
-              packages = [ pkgs.npins ];
-            };
+            devShells.default = pkgs.mkShellNoCC { packages = [ pkgs.npins ]; };
 
             treefmt = {
               projectRootFile = "flake.nix";
@@ -54,6 +52,9 @@
                 statix.enable = true;
                 dos2unix.enable = true;
                 stylua.enable = true;
+                shfmt.enable = true;
+                clang-format.enable = true;
+                shellcheck.enable = true;
               };
             };
           };
@@ -61,8 +62,10 @@
     );
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?rev=2631b0b7abcea6e640ce31cd78ea58910d31e650";
+    nixpkgs.url = "github:nixos/nixpkgs";
+
     mnw.url = "github:Gerg-L/mnw";
+
     nix = {
       url = "github:nixos/nix";
       inputs = {
@@ -72,14 +75,17 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     genesis-nix = {
       url = "github:mcsimw/genesis-nix";
       inputs = {
@@ -88,7 +94,9 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
+
     preservation.url = "github:nix-community/preservation";
+
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
@@ -98,6 +106,7 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
@@ -105,10 +114,12 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
+
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.home-manager.follows = "";
     };
+
     vaultix = {
       url = "github:milieuim/vaultix";
       inputs = {
@@ -116,11 +127,17 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    browser-previews.url = "github:nix-community/browser-previews";
+
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
@@ -129,6 +146,7 @@
         flake-compat.follows = "";
       };
     };
+
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
@@ -136,6 +154,7 @@
         flake-compat.follows = "";
       };
     };
+
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {
@@ -143,6 +162,7 @@
         treefmt-nix.follows = "nixpkgs";
       };
     };
+
     nixos-search = {
       url = "github:diamondburned/nix-search";
       inputs.nixpkgs.follows = "nixpkgs";

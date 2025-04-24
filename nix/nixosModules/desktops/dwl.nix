@@ -20,9 +20,9 @@
       (import ./base.nix { inherit inputs' pkgs self'; })
       (import ./wlroots.nix {
         inherit
-          inputs'
           pkgs
           inputs
+          lib
           config
           ;
       })

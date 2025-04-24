@@ -27,18 +27,6 @@
   };
 
   programs = {
-    dconf = {
-      enable = true;
-      profiles.user.databases = [
-        {
-          lockAll = true; # prevents overriding
-          settings = {
-            "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-            "org/gnome/desktop/wm/preferences".button-layout = "";
-          };
-        }
-      ];
-    };
     firefox = {
       enable = true;
       package = inputs'.flake-firefox-nightly.packages.firefox-nightly-bin;
@@ -52,15 +40,11 @@
         self'.packages.gimp
       ]
       ++ (with pkgs; [
+        adwaita-icon-theme
         mpv
         inkscape
-        ani-cli
-        nautilus
-        nyxt
-        qutebrowser
-        bitwarden-desktop
+        cool-retro-term
       ]);
-    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
   fonts = {
@@ -88,6 +72,7 @@
     packages =
       [
         inputs'.apple-emoji-linux.packages.default
+        inputs'.browser-previews.packages.google-chrome-dev
         self'.packages.lucidia
       ]
       ++ (with pkgs; [
