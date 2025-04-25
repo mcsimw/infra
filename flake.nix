@@ -10,8 +10,10 @@
           (lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; })
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
-          inputs.flake-parts.flakeModules.flakeModules
+          inputs.home-manager.flakeModules.home-manager
+          inputs.flake-parts.flakeModules.modules
           ./nix/nixosModules
+          ./nix/homeModules
           ./nix/packages
         ];
 
@@ -20,12 +22,7 @@
           allSystems = ./nix/compootuers/allSystems;
         };
 
-        flake.flakeModule = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
-
-        systems = [
-          "aarch64-linux"
-          "x86_64-linux"
-        ];
+        flake.modules.flake = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
 
         perSystem =
           { system, pkgs, ... }:
@@ -65,8 +62,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
 
-    mnw.url = "github:Gerg-L/mnw";
-
     nix = {
       url = "github:nixos/nix";
       inputs = {
@@ -75,6 +70,11 @@
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
       };
+    };
+
+    home-manager = {
+      url = "github:mcsimw/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-parts = {
@@ -88,6 +88,8 @@
     };
 
     preservation.url = "github:nix-community/preservation";
+
+    mnw.url = "github:Gerg-L/mnw";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";

@@ -11,7 +11,10 @@
     self.nixosModules.mcsimw
     self.nixosModules.bluetooth
     inputs.preservation.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
   ];
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   programs.bash.interactiveShellInit = lib.mkAfter ''source ${self}/bash/nixos.bash'';
   preservation = {
     preserveAt."/persist" = {

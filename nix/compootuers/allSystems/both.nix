@@ -11,6 +11,7 @@
   ];
 
   programs = {
+    bat.enable = true;
     bash = {
       enableLsColors = false;
       promptInit = ''source ${self}/bash/promptInit.bash'';
@@ -26,15 +27,7 @@
     };
     git = {
       enable = true;
-      config = {
-        user = {
-          email = lib.mkDefault "maor@mcsimw.com";
-          name = lib.mkDefault "Maor Haimovitz";
-        };
-        init = {
-          defaultBranch = lib.mkDefault "master";
-        };
-      };
+      config.init.defaultBranch = lib.mkDefault "master";
     };
   };
 
@@ -52,7 +45,6 @@
       wget
       ripgrep
       eza
-      bat
       fd
       nethack
       neomutt

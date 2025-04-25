@@ -13,6 +13,7 @@ pkgs: {
   initLua = builtins.readFile ./init.lua;
 
   plugins = with pkgs.vimPlugins; [
+    ./.
     modus-themes-nvim
   ];
 

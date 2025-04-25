@@ -63,6 +63,37 @@ in
       packages = [ self'.packages.neovim ] ++ lib.optionals dwlEnabled [ dwl ];
     };
 
+    home-manager.users.mcsimw = {
+      home.username = "mcsimw";
+      home.homeDirectory = "/home/mcsimw";
+      home.stateVersion = "25.05";
+      programs = {
+        eza.enable = true;
+        bat = {
+          enable = true;
+          config = {
+            theme = "modus_vivendi";
+          };
+          themes = {
+            modus_vivendi = {
+              src = pkgs.fetchFromGitHub {
+                owner = "miikanissi";
+                repo = "modus-themes.nvim";
+                rev = "b6c46f8066b2d96cb75d5bc7202a9a4c097b5e9f";
+                sha256 = "sha256-mAJoh6SuS4PKCXJw3t3aLkdoGI/CB4qZ7xl4OB3TWJc=";
+              };
+              file = "extras/bat/modus_vivendi.tmTheme";
+            };
+          };
+        };
+        git = {
+          enable = true;
+          userName = "Maor Haimovitz";
+          userEmail = "maor@mcsimw.com";
+        };
+      };
+    };
+
     systemd.tmpfiles.settings.preservation = {
       "/home/mcsimw/.config".d = {
         user = "mcsimw";

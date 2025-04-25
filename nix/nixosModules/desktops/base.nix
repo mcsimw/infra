@@ -37,13 +37,13 @@
     systemPackages =
       [
         inputs'.browser-previews.packages.google-chrome-dev
-        self'.packages.gimp
       ]
       ++ (with pkgs; [
         adwaita-icon-theme
         mpv
         inkscape
         cool-retro-term
+        gimp3
       ]);
   };
 
