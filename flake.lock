@@ -317,32 +317,6 @@
         "type": "github"
       }
     },
-    "genesis-nix": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745011258,
-        "narHash": "sha256-AsFB8xNJmT4VaIUZLK/xANN0V5/4g6vohuArpG/uDNs=",
-        "owner": "mcsimw",
-        "repo": "genesis-nix",
-        "rev": "db00e99584c7c81bcadb90f970d4504532c760ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mcsimw",
-        "repo": "genesis-nix",
-        "type": "github"
-      }
-    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -855,7 +829,6 @@
         "emacs-overlay": "emacs-overlay",
         "flake-firefox-nightly": "flake-firefox-nightly",
         "flake-parts": "flake-parts",
-        "genesis-nix": "genesis-nix",
         "lanzaboote": "lanzaboote",
         "mnw": "mnw",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
