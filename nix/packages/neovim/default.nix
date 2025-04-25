@@ -1,5 +1,5 @@
 pkgs: {
-  appName = "nvim-mcsimw";
+  appName = "nvim";
 
   desktopEntry = false;
 
@@ -12,24 +12,9 @@ pkgs: {
 
   initLua = builtins.readFile ./init.lua;
 
-  plugins = builtins.map (p: p // { optional = true; }) (
-    (with pkgs.vimPlugins; [
-      modus-themes-nvim
-    ])
-    ++ [
-      (
-        pkgs.vimUtils.buildVimPlugin {
-          name = "yes";
-          src = ./.;
-          dontCheck = true;
-        }
-        // {
-          optional = true;
-        }
-      )
-    ]
-
-  );
+  plugins = with pkgs.vimPlugins; [
+    modus-themes-nvim
+  ];
 
   extraBinPath = builtins.attrValues {
     inherit (pkgs)

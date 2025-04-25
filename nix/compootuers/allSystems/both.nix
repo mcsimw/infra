@@ -12,6 +12,7 @@
 
   programs = {
     bash = {
+      enableLsColors = false;
       promptInit = ''source ${self}/bash/promptInit.bash'';
       interactiveShellInit = ''
         source ${self}/bash/functions.bash

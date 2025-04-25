@@ -4,12 +4,13 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { ... }:
+      { self, lib, ... }:
       {
         imports = [
-          inputs.genesis-nix.flakeModules.compootuers
+          (lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; })
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
+          inputs.flake-parts.flakeModules.flakeModules
           ./nix/nixosModules
           ./nix/packages
         ];
@@ -18,6 +19,8 @@
           perSystem = ./nix/compootuers/perSystem;
           allSystems = ./nix/compootuers/allSystems;
         };
+
+        flake.flakeModule = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
 
         systems = [
           "aarch64-linux"
@@ -40,8 +43,6 @@
                 inputs.nyx.overlays.cache-friendly
               ];
             };
-
-            devShells.default = pkgs.mkShellNoCC { packages = [ pkgs.npins ]; };
 
             treefmt = {
               projectRootFile = "flake.nix";
@@ -86,22 +87,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    genesis-nix = {
-      url = "github:mcsimw/genesis-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-
     preservation.url = "github:nix-community/preservation";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
         flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
         flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
       };

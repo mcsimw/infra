@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 cm() {
   if [[ -z $1 ]]; then
     echo "Usage: cm <directory>"
@@ -13,7 +15,10 @@ h() { history; }
 
 rmf() { rm -rf -- "$@"; }
 
-myip() { curl -s ifconfig.me; }
+myip() {
+  curl -s ifconfig.me
+  echo
+}
 
 # Windows
 cls() { clear; }

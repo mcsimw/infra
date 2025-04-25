@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  lib,
   ...
 }:
 {
@@ -11,6 +12,7 @@
     self.nixosModules.bluetooth
     inputs.preservation.nixosModules.default
   ];
+  programs.bash.interactiveShellInit = lib.mkAfter ''source ${self}/bash/nixos.bash'';
   preservation = {
     preserveAt."/persist" = {
       directories = [
