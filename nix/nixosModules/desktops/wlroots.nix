@@ -42,7 +42,7 @@ lib.mkMerge [
           }
         ];
       };
-foot = {
+      foot = {
         enable = true;
         settings = {
           main = {
@@ -64,7 +64,7 @@ foot = {
             regular3 = "ffdd00";
             regular4 = "2f8fff";
             regular5 = "ff5fae";
-            regular6 = "00cccc";
+            regular6 = "00d7d7";
             regular7 = "d0d0d0";
             bright0 = "3a3a3a";
             bright1 = "ff5555";
@@ -72,7 +72,7 @@ foot = {
             bright3 = "ffff66";
             bright4 = "7ab7ff";
             bright5 = "ff85d7";
-            bright6 = "66ffff";
+            bright6 = "7fffff";
             bright7 = "ffffff";
             "16" = "ffae00";
             "17" = "ff7755";
