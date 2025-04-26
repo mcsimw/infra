@@ -10,10 +10,8 @@
           (lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; })
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
-          inputs.home-manager.flakeModules.home-manager
           inputs.flake-parts.flakeModules.modules
           ./nix/nixosModules
-          ./nix/homeModules
           ./nix/packages
         ];
 
@@ -22,7 +20,9 @@
           allSystems = ./nix/compootuers/allSystems;
         };
 
-        flake.modules.flake.default = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
+        flake.modules.flake.default = lib.modules.importApply ./nix/flakeModules/default.nix {
+          localFlake = self;
+        };
 
         perSystem =
           { system, pkgs, ... }:
