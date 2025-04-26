@@ -7,9 +7,7 @@
 {
   imports = [
     inputs.nixpkgs.nixosModules.readOnlyPkgs
-    #    inputs.vaultix.nixosModules.default
     self.nixosModules.mcsimw
-    self.nixosModules.bluetooth
     inputs.preservation.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
   ];

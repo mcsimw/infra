@@ -8,6 +8,7 @@
 {
   imports = [
     self.nixosModules.kakoune
+    self.nixosModules.bluetooth
   ];
 
   programs = {

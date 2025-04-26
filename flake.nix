@@ -22,7 +22,7 @@
           allSystems = ./nix/compootuers/allSystems;
         };
 
-        flake.modules.flake = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
+        flake.modules.flake.default = lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; };
 
         perSystem =
           { system, pkgs, ... }:

@@ -16,7 +16,7 @@
 
   config = lib.mkIf config.myShit.cinnamon.enable (
     lib.mkMerge [
-      (import ./base.nix { inherit inputs' pkgs self'; })
+      (import ./_base.nix { inherit inputs' pkgs self'; })
       {
         xdg.portal = {
           enable = true;

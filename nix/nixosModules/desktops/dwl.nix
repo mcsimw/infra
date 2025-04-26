@@ -17,8 +17,8 @@
 
   config = lib.mkIf config.myShit.dwl.enable (
     lib.mkMerge [
-      (import ./base.nix { inherit inputs' pkgs self'; })
-      (import ./wlroots.nix {
+      (import ./_base.nix { inherit inputs' pkgs self'; })
+      (import ./_wlroots.nix {
         inherit
           pkgs
           inputs
