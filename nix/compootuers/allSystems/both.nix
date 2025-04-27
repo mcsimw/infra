@@ -21,7 +21,6 @@
       '';
     };
     tmux.enable = true;
-    neovim.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
@@ -35,8 +34,6 @@
   environment.systemPackages =
     with pkgs;
     [
-      onefetch
-      fastfetch
       btop
       unzip
       unrar
@@ -44,22 +41,10 @@
       texliveFull
       dysk
       wget
-      ripgrep
-      eza
-      fd
       nethack
       neomutt
       file
       yt-dlp
-      trash-cli
-      nnn
-      fzf
-      cowsay
-      figlet
-      lolcat
-      gay
-      blahaj
-      sl
       shpool
       exfatprogs
       amfora
@@ -71,6 +56,7 @@
       rsync
       entr
       xdg-user-dirs
+      openvi
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

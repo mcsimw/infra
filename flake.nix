@@ -7,21 +7,18 @@
       { self, lib, ... }:
       {
         imports = [
-          (lib.modules.importApply ./nix/flakeModules/default.nix { localFlake = self; })
+          (lib.modules.importApply ./nix/modules/flake/_compootuers.nix { localFlake = self; })
           inputs.treefmt-nix.flakeModule
           inputs.vaultix.flakeModules.default
           inputs.flake-parts.flakeModules.modules
           ./nix/nixosModules
           ./nix/packages
+          (inputs.import-tree ./nix/modules)
         ];
 
         compootuers = {
           perSystem = ./nix/compootuers/perSystem;
           allSystems = ./nix/compootuers/allSystems;
-        };
-
-        flake.modules.flake.default = lib.modules.importApply ./nix/flakeModules/default.nix {
-          localFlake = self;
         };
 
         perSystem =
@@ -72,15 +69,12 @@
       };
     };
 
-    home-manager = {
-      url = "github:mcsimw/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    import-tree.url = "github:vic/import-tree";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
