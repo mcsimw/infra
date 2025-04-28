@@ -2,17 +2,9 @@
 {
 
   hardware = {
-    graphics = with lib; {
-      package = mkForce pkgs.mesa_git;
-      package32 = mkForce pkgs.mesa32_git;
-      extraPackages = with pkgs; [
-        mesa_git.opencl
-        mesa_git
-        vulkanPackages_latest.vulkan-loader
-        vulkanPackages_latest.vulkan-validation-layers
-        libva
-        libvdpau-va-gl
-      ];
+    graphics = {
+      package = lib.mkForce pkgs.mesa_git;
+      package32 = lib.mkForce pkgs.mesa32_git;
     };
     bluetooth.enable = true;
     xpadneo.enable = true;
@@ -21,7 +13,6 @@
       initrd.enable = true;
       opencl.enable = true;
     };
-
     enableAllFirmware = true;
   };
 
@@ -63,10 +54,8 @@
     scheduler = "scx_bpfland";
   };
 
-  systemd.targets = {
-    sleep.enable = lib.mkForce false;
-    suspend.enable = lib.mkForce false;
-    hibernate.enable = lib.mkForce false;
-    hybrid-sleep.enable = lib.mkForce false;
-  };
+  systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {
+    enable = lib.mkForce false;
+  });
+
 }

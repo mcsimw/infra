@@ -67,8 +67,8 @@ let
               networking.hostName = hostName;
               nixpkgs.pkgs = withSystem system ({ pkgs, ... }: pkgs);
             }
-            localFlake.nixosModules.sane
-            localFlake.nixosModules.nix-conf
+            localFlake.modules.nixos.sane
+            localFlake.modules.nixos.nix-conf
           ]
           ++ lib.optional (globalBothFile != null) globalBothFile
           ++ lib.optional (srcBothFile != null) srcBothFile;

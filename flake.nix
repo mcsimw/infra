@@ -23,12 +23,11 @@
 
         perSystem =
           { system, pkgs, ... }:
+
           {
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
-
               config.allowUnfree = true;
-
               overlays = [
                 inputs.nix.overlays.default
                 inputs.neovim-nightly-overlay.overlays.default
@@ -40,7 +39,6 @@
 
             treefmt = {
               projectRootFile = "flake.nix";
-
               programs = {
                 nixfmt.enable = true;
                 deadnix.enable = true;
@@ -58,6 +56,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix = {
       url = "github:nixos/nix";
