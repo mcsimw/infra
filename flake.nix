@@ -57,8 +57,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix = {
       url = "github:nixos/nix";
@@ -155,6 +157,11 @@
     nixos-search = {
       url = "github:diamondburned/nix-search";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kakoune = {
+      url = "github:mawww/kakoune";
+      flake = false;
     };
   };
 }

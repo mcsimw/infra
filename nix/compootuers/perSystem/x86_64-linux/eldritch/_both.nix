@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./hardware.nix
+    ./_hardware.nix
     self.nixosModules.dwl
   ];
   environment.systemPackages = with pkgs; [

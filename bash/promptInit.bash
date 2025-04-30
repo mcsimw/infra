@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-# ── colour helper (readline counts width = 0) ───────────────
 c() { printf '\001\033[%sm\002' "$1"; }
 
 rst=$(c 0)
-usr=$(c 35) ats=$(c 90) hst=$(c 36) dir=$(c 37) brn=$(c 33)
-sym_root=$(c 31)'#' sym_user=$(c 32)'\$'
+usr=$(c 35)
+ats=$(c 90)
+hst=$(c 36)
+dir=$(c 37)
+brn=$(c 33)
+sym_root=$(c 31)'#'
+sym_user=$(c 32)'\$'
 
 base="${usr}\\u${rst}${ats}@${rst}${hst}\\h${rst} ${dir}\\w${rst}"
 
@@ -16,8 +20,6 @@ git_branch_prompt() {
   printf ' %s(%s)%s' "$brn" "$b" "$rst"
 }
 
-# Build the literal string  $(git_branch_prompt)
-#   '$'  in one quoted chunk, '(git_branch_prompt)' in another ⇒ no $(…) inside quotes
 branch_cmd='$''(git_branch_prompt)'
 
 if ((EUID == 0)); then

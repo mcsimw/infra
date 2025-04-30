@@ -33,13 +33,10 @@
           enable = lib.mkForce true;
           lfs.enable = lib.mkDefault true;
         };
-        nano.enable = false;
+        nano.enable = lib.mkForce false;
       };
-      documentation = lib.mkMerge [
-        { enable = lib.mkForce true; }
-        (lib.genAttrs [ "man" "doc" "nixos" "info" ] (_: {
-          enable = lib.mkForce false;
-        }))
-      ];
+      documentation = lib.genAttrs [ "doc" "nixos" "info" ] (_: {
+        enable = lib.mkForce false;
+      });
     };
 }

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -23,7 +24,15 @@ in
 
   config = lib.mkIf cfg.enable {
     environment = {
-      systemPackages = with pkgs; [ kakoune ];
+      systemPackages = with pkgs; [
+        (kakoune-unwrapped.overrideAttrs {
+          version = inputs.kakoune.rev;
+          src = inputs.kakoune;
+          postPatch = ''
+            echo "${inputs.kakoune.rev}" >.version
+          '';
+        })
+      ];
       variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
     };
   };

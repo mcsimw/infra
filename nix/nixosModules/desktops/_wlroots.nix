@@ -81,6 +81,5 @@ lib.mkMerge [
       };
     };
   }
-
   (import ./_wayland.nix)
 ]

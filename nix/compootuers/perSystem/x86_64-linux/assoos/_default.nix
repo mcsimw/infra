@@ -1,8 +1,8 @@
 { self, ... }:
 {
   imports = [
-    ./hardware.nix
-    ./fileSystems.nix
+    ./_hardware.nix
+    ./_fileSystems.nix
     self.nixosModules.systemd-bootloader
   ];
 }

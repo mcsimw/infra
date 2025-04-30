@@ -37,10 +37,11 @@ let
       [ ];
   hasHosts = (builtins.length computedCompootuers) > 0;
   maybeFile = path: if builtins.pathExists path then path else null;
-  globalBothFile = if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/both.nix" else null;
+  globalBothFile =
+    if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/_both.nix" else null;
   globalDefaultFile =
-    if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/default.nix" else null;
-  globalIsoFile = if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/iso.nix" else null;
+    if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/_default.nix" else null;
+  globalIsoFile = if hasHosts && hasAllSystems then maybeFile "${allSystemsPath}/_iso.nix" else null;
   configForSub =
     {
       sub,
@@ -58,9 +59,9 @@ let
         ...
       }:
       let
-        srcBothFile = if src != null then maybeFile "${src}/both.nix" else null;
-        srcDefaultFile = if src != null then maybeFile "${src}/default.nix" else null;
-        srcIsoFile = if src != null then maybeFile "${src}/iso.nix" else null;
+        srcBothFile = if src != null then maybeFile "${src}/_both.nix" else null;
+        srcDefaultFile = if src != null then maybeFile "${src}/_default.nix" else null;
+        srcIsoFile = if src != null then maybeFile "${src}/_iso.nix" else null;
         baseModules =
           [
             {
@@ -139,14 +140,14 @@ in
       description = ''
         If set, this path must contain subdirectories named after each "system",
         which contain subdirectories named after each "host".
-        E.g. `$perSystem/x86_64-linux/myhost/default.nix`.
+        E.g. `$perSystem/x86_64-linux/myhost/_default.nix`.
       '';
     };
     allSystems = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
       default = null;
       description = ''
-        If set, this path can contain `both.nix`, `default.nix`, and/or `iso.nix`
+        If set, this path can contain `_both.nix`, `_default.nix`, and/or `_iso.nix`
         which are applied to all systems/hosts (but only if "perSystem" actually
         has at least one valid host).
       '';

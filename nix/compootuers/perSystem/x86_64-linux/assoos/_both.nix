@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./hardware.nix
+    ./_hardware.nix
     self.nixosModules.cinnamon
   ];
 
