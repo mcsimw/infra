@@ -1,7 +1,7 @@
 { self, ... }:
 {
   imports = [
-    self.nixosModules.zfs-rollback
+    self.modules.nixos.zfs-rollback
   ];
 
   boot = {

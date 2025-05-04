@@ -1,0 +1,8 @@
+add_newline = false
+
+[character]
+success_symbol = '🍺'
+error_symbol = '🍷'
+
+[cmd_duration]
+disabled = true

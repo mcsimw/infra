@@ -6,20 +6,14 @@
   ...
 }:
 {
-  imports = [
-    self.nixosModules.kakoune
-    self.nixosModules.bluetooth
+  imports = with self.modules.nixos; [
+    kakoune
+    bluetooth
   ];
 
   programs = {
     bat.enable = true;
-    bash = {
-      enableLsColors = false;
-      promptInit = ''source ${self}/bash/promptInit.bash'';
-      interactiveShellInit = ''
-        source ${self}/bash/functions.bash
-      '';
-    };
+    bash.interactiveShellInit = ''source ${self}/bash/functions.bash'';
     tmux.enable = true;
     appimage = {
       enable = true;
@@ -39,12 +33,13 @@
       unrar
       p7zip
       texliveFull
+      inputs'.typst.packages.default
       dysk
       wget
       nethack
       neomutt
       file
-      yt-dlp
+      yt-dlp_git
       shpool
       exfatprogs
       amfora
@@ -57,6 +52,8 @@
       entr
       xdg-user-dirs
       openvi
+      pandoc_3_6
+      sc-im
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

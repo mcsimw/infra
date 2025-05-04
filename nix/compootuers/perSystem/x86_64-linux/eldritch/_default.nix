@@ -1,10 +1,9 @@
-{ self, inputs, ... }:
+{ self, ... }:
 {
   imports = [
     ./_hardware.nix
     ./_fileSystems.nix
-    self.nixosModules.systemd-bootloader
-    inputs.home-manager.nixosModules.home-manager
+    self.modules.nixos.systemd-bootloader
   ];
   environment.variables.DOTFILES = "/mnt/nyx/.dotfiles";
 }

@@ -7,7 +7,7 @@
 {
   imports = [
     inputs.nixpkgs.nixosModules.readOnlyPkgs
-    self.nixosModules.mcsimw
+    self.modules.nixos.mcsimw
     inputs.preservation.nixosModules.default
   ];
   programs.bash.interactiveShellInit = lib.mkAfter ''source ${self}/bash/nixos.bash'';

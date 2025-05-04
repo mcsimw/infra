@@ -6,11 +6,11 @@
 {
   imports = [
     ./_hardware.nix
-    self.nixosModules.dwl
+    self.modules.nixos.dwl
   ];
   environment.systemPackages = with pkgs; [
     obs-studio
-    signal-desktop-bin
+    signal-desktop
     telegram-desktop
     wireshark
     snort
@@ -21,8 +21,15 @@
     openmw
     torzu
     element-desktop
+    vesktop
   ];
-  programs.wireshark.enable = true;
+  programs = {
+    wireshark.enable = true;
+    starship = {
+      enable = true;
+      settings = pkgs.lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
+    };
+  };
 
   networking.useNetworkd = true;
 

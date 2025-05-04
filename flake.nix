@@ -3,59 +3,11 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { self, lib, ... }:
-      {
-        imports = [
-          (lib.modules.importApply ./nix/modules/flake/_compootuers.nix { localFlake = self; })
-          inputs.treefmt-nix.flakeModule
-          inputs.vaultix.flakeModules.default
-          inputs.flake-parts.flakeModules.modules
-          ./nix/nixosModules
-          ./nix/packages
-          (inputs.import-tree ./nix/modules)
-        ];
-
-        compootuers = {
-          perSystem = ./nix/compootuers/perSystem;
-          allSystems = ./nix/compootuers/allSystems;
-        };
-
-        perSystem =
-          { system, pkgs, ... }:
-
-          {
-            _module.args.pkgs = import inputs.nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-              overlays = [
-                inputs.nix.overlays.default
-                inputs.neovim-nightly-overlay.overlays.default
-                inputs.emacs-overlay.overlays.default
-                inputs.nixpkgs-wayland.overlays.default
-                inputs.nyx.overlays.cache-friendly
-              ];
-            };
-
-            treefmt = {
-              projectRootFile = "flake.nix";
-              programs = {
-                nixfmt.enable = true;
-                deadnix.enable = true;
-                statix.enable = true;
-                dos2unix.enable = true;
-                stylua.enable = true;
-                shfmt.enable = true;
-                clang-format.enable = true;
-                shellcheck.enable = true;
-              };
-            };
-          };
-      }
-    );
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./nix) ]; };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    systems.url = "github:nix-systems/default";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -162,6 +114,24 @@
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
+    };
+    dwl = {
+      flake = false;
+      url = "git+https://codeberg.org/dwl/dwl";
+    };
+    alsa-ucm-conf = {
+      url = "github:geoffreybennett/alsa-ucm-conf";
+      flake = false;
+    };
+    crane.url = "github:ipetkov/crane";
+    typst = {
+      url = "github:typst/typst";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        crane.follows = "crane";
+      };
     };
   };
 }

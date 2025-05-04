@@ -44,6 +44,7 @@
         inkscape
         cool-retro-term
         gimp3
+        libreoffice
       ]);
   };
 
@@ -81,6 +82,8 @@
         corefonts
         freefont_ttf
         nerd-fonts.symbols-only
+        noto-fonts
+        noto-fonts-cjk-sans
       ]);
   };
 }
