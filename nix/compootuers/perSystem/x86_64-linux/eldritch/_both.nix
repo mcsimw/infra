@@ -21,7 +21,6 @@
     openmw
     torzu
     element-desktop
-    vesktop
   ];
   programs = {
     wireshark.enable = true;

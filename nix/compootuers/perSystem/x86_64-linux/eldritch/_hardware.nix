@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 
   hardware = {
@@ -17,6 +22,12 @@
   };
 
   powerManagement.cpuFreqGovernor = "performance";
+
+  environment.variables.ALSA_CONFIG_UCM2 = "${
+    pkgs.alsa-ucm-conf.overrideAttrs (_old: {
+      src = inputs.alsa-ucm-conf;
+    })
+  }/share/alsa/ucm2";
 
   boot = {
     kernel.sysctl = {

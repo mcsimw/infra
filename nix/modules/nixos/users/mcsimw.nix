@@ -63,7 +63,6 @@
           uid = 1000;
           initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
           packages = [
-            pkgs.lsd
             self'.packages.neovim
           ] ++ lib.optionals dwlEnabled [ dwl ];
         };

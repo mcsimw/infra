@@ -2,6 +2,7 @@
   flake.modules.nixos.sane =
     { lib, ... }:
     {
+      systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
       networking = {
         useDHCP = lib.mkDefault true;
         networkmanager.wifi.powersave = lib.mkDefault false;

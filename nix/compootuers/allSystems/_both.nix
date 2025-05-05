@@ -52,8 +52,13 @@
       entr
       xdg-user-dirs
       openvi
-      pandoc_3_6
+      pandoc
       sc-im
+      onefetch
+      fastfetch
+      eza
+      ripgrep
+      fd
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 
