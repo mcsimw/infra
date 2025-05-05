@@ -37,6 +37,7 @@
     systemPackages =
       [
         inputs'.browser-previews.packages.google-chrome-dev
+        inputs'.wezterm.packages.default
       ]
       ++ (with pkgs; [
         adwaita-icon-theme

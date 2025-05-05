@@ -119,6 +119,7 @@
       flake = false;
     };
     crane.url = "github:ipetkov/crane";
+    wezterm.url = "github:wezterm/wezterm?dir=nix";
     typst = {
       url = "github:typst/typst";
       inputs = {
