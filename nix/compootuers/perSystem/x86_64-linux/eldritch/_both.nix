@@ -1,5 +1,6 @@
 {
   self,
+  self',
   pkgs,
   ...
 }:
@@ -8,6 +9,7 @@
     ./_hardware.nix
     self.modules.nixos.dwl
   ];
+
   environment.systemPackages = with pkgs; [
     obs-studio
     signal-desktop
@@ -19,9 +21,11 @@
       tiles = false;
     })
     openmw
-    torzu
+    torzu_git
     element-desktop
+    self'.packages.emacs
   ];
+
   programs = {
     wireshark.enable = true;
     starship = {
@@ -33,4 +37,11 @@
   networking.useNetworkd = true;
 
   system.stateVersion = "25.05";
+
+  services.emacs = {
+    enable = true;
+    install = true;
+    package = self'.packages.emacs;
+    startWithGraphical = true;
+  };
 }

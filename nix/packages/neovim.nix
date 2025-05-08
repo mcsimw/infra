@@ -22,9 +22,6 @@
                   lz-n
                   modus-themes-nvim
                   nvim-treesitter
-                  nvim-treesitter-context
-                  nvim-treesitter-textobjects
-                  nvim-ts-autotag
                 ]
                 ++ (
                   nvim-treesitter.grammarPlugins
