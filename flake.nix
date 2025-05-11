@@ -130,7 +130,7 @@
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
