@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, lib, self, ... }:
 {
   perSystem =
     { system, inputs', ... }:
@@ -24,7 +24,7 @@
               );
             in
             map (n: ./_wrappers/${n}) dirNames;
-          specialArgs = { inherit inputs'; };
+          specialArgs = { inherit self inputs'; };
         }).config.build
         )
         packages
