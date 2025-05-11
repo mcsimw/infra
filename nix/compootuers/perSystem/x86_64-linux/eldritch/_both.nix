@@ -12,7 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
-    signal-desktop
+    signal-desktop-bin
     telegram-desktop
     wireshark
     snort
@@ -24,6 +24,7 @@
     torzu_git
     element-desktop
     self'.packages.emacs
+    legcord
   ];
 
   programs = {
@@ -37,11 +38,4 @@
   networking.useNetworkd = true;
 
   system.stateVersion = "25.05";
-
-  services.emacs = {
-    enable = true;
-    install = true;
-    package = self'.packages.emacs;
-    startWithGraphical = true;
-  };
 }

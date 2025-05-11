@@ -6,8 +6,40 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./nix) ]; };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+
+    wrapper-manager = {
+      url = "github:viperML/wrapper-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # deps
     systems.url = "github:nix-systems/default";
+    rust-analyzer-src = {
+      url = "github:rust-lang/rust-analyzer/nightly";
+      flake = false;
+    };
+    crane.url = "github:ipetkov/crane";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-analyzer-src.follows = "rust-analyzer-src";
+      };
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs.url = "github:nixos/nixpkgs";
 
     nix = {
       url = "github:nixos/nix";
@@ -82,6 +114,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         flake-compat.follows = "";
+        crane.follows = "crane";
       };
     };
 
@@ -103,23 +136,33 @@
 
     nixos-search = {
       url = "github:diamondburned/nix-search";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        flake-compat.follows = "";
+      };
     };
 
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
     };
+
     dwl = {
       flake = false;
       url = "git+https://codeberg.org/dwl/dwl";
     };
+
     alsa-ucm-conf = {
       url = "github:geoffreybennett/alsa-ucm-conf";
       flake = false;
     };
-    crane.url = "github:ipetkov/crane";
-    wezterm.url = "github:wezterm/wezterm?dir=nix";
+
+    vesktop = {
+      flake = false;
+      url = "github:Vencord/Vesktop";
+    };
+
     typst = {
       url = "github:typst/typst";
       inputs = {
@@ -127,7 +170,9 @@
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
         crane.follows = "crane";
+        fenix.follows = "fenix";
       };
     };
+
   };
 }

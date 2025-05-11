@@ -1,7 +1,6 @@
 {
   inputs',
   pkgs,
-  self',
   ...
 }:
 {
@@ -37,7 +36,6 @@
     systemPackages =
       [
         inputs'.browser-previews.packages.google-chrome-dev
-        inputs'.wezterm.packages.default
       ]
       ++ (with pkgs; [
         adwaita-icon-theme
@@ -45,7 +43,8 @@
         inkscape
         cool-retro-term
         gimp3
-        libreoffice
+        nyxt
+        qutebrowser
       ]);
   };
 
@@ -57,15 +56,15 @@
       subpixel.lcdfilter = "none";
       defaultFonts = {
         serif = [
-          "Georgia"
+          "Charis SIL"
           "Symbols Nerd Font"
         ];
         sansSerif = [
-          "Verdana"
+          "Clear Sans"
           "Symbols Nerd Font"
         ];
         monospace = [
-          "Lucida Sans Typewriter"
+          "Luculent"
           "Symbols Nerd Font Mono"
         ];
         emoji = [ "Apple Color Emoji" ];
@@ -74,17 +73,16 @@
     packages =
       [
         inputs'.apple-emoji-linux.packages.default
-        inputs'.browser-previews.packages.google-chrome-dev
-        self'.packages.lucidia
       ]
       ++ (with pkgs; [
         spleen
-        vistafonts
-        corefonts
         freefont_ttf
         nerd-fonts.symbols-only
         noto-fonts
         noto-fonts-cjk-sans
+        luculent
+        texlivePackages.clearsans
+        texlivePackages.charissil
       ]);
   };
 }

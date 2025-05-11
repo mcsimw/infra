@@ -5,6 +5,43 @@
   inputs',
   ...
 }:
+let
+  # strip leading / trailing ASCII spaces
+  trim = s: lib.strings.removePrefix " " (lib.strings.removeSuffix " " s);
+
+  # ultra‑small pure INI → attrset converter
+  parseINI =
+    ini:
+    let
+      lines = lib.splitString "\n" ini;
+      step =
+        state: line:
+        let
+          l = trim line;
+        in
+        if l == "" || lib.hasPrefix "#" l || lib.hasPrefix ";" l then
+          state
+        else if lib.hasPrefix "[" l then
+          state // { current = lib.removeSuffix "]" (lib.removePrefix "[" l); }
+        else
+          let
+            parts = lib.splitString "=" l;
+            key = trim (builtins.elemAt parts 0);
+            val = trim (lib.concatStringsSep "=" (lib.tail parts));
+            sec = state.current;
+            cur = state.${sec} or { };
+          in
+          state
+          // {
+            ${sec} = cur // {
+              ${key} = val;
+            };
+          };
+
+      res = builtins.foldl' step { current = ""; } lines;
+    in
+    lib.removeAttrs res [ "current" ];
+in
 {
   imports = with self.modules.nixos; [
     kakoune
@@ -21,14 +58,12 @@
     };
     git = {
       enable = true;
-      config = {
-        init.defaultBranch = lib.mkDefault "master";
-        user = {
-          email = "maor@mcsimw.com";
-          name = "Maor Haimovitz";
-        };
-      };
+      config = lib.mkMerge [
+        (parseINI (builtins.readFile (self + "/git/gconfig.ini")))
+        { core.excludesFile = lib.mkForce (toString (self + "/git/ignore_global")); }
+      ];
     };
+
   };
 
   environment.systemPackages =
@@ -84,13 +119,11 @@
       "https://nix-community.cachix.org" # nix-community
       "https://chaotic-nyx.cachix.org" # chaotic nyx
       "https://nixpkgs-wayland.cachix.org" # nixpkgs-wayland
-      "https://wezterm.cachix.org" # wezterm
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" # nix-community
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8" # chaotic nyx
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=" # nixpkgs-wayland
-      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0=" # wezterm
     ];
   };
 

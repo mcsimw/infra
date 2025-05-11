@@ -1,8 +1,8 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   perSystem =
-    { system, pkgs, ... }:
-    {
+    { system, inputs', ... }:
+    rec {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -14,5 +14,20 @@
           inputs.nyx.overlays.cache-friendly
         ];
       };
+      inherit
+        ((inputs.wrapper-manager.lib {
+          inherit (_module.args) pkgs;
+          modules =
+            let
+              dirNames = builtins.attrNames (
+                lib.filterAttrs (_n: t: t == "directory") (builtins.readDir ./_wrappers)
+              );
+            in
+            map (n: ./_wrappers/${n}) dirNames;
+          specialArgs = { inherit inputs'; };
+        }).config.build
+        )
+        packages
+        ;
     };
 }

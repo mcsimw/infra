@@ -22,6 +22,7 @@
                   lz-n
                   modus-themes-nvim
                   nvim-treesitter
+                  lualine-nvim
                 ]
                 ++ (
                   nvim-treesitter.grammarPlugins
