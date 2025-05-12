@@ -25,10 +25,10 @@
           modules =
             let
               dirNames = builtins.attrNames (
-                lib.filterAttrs (_n: t: t == "directory") (builtins.readDir ./_wrappers)
+                lib.filterAttrs (_n: t: t == "directory") (builtins.readDir ./_wrapper-manager)
               );
             in
-            map (n: ./_wrappers/${n}) dirNames;
+            map (n: ./_wrapper-manager/${n}) dirNames;
           specialArgs = { inherit self inputs'; };
         }).config.build
         )
