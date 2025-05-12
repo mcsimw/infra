@@ -1,5 +1,6 @@
 {
   inputs',
+  self',
   pkgs,
   ...
 }:
@@ -39,7 +40,7 @@
       ]
       ++ (with pkgs; [
         adwaita-icon-theme
-        mpv
+        self'.packages.mpv
         inkscape
         cool-retro-term
         gimp3
