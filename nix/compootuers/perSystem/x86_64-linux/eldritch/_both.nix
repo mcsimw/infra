@@ -12,7 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
-    signal-desktop-bin
+    signal-desktop
     telegram-desktop
     wireshark
     snort
@@ -24,7 +24,7 @@
     torzu_git
     element-desktop
     self'.packages.emacs
-    legcord
+    # legcord
   ];
 
   programs = {

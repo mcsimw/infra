@@ -1,8 +1,7 @@
-{ lib, pkgs, self, ... }:
+{ pkgs, self, ... }:
 {
   wrappers.foot = {
     basePackage = pkgs.foot;
-    flags = ["--config=${self + /foot/foot.ini}"];
+    flags = [ "--config=${self + /foot/foot.ini}" ];
   };
 }
-

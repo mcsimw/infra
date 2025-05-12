@@ -23,7 +23,7 @@
 
         stdenv.mkDerivation (finalAttrs: {
           pname = "dwl";
-          version = "main";
+          version = inputs.dwl.rev;
 
           src = inputs.dwl;
 

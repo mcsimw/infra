@@ -20,8 +20,8 @@
             extraEmacsPackages =
               epkgs: with epkgs; [
                 use-package
-                magit # example
-                vertico # another example
+                magit
+                vertico
                 rainbow-delimiters
               ];
           };
