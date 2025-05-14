@@ -158,11 +158,6 @@
       flake = false;
     };
 
-    vesktop = {
-      flake = false;
-      url = "github:Vencord/Vesktop";
-    };
-
     typst = {
       url = "github:typst/typst";
       inputs = {

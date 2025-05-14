@@ -63,10 +63,10 @@
   services.scx = {
     enable = true;
     scheduler = "scx_bpfland";
+    package = pkgs.scx_git.full;
   };
 
   systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {
     enable = lib.mkForce false;
   });
-
 }

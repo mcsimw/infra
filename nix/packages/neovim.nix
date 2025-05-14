@@ -14,6 +14,9 @@
           appName = "moo";
           initLua = builtins.readFile ./init.lua;
           aliases = [ "vi" ];
+          extraBinPath = with pkgs; [
+            lua-language-server
+          ];
           plugins = {
             start =
               (
@@ -23,6 +26,8 @@
                   modus-themes-nvim
                   nvim-treesitter
                   lualine-nvim
+                  nvim-lspconfig
+                  lazydev-nvim
                 ]
                 ++ (
                   nvim-treesitter.grammarPlugins

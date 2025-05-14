@@ -23,6 +23,7 @@
                 magit
                 vertico
                 rainbow-delimiters
+                command-log-mode
               ];
           };
         in

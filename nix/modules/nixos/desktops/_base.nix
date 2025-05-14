@@ -37,6 +37,7 @@
     systemPackages =
       [
         inputs'.browser-previews.packages.google-chrome-dev
+        self'.packages.nyxt
       ]
       ++ (with pkgs; [
         adwaita-icon-theme
@@ -44,7 +45,6 @@
         inkscape
         cool-retro-term
         gimp3
-        nyxt
         qutebrowser
       ]);
   };
@@ -57,15 +57,15 @@
       subpixel.lcdfilter = "none";
       defaultFonts = {
         serif = [
-          "Charis SIL"
+          "Georgia"
           "Symbols Nerd Font"
         ];
         sansSerif = [
-          "Clear Sans"
+          "Segoe UI Variable"
           "Symbols Nerd Font"
         ];
         monospace = [
-          "Luculent"
+          "Lucida Console"
           "Symbols Nerd Font Mono"
         ];
         emoji = [ "Apple Color Emoji" ];
@@ -77,13 +77,7 @@
       ]
       ++ (with pkgs; [
         spleen
-        freefont_ttf
         nerd-fonts.symbols-only
-        noto-fonts
-        noto-fonts-cjk-sans
-        luculent
-        texlivePackages.clearsans
-        texlivePackages.charissil
       ]);
   };
 }

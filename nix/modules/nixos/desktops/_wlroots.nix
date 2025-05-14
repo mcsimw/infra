@@ -3,7 +3,6 @@
   pkgs,
   config,
   lib,
-  self,
   ...
 }:
 
@@ -24,7 +23,7 @@ lib.mkMerge [
         mako
         imv
       ];
-      etc."xdg/foot/foot.ini".source = lib.mkForce (builtins.toPath "${self}/foot/foot.ini");
+      #      etc."xdg/foot/foot.ini".source = lib.mkForce (builtins.toPath "${self}/foot/foot.ini");
     };
 
     xdg.portal = {

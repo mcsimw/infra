@@ -51,7 +51,6 @@
               directory = ".ssh";
               mode = "0700";
             }
-            ".mozilla"
           ];
         };
 

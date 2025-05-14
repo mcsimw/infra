@@ -6,9 +6,6 @@ require("nvim-treesitter.configs").setup({
 		disable = { "bigfile" },
 		additional_vim_regex_highlighting = false,
 	},
-	indent = {
-		enable = true,
-	},
 })
 
 vim.wo.foldmethod = "expr"
