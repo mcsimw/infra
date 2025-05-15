@@ -1,6 +1,5 @@
 {
   self,
-  self',
   pkgs,
   ...
 }:
