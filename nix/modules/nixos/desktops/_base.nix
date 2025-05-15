@@ -61,7 +61,7 @@
           "Symbols Nerd Font"
         ];
         sansSerif = [
-          "Segoe UI Variable"
+          "Verdana"
           "Symbols Nerd Font"
         ];
         monospace = [
