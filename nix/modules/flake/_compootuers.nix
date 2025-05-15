@@ -19,7 +19,8 @@ let
 
   pathIfExists = p: if p != null && builtins.pathExists p then p else null;
   tryPath =
-    basePath: name: pathIfExists (if basePath == null then null else "${basePath}/${name}.nix");
+    basePath: name:
+    lib.optional (basePath != null) "${basePath}/${name}.nix" |> lib.head or null |> pathIfExists;
 
   paths = {
     perSystem = pathIfExists config.compootuers.perSystem;
