@@ -1,12 +1,12 @@
 { self, lib, ... }:
 let
-  yes = lib.modules.importApply ./_compootuers.nix { localFlake = self; };
+  compootuers = lib.modules.importApply ./_compootuers.nix { localFlake = self; };
 in
 {
-  flake.modules.flake.compootuers = yes;
+  inherit (compootuers) imports;
+  flake.modules.flake = { inherit compootuers; };
   compootuers = {
     perSystem = ../../compootuers/perSystem;
     allSystems = ../../compootuers/allSystems;
   };
-  imports = [ yes ];
 }

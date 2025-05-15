@@ -15,6 +15,8 @@ let
   ];
   modulesPath = "${inputs.nixpkgs.outPath}/nixos/modules";
 
+  genHostId = hostName: builtins.substring 0 8 <| builtins.hashString "md5" hostName;
+
   pathIfExists = p: if p != null && builtins.pathExists p then p else null;
   tryPath =
     basePath: name: pathIfExists (if basePath == null then null else "${basePath}/${name}.nix");
@@ -122,8 +124,7 @@ let
           (
             { lib, config, ... }:
             {
-              networking.hostId =
-                lib.mkDefault <| builtins.substring 0 8 <| builtins.hashString "md5" config.networking.hostName;
+              networking.hostId = lib.mkDefault <| genHostId config.networking.hostName;
             }
           )
         ];
@@ -147,7 +148,7 @@ let
                 password = lib.mkForce null;
                 hashedPasswordFile = lib.mkForce null;
               };
-              networking.hostId = lib.mkForce <| builtins.substring 0 8 <| builtins.hashString "md5" hostName;
+              networking.hostId = lib.mkForce <| genHostId hostName;
             }
           )
         ];
@@ -209,6 +210,6 @@ in
       |> lib.flatten
       |> builtins.listToAttrs;
 
-    systems = map ({ system, ... }: system) computedCompootuers |> lib.unique;
+    systems = computedCompootuers |> map ({ system, ... }: system) |> lib.unique;
   };
 }
