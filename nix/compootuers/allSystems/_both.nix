@@ -50,7 +50,6 @@ in
 
   programs = {
     bat.enable = true;
-    bash.interactiveShellInit = ''source ${self}/bash/functions.bash'';
     tmux.enable = true;
     appimage = {
       enable = true;
