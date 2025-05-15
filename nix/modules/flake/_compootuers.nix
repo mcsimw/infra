@@ -113,7 +113,6 @@ let
                 systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {
                   enable = lib.mkForce false;
                 });
-
                 users.users.nixos = {
                   initialPassword = "iso";
                   initialHashedPassword = lib.mkForce null;
@@ -121,7 +120,6 @@ let
                   password = lib.mkForce null;
                   hashedPasswordFile = lib.mkForce null;
                 };
-
                 networking.hostId = lib.mkForce (builtins.substring 0 8 (builtins.hashString "md5" hostName));
               }
             )
