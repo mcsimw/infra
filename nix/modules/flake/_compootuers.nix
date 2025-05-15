@@ -34,14 +34,14 @@ let
     }:
     let
       basePath =
-        if pathType == "global" then
-          paths.allSystems
-        else if pathType == "arch" then
-          (if paths.perArch == null then null else "${paths.perArch}/${system}")
-        else if pathType == "host" then
-          hostDir
-        else
-          null;
+        let
+          options = {
+            global = paths.allSystems;
+            arch = if paths.perArch != null then "${paths.perArch}/${system}" else null;
+            host = hostDir;
+          };
+        in
+        options.${pathType} or null;
     in
     lib.optionals (basePath != null) (
       map (
