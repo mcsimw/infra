@@ -28,7 +28,7 @@
             name = "switch";
             runtimeInputs = [ ];
             text = ''
-              nixos-rebuild switch --flake "''${DOTFILES:-${dotfilesPath}}#$(hostname)" --show-trace --verbose --sudo
+              nixos-rebuild switch --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo
             '';
           })
 
@@ -36,7 +36,7 @@
             name = "boot";
             runtimeInputs = [ ];
             text = ''
-              nixos-rebuild boot --flake "''${DOTFILES:-${dotfilesPath}}#$(hostname)" --show-trace --verbose --sudo
+              nixos-rebuild boot --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo
             '';
           })
 
@@ -44,10 +44,11 @@
             name = "update";
             runtimeInputs = [ nix ];
             text = ''
-              nix flake update --flake "''${DOTFILES:-${dotfilesPath}}"
+              nix flake update --flake "${dotfilesPath}"
             '';
           })
         ];
       };
     };
 }
+
