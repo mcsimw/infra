@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  lib,
   ...
 }:
 {
@@ -10,7 +9,6 @@
     self.modules.nixos.mcsimw
     inputs.preservation.nixosModules.default
   ];
-  programs.bash.interactiveShellInit = lib.mkAfter ''source ${self}/bash/nixos.bash'';
   preservation = {
     preserveAt."/persist" = {
       directories = [

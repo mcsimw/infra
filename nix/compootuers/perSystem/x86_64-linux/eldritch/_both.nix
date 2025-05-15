@@ -23,7 +23,6 @@
     openmw
     torzu_git
     element-desktop
-    self'.packages.emacs
     legcord
   ];
 

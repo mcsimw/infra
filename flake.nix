@@ -65,7 +65,7 @@
 
     preservation.url = "github:nix-community/preservation";
 
-    mnw.url = "github:Gerg-L/mnw";
+    mnw.url = "github:Gerg-L/mnw?rev=34a4ab3e5c44b5de974a7e4ce3f61cb5131f2c90";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
