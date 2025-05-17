@@ -20,25 +20,14 @@
     jack.enable = true;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
-
-  environment = {
-    systemPackages =
-      [
-        self'.packages.nyxt
-      ]
-      ++ (with pkgs; [
-        adwaita-icon-theme
-        self'.packages.mpv
-        inkscape
-        cool-retro-term
-        gimp3
-      ]);
-  };
+  environment.systemPackages =
+    [ self'.packages.nyxt ]
+    ++ (with pkgs; [
+      adwaita-icon-theme
+      self'.packages.mpv
+      inkscape
+      gimp3
+    ]);
 
   fonts = {
     fontconfig = {

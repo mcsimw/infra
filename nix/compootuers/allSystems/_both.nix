@@ -6,38 +6,39 @@
   ...
 }:
 let
-  # strip leading / trailing ASCII spaces
-  trim = s: lib.strings.removePrefix " " (lib.strings.removeSuffix " " s);
-
-  # ultra‑small pure INI → attrset converter
   parseINI =
     ini:
     let
       lines = lib.splitString "\n" ini;
+      trim = s: lib.strings.trim s;
       step =
         state: line:
         let
           l = trim line;
         in
         if l == "" || lib.hasPrefix "#" l || lib.hasPrefix ";" l then
-          state
-        else if lib.hasPrefix "[" l then
+          state # Skip comments and empty lines
+        else if lib.hasPrefix "[" l && lib.hasSuffix "]" l then
           state // { current = lib.removeSuffix "]" (lib.removePrefix "[" l); }
-        else
+        else if builtins.match ".*=.*" l != null then
           let
-            parts = lib.splitString "=" l;
-            key = trim (builtins.elemAt parts 0);
-            val = trim (lib.concatStringsSep "=" (lib.tail parts));
+            idx = builtins.match "([^=]*)=(.*)" l;
+            key = trim (builtins.elemAt idx 0);
+            val = trim (builtins.elemAt idx 1);
             sec = state.current;
             cur = state.${sec} or { };
           in
-          state
-          // {
-            ${sec} = cur // {
-              ${key} = val;
-            };
-          };
-
+          if key != "" then
+            state
+            // {
+              ${sec} = cur // {
+                ${key} = val;
+              };
+            }
+          else
+            state
+        else
+          state;
       res = builtins.foldl' step { current = ""; } lines;
     in
     lib.removeAttrs res [ "current" ];
@@ -62,7 +63,6 @@ in
         { core.excludesFile = lib.mkForce (toString (self + "/git/ignore_global")); }
       ];
     };
-
   };
 
   environment.systemPackages =
@@ -115,14 +115,14 @@ in
 
   nix.settings = {
     substituters = [
-      "https://nix-community.cachix.org" # nix-community
-      "https://chaotic-nyx.cachix.org" # chaotic nyx
-      "https://nixpkgs-wayland.cachix.org" # nixpkgs-wayland
+      "https://nix-community.cachix.org"
+      "https://chaotic-nyx.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
     ];
     trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" # nix-community
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8" # chaotic nyx
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=" # nixpkgs-wayland
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
   };
 
