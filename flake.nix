@@ -65,7 +65,7 @@
 
     preservation.url = "github:nix-community/preservation";
 
-    mnw.url = "github:Gerg-L/mnw?rev=34a4ab3e5c44b5de974a7e4ce3f61cb5131f2c90";
+    mnw.url = "github:Gerg-L/mnw";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -96,16 +96,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
-    };
-
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {

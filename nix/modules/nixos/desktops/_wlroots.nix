@@ -12,8 +12,6 @@ lib.mkMerge [
 
     environment = {
       systemPackages = with pkgs; [
-        inputs.nixpkgs.legacyPackages.${pkgs.system}.wlvncc
-        pwvucontrol_git
         wl-clipboard-rs
         wmenu
         sway-contrib.grimshot
@@ -23,7 +21,6 @@ lib.mkMerge [
         mako
         imv
       ];
-      #      etc."xdg/foot/foot.ini".source = lib.mkForce (builtins.toPath "${self}/foot/foot.ini");
     };
 
     xdg.portal = {

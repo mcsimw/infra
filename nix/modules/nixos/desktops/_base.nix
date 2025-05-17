@@ -26,17 +26,9 @@
     style = "adwaita-dark";
   };
 
-  programs = {
-    firefox = {
-      enable = true;
-      package = inputs'.flake-firefox-nightly.packages.firefox-nightly-bin;
-    };
-  };
-
   environment = {
     systemPackages =
       [
-        inputs'.browser-previews.packages.google-chrome-dev
         self'.packages.nyxt
       ]
       ++ (with pkgs; [
@@ -45,7 +37,6 @@
         inkscape
         cool-retro-term
         gimp3
-        qutebrowser
       ]);
   };
 

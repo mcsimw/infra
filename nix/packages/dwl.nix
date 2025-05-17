@@ -20,19 +20,15 @@
           wlroots,
           ...
         }:
-
         stdenv.mkDerivation (finalAttrs: {
           pname = "dwl";
           version = inputs.dwl.rev;
-
           src = inputs.dwl;
-
           nativeBuildInputs = [
             installShellFiles
             pkg-config
             wayland-scanner
           ];
-
           buildInputs = [
             libinput
             libxcb
@@ -42,31 +38,25 @@
             wayland-protocols
             wlroots
           ];
-
           outputs = [
             "out"
             "man"
           ];
-
           postPatch = [
-            "cp ${self}/dwl/config.def.h config.h"
+            "patch -p0 < ${self}/dwl/wlroots-0.20.patch"
           ];
-
           makeFlags = [
             "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
             "WAYLAND_SCANNER=wayland-scanner"
             "PREFIX=$(out)"
             "MANDIR=$(man)/share/man"
           ];
-
           strictDeps = true;
           __structuredAttrs = true;
-
           passthru.tests.version = testers.testVersion {
             package = finalAttrs.finalPackage;
             command = "dwl -v 2>&1; return 0";
           };
-
           meta = {
             homepage = "https://codeberg.org/dwl/dwl";
             changelog = "https://codeberg.org/dwl/dwl/src/branch/${finalAttrs.version}/CHANGELOG.md";
@@ -76,7 +66,6 @@
               intended to fill the same space in the Wayland world that dwm does in X11,
               primarily in terms of philosophy, and secondarily in terms of
               functionality. Like dwm, dwl is:
-
               - Easy to understand, hack on, and extend with patches
               - One C source file (or a very small number) configurable via config.h
               - Tied to as few external dependencies as possible
