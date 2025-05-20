@@ -8,6 +8,7 @@
     inputs.nixpkgs.nixosModules.readOnlyPkgs
     self.modules.nixos.mcsimw
     inputs.preservation.nixosModules.default
+    inputs.hjem.nixosModules.default
   ];
   preservation = {
     preserveAt."/persist" = {

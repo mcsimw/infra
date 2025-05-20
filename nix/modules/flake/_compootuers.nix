@@ -158,7 +158,6 @@ let
       in
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit (config) packages;
           inherit
             inputs
             inputs'

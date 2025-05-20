@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.modules.nixos.dwl = moduleWithSystem (
+  flake.modules.nixos.desktop = moduleWithSystem (
     {
       inputs',
       self',
@@ -17,14 +17,13 @@
       ...
     }:
     {
-      options.myShit.dwl.enable = lib.mkOption {
+      options.myShit.desktop.dwl.enable = lib.mkOption {
         type = lib.types.bool;
-        default = true;
-        example = false;
+        default = false;
         description = "Whether to enable dwl.";
       };
 
-      config = lib.mkIf config.myShit.dwl.enable (
+      config = lib.mkIf config.myShit.desktop.dwl.enable (
         lib.mkMerge [
           (import ./_base.nix { inherit inputs' pkgs self'; })
           (import ./_wlroots.nix {

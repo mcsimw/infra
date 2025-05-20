@@ -17,3 +17,4 @@ opt.fdm = "manual"
 opt.title = true
 opt.titlestring = '%t%( %M%)%( (%{expand("%:~:h")})%)%a (nvim)'
 opt.undofile = true
+opt.cursorline = true

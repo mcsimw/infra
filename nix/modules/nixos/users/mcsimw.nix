@@ -1,16 +1,17 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.mcsimw = moduleWithSystem (
-    { self' }:
+    { self', ... }:
     {
       config,
       lib,
       pkgs,
+      self,
       ...
     }:
     let
       cfg = config.myShit.users.mcsimw.enable;
-      dwlEnabled = lib.attrByPath [ "myShit" "dwl" "enable" ] false config;
+      dwlEnabled = lib.attrByPath [ "myShit" "desktop" "dwl" "enable" ] false config;
 
       dwl = pkgs.writeShellApplication {
         name = "dwl";
@@ -63,11 +64,15 @@
           initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
           packages =
             (with self'.packages; [
-              neovim
+              nvim
               git
             ])
             ++ lib.optionals dwlEnabled [ dwl ]
             ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ];
+        };
+
+        hjem.users.mcsimw.files = lib.mkIf config.programs.hyprland.enable {
+          ".config/hypr/hyprland.conf".source = "${self}/hypr/hyprland.conf";
         };
 
         systemd.tmpfiles.settings.preservation = {

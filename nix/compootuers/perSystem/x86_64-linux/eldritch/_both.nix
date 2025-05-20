@@ -1,13 +1,20 @@
 {
   self,
   pkgs,
+  system,
+  inputs',
   ...
 }:
 {
   imports = [
     ./_hardware.nix
-    self.modules.nixos.dwl
+    self.modules.nixos.desktop
   ];
+
+  myShit.desktop = {
+    dwl.enable = true;
+    hyprland.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     obs-studio
@@ -23,17 +30,12 @@
     torzu_git
     element-desktop
     legcord
+    inputs'.lem.packages.lem-sdl2
   ];
 
-  programs = {
-    wireshark.enable = true;
-    starship = {
-      enable = true;
-      settings = pkgs.lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
-    };
-  };
+  programs.wireshark.enable = true;
 
   networking.useNetworkd = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

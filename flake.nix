@@ -7,6 +7,13 @@
 
   inputs = {
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wrapper-manager = {
       url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # deps
     systems.url = "github:nix-systems/default";
     rust-analyzer-src = {
       url = "github:rust-lang/rust-analyzer/nightly";
@@ -95,6 +101,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        crane.follows = "crane";
       };
     };
 
@@ -136,6 +143,15 @@
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
+    };
+
+    lem = {
+      url = "github:lem-project/lem";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "";
+      };
     };
 
     dwl = {

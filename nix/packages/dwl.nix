@@ -42,9 +42,10 @@
             "out"
             "man"
           ];
-          postPatch = [
-            "patch -p0 < ${self}/dwl/wlroots-0.20.patch"
-          ];
+          postPatch = ''
+            patch -p0 < ${self}/dwl/wlroots-0.20.patch
+            cp ${self}/dwl/config.def.h ./config.def.h
+          '';
           makeFlags = [
             "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
             "WAYLAND_SCANNER=wayland-scanner"

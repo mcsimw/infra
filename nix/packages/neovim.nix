@@ -8,7 +8,7 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.neovim = inputs.mnw.lib.wrap pkgs (
+      packages.nvim = inputs.mnw.lib.wrap pkgs (
         { pkgs, ... }:
         {
           appName = "moo";
@@ -38,7 +38,7 @@
               ++ [
                 {
                   name = "nixos-local";
-                  src = self + "/neovim";
+                  src = self + "/nvim";
                 }
               ];
             opt = [

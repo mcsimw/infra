@@ -27,6 +27,7 @@
       self'.packages.mpv
       inkscape
       gimp3
+      pulsemixer
     ]);
 
   fonts = {

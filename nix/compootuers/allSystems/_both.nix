@@ -17,7 +17,7 @@ let
           l = trim line;
         in
         if l == "" || lib.hasPrefix "#" l || lib.hasPrefix ";" l then
-          state # Skip comments and empty lines
+          state
         else if lib.hasPrefix "[" l && lib.hasSuffix "]" l then
           state // { current = lib.removeSuffix "]" (lib.removePrefix "[" l); }
         else if builtins.match ".*=.*" l != null then
@@ -118,11 +118,19 @@ in
       "https://nix-community.cachix.org"
       "https://chaotic-nyx.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+    trusted-substituters = [
+      "https://nix-community.cachix.org"
+      "https://chaotic-nyx.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 
