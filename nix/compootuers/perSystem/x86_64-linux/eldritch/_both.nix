@@ -29,11 +29,16 @@
     openmw
     torzu_git
     element-desktop
-    legcord
     inputs'.lem.packages.lem-sdl2
+    inputs'.browser-previews.packages.google-chrome-dev
+    emacs-igc-pgtk
+    mangohud_git
   ];
 
-  programs.wireshark.enable = true;
+  programs = {
+    wireshark.enable = true;
+    steam.enable = true;
+  };
 
   networking.useNetworkd = true;
 

@@ -3,6 +3,7 @@
   pkgs,
   self,
   inputs',
+  inputs,
   ...
 }:
 let
@@ -44,9 +45,10 @@ let
     lib.removeAttrs res [ "current" ];
 in
 {
-  imports = with self.modules.nixos; [
-    kakoune
-    bluetooth
+  imports = [
+    self.modules.nixos.kakoune
+    self.modules.nixos.bluetooth
+    inputs.hjem.nixosModules.default
   ];
 
   programs = {
@@ -63,11 +65,16 @@ in
         { core.excludesFile = lib.mkForce (toString (self + "/git/ignore_global")); }
       ];
     };
+    starship = {
+      enable = true;
+      settings = pkgs.lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
+    };
   };
 
   environment.systemPackages =
     with pkgs;
     [
+      npins
       btop
       unzip
       unrar

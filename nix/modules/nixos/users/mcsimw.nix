@@ -6,7 +6,6 @@
       config,
       lib,
       pkgs,
-      self,
       ...
     }:
     let
@@ -69,10 +68,7 @@
             ])
             ++ lib.optionals dwlEnabled [ dwl ]
             ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ];
-        };
 
-        hjem.users.mcsimw.files = lib.mkIf config.programs.hyprland.enable {
-          ".config/hypr/hyprland.conf".source = "${self}/hypr/hyprland.conf";
         };
 
         systemd.tmpfiles.settings.preservation = {

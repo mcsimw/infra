@@ -1,7 +1,7 @@
 {
-  inputs',
   self',
   pkgs,
+  inputs',
   ...
 }:
 {
@@ -52,13 +52,10 @@
         emoji = [ "Apple Color Emoji" ];
       };
     };
-    packages =
-      [
-        inputs'.apple-emoji-linux.packages.default
-      ]
-      ++ (with pkgs; [
-        spleen
-        nerd-fonts.symbols-only
-      ]);
+    packages = with pkgs; [
+      inputs'.apple-emoji-linux.packages.default
+      spleen
+      nerd-fonts.symbols-only
+    ];
   };
 }

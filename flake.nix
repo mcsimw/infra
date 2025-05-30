@@ -1,28 +1,142 @@
 {
   description = "MCSIMW's personal nix dotfiles";
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./nix) ]; };
-
   inputs = {
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hjem = {
-      url = "github:feel-co/hjem";
+    nixpkgs.url = "github:nixos/nixpkgs";
+    nix = {
+      url = "github:nixos/nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-23-11.follows = "nixpkgs";
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    import-tree.url = "github:vic/import-tree";
+    preservation.url = "github:nix-community/preservation";
     wrapper-manager = {
       url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devshell = {
-      url = "github:numtide/devshell";
+    hjem = {
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    hjem-rum = {
+      url = "github:/snugnug/hjem-rum";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        hjem.follows = "hjem";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
+    nyx = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.home-manager.follows = "";
+    };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "";
+      };
+    };
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "";
+        crane.follows = "crane";
+      };
+    };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
+        flake-compat.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    mnw.url = "github:Gerg-L/mnw";
+    kakoune = {
+      url = "github:mawww/kakoune";
+      flake = false;
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
+    lem = {
+      url = "github:lem-project/lem";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "";
+      };
+    };
+    vaultix = {
+      url = "github:milieuim/vaultix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        crane.follows = "crane";
+      };
+    };
+    apple-emoji-linux = {
+      url = "github:mcsimw/apple-emoji-linux";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
+    nixos-search = {
+      url = "github:diamondburned/nix-search";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        flake-compat.follows = "";
+      };
+    };
+    typst = {
+      url = "github:typst/typst";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        crane.follows = "crane";
+        fenix.follows = "fenix";
+      };
+    };
+    alsa-ucm-conf = {
+      url = "github:geoffreybennett/alsa-ucm-conf";
+      flake = false;
+    };
+    hyprland.url = "github:hyprwm/Hyprland";
+    dwl = {
+      flake = false;
+      url = "git+https://codeberg.org/dwl/dwl";
+    };
     systems.url = "github:nix-systems/default";
     rust-analyzer-src = {
       url = "github:rust-lang/rust-analyzer/nightly";
@@ -44,136 +158,9 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs.url = "github:nixos/nixpkgs";
-
-    nix = {
-      url = "github:nixos/nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-23-11.follows = "nixpkgs";
-        flake-compat.follows = "";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
-    import-tree.url = "github:vic/import-tree";
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    preservation.url = "github:nix-community/preservation";
-
-    mnw.url = "github:Gerg-L/mnw";
-
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-        flake-compat.follows = "";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs";
-      };
-    };
-
-    nyx = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.home-manager.follows = "";
-    };
-
-    vaultix = {
-      url = "github:milieuim/vaultix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        crane.follows = "crane";
-      };
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-compat.follows = "";
-        crane.follows = "crane";
-      };
-    };
-
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "";
-      };
-    };
-
-    apple-emoji-linux = {
-      url = "github:samuelngs/apple-emoji-linux";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-
-    nixos-search = {
-      url = "github:diamondburned/nix-search";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "";
-      };
-    };
-
-    kakoune = {
-      url = "github:mawww/kakoune";
-      flake = false;
-    };
-
-    lem = {
-      url = "github:lem-project/lem";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-compat.follows = "";
-      };
-    };
-
-    dwl = {
-      flake = false;
-      url = "git+https://codeberg.org/dwl/dwl";
-    };
-
-    alsa-ucm-conf = {
-      url = "github:geoffreybennett/alsa-ucm-conf";
-      flake = false;
-    };
-
-    typst = {
-      url = "github:typst/typst";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        crane.follows = "crane";
-        fenix.follows = "fenix";
-      };
-    };
-
   };
+
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./nix) ]; };
 }
