@@ -67,8 +67,18 @@
               git
             ])
             ++ lib.optionals dwlEnabled [ dwl ]
-            ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ];
-
+            ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ]
+            ++ [
+              (pkgs.emacsWithPackagesFromUsePackage {
+                config = "";
+                package = pkgs.emacs-igc-pgtk;
+                extraEmacsPackages = epkgs: [
+                  pkgs.shellcheck
+                  epkgs.eat
+                  epkgs.rainbow-delimiters
+                ];
+              })
+            ];
         };
 
         systemd.tmpfiles.settings.preservation = {
