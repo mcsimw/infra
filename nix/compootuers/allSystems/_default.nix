@@ -10,6 +10,10 @@
     inputs.preservation.nixosModules.default
     inputs.hjem.nixosModules.default
   ];
+  hjem = {
+    extraModules = [ inputs.hjem-rum.hjemModules.default ];
+    clobberByDefault = true;
+  };
   preservation = {
     preserveAt."/persist" = {
       directories = [

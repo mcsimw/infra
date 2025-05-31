@@ -28,8 +28,8 @@
       inkscape
       gimp3
       pulsemixer
-      ladybird
     ]);
+
 
   fonts = {
     fontconfig = {

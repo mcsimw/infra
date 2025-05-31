@@ -3,7 +3,6 @@
   pkgs,
   self,
   inputs',
-  inputs,
   ...
 }:
 let
@@ -48,7 +47,6 @@ in
   imports = [
     self.modules.nixos.kakoune
     self.modules.nixos.bluetooth
-    inputs.hjem.nixosModules.default
   ];
 
   programs = {
@@ -106,6 +104,7 @@ in
       eza
       ripgrep
       fd
+      nnn
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

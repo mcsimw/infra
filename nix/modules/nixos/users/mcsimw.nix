@@ -6,6 +6,7 @@
       config,
       lib,
       pkgs,
+      self,
       ...
     }:
     let
@@ -79,6 +80,10 @@
                 ];
               })
             ];
+        };
+
+        hjem.users.mcsimw.files = lib.mkIf config.programs.hyprland.enable {
+          ".config/hypr/hyprland.conf".source = self + /hypr/hyprland.conf;
         };
 
         systemd.tmpfiles.settings.preservation = {
