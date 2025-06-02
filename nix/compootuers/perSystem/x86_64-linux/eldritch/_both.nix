@@ -27,6 +27,7 @@
       tiles = false;
     })
     openmw
+    openmw-tes3mp
     torzu_git
     element-desktop
     inputs'.lem.packages.lem-sdl2
@@ -37,7 +38,12 @@
 
   programs = {
     wireshark.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      extraCompatPackages = [
+        pkgs.proton-ge-custom
+      ];
+    };
   };
 
   networking.useNetworkd = true;

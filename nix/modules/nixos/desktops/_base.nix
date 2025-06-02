@@ -30,7 +30,6 @@
       pulsemixer
     ]);
 
-
   fonts = {
     fontconfig = {
       useEmbeddedBitmaps = true;
@@ -56,6 +55,7 @@
     packages = with pkgs; [
       inputs'.apple-emoji-linux.packages.default
       spleen
+      cascadia-code
       nerd-fonts.symbols-only
     ];
   };

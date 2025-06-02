@@ -1,5 +1,12 @@
-require("modus-themes").setup({
-	dim_inactive = true,
-	hide_inactive_statusline = true,
+vim.o.laststatus = 3
+vim.g.moonflyWinSeparator = 0
+
+-- Customize Moonfly colors BEFORE loading the theme
+require("moonfly").custom_colors({
+	bg = "#000000",
+	black = "#000000",
+	white = "#FFFFFF",
 })
-vim.cmd.colorscheme("modus_vivendi")
+
+-- Finally, apply the Moonfly colorscheme
+vim.cmd.colorscheme("moonfly")

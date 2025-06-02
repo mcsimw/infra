@@ -105,6 +105,10 @@ in
       ripgrep
       fd
       nnn
+      figlet
+      cowsay
+      toilet
+      lolcat
     ]
     ++ [ inputs'.nixos-search.packages.default ];
 

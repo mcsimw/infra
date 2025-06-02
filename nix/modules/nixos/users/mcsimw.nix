@@ -74,9 +74,7 @@
                 config = "";
                 package = pkgs.emacs-igc-pgtk;
                 extraEmacsPackages = epkgs: [
-                  pkgs.shellcheck
-                  epkgs.eat
-                  epkgs.rainbow-delimiters
+                  epkgs.treesit-grammars.with-all-grammars
                 ];
               })
             ];

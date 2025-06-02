@@ -31,6 +31,19 @@
       "revision": "61b8c10ec636f42baf6c845edb14b9ae2723711f",
       "url": "https://api.github.com/repos/miikanissi/modus-themes.nvim/tarball/v1.4.1",
       "hash": "1x0hv5fcrsdcb06miyq0q1vlcgj1aaq5w1h9c112bbxf3b89k2ya"
+    },
+    "vim-moonfly-colors": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bluz71",
+        "repo": "vim-moonfly-colors"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "ff822100c5d268e0db79e8e725cbd3ade3470de3",
+      "url": "https://github.com/bluz71/vim-moonfly-colors/archive/ff822100c5d268e0db79e8e725cbd3ade3470de3.tar.gz",
+      "hash": "14ffclg7yjkyw05bdqwc7rmzf195vjswfpmcfi7sd85rr4d3midz"
     }
   },
   "version": 5
