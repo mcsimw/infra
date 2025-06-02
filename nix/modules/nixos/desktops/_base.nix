@@ -55,7 +55,8 @@
     packages = with pkgs; [
       inputs'.apple-emoji-linux.packages.default
       spleen
-      cascadia-code
+      terminus_font
+      iosevka
       nerd-fonts.symbols-only
     ];
   };

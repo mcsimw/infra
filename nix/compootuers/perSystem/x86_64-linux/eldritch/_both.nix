@@ -30,7 +30,6 @@
     openmw-tes3mp
     torzu_git
     element-desktop
-    inputs'.lem.packages.lem-sdl2
     inputs'.browser-previews.packages.google-chrome-dev
     emacs-igc-pgtk
     mangohud_git

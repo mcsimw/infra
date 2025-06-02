@@ -56,8 +56,8 @@
   (elpaca-use-package-mode))
 
 (set-face-attribute 'default nil
-		    :family "Lucida Console"
-		    :height 140)
+		    :family "Terminus"
+		    :height 120)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)

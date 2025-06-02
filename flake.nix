@@ -87,14 +87,6 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    lem = {
-      url = "github:lem-project/lem";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-compat.follows = "";
-      };
-    };
     vaultix = {
       url = "github:milieuim/vaultix";
       inputs = {
