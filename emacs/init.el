@@ -55,9 +55,8 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
 
-(set-face-attribute 'default nil
-		    :family "Terminus"
-		    :height 120)
+(set-face-attribute 'default nil :family "Lucida Sans Typewriter" :height 120)
+
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)

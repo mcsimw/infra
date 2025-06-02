@@ -33,8 +33,8 @@
   fonts = {
     fontconfig = {
       useEmbeddedBitmaps = true;
-      antialias = false; # Fuck you blur
-      hinting.enable = false; # Fuck you blur
+      antialias = false;
+      hinting.enable = false;
       subpixel.lcdfilter = "none";
       defaultFonts = {
         serif = [
@@ -46,7 +46,7 @@
           "Symbols Nerd Font"
         ];
         monospace = [
-          "Lucida Console"
+          "Lucida Sans Typewriter"
           "Symbols Nerd Font Mono"
         ];
         emoji = [ "Apple Color Emoji" ];

@@ -33,6 +33,7 @@
     inputs'.browser-previews.packages.google-chrome-dev
     emacs-igc-pgtk
     mangohud_git
+    legcord
   ];
 
   programs = {
