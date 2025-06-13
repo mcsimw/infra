@@ -2,7 +2,6 @@
   self,
   pkgs,
   system,
-  inputs',
   ...
 }:
 {
@@ -11,33 +10,10 @@
     self.modules.nixos.desktop
   ];
 
-  myShit.desktop = {
-    dwl.enable = true;
-    hyprland.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    obs-studio
-    signal-desktop-bin
-    telegram-desktop
-    wireshark
-    snort
-    kdePackages.kdenlive
-    (cataclysm-dda.override {
-      tiles = false;
-    })
-    openmw
-    openmw-tes3mp
-    torzu_git
-    element-desktop
-    inputs'.browser-previews.packages.google-chrome-dev
-    emacs-igc-pgtk
-    mangohud_git
-    legcord
-  ];
-
   programs = {
     wireshark.enable = true;
+    niri.enable = true;
+    dwl.enable = true;
     steam = {
       enable = true;
       extraCompatPackages = [
@@ -45,6 +21,18 @@
       ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    obs-studio
+    kdePackages.kdenlive
+    (cataclysm-dda.override { tiles = false; })
+    openmw
+    openmw-tes3mp
+    torzu_git
+    element-desktop
+    emacs-igc-pgtk
+    mangohud_git
+  ];
 
   networking.useNetworkd = true;
 

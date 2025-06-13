@@ -1,0 +1,33 @@
+From 6048f250b7faaf7877d3479424dc7b5aa682f40d Mon Sep 17 00:00:00 2001
+From: Maor Haimovitz <maor@mcsimw.com>
+Date: Thu, 12 Jun 2025 16:56:44 -0400
+Subject: [PATCH] today!!
+
+---
+ config.mk | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config.mk b/config.mk
+index eb08a05..b480435 100644
+--- a/config.mk
++++ b/config.mk
+@@ -1,4 +1,4 @@
+-_VERSION = 0.8-dev
++_VERSION = master
+ VERSION  = `git describe --tags --dirty 2>/dev/null || echo $(_VERSION)`
+ 
+ PKG_CONFIG = pkg-config
+@@ -8,8 +8,8 @@ PREFIX = /usr/local
+ MANDIR = $(PREFIX)/share/man
+ DATADIR = $(PREFIX)/share
+ 
+-WLR_INCS = `$(PKG_CONFIG) --cflags wlroots-0.19`
+-WLR_LIBS = `$(PKG_CONFIG) --libs wlroots-0.19`
++WLR_INCS = `$(PKG_CONFIG) --cflags wlroots-0.20`
++WLR_LIBS = `$(PKG_CONFIG) --libs wlroots-0.20`
+ 
+ # Allow using an alternative wlroots installation
+ # This has to have all the includes required by wlroots, e.g:
+-- 
+2.49.0
+

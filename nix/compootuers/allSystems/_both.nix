@@ -5,44 +5,6 @@
   inputs',
   ...
 }:
-let
-  parseINI =
-    ini:
-    let
-      lines = lib.splitString "\n" ini;
-      trim = s: lib.strings.trim s;
-      step =
-        state: line:
-        let
-          l = trim line;
-        in
-        if l == "" || lib.hasPrefix "#" l || lib.hasPrefix ";" l then
-          state
-        else if lib.hasPrefix "[" l && lib.hasSuffix "]" l then
-          state // { current = lib.removeSuffix "]" (lib.removePrefix "[" l); }
-        else if builtins.match ".*=.*" l != null then
-          let
-            idx = builtins.match "([^=]*)=(.*)" l;
-            key = trim (builtins.elemAt idx 0);
-            val = trim (builtins.elemAt idx 1);
-            sec = state.current;
-            cur = state.${sec} or { };
-          in
-          if key != "" then
-            state
-            // {
-              ${sec} = cur // {
-                ${key} = val;
-              };
-            }
-          else
-            state
-        else
-          state;
-      res = builtins.foldl' step { current = ""; } lines;
-    in
-    lib.removeAttrs res [ "current" ];
-in
 {
   imports = [
     self.modules.nixos.kakoune
@@ -50,22 +12,19 @@ in
   ];
 
   programs = {
+    kakoune = {
+      enable = true;
+      defaultEditor = true;
+    };
     bat.enable = true;
     tmux.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
     };
-    git = {
-      enable = true;
-      config = lib.mkMerge [
-        (parseINI (builtins.readFile (self + "/git/gconfig.ini")))
-        { core.excludesFile = lib.mkForce (toString (self + "/git/ignore_global")); }
-      ];
-    };
     starship = {
       enable = true;
-      settings = pkgs.lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
+      settings = lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
     };
   };
 
@@ -121,26 +80,32 @@ in
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 
-  systemd.oomd.enable = lib.mkForce false; # https://github.com/systemd/systemd/pull/36718 Once this is merged to stable version of systemd, I will re-enable. For now, no condoms. I could fix it myself, but I'm lazy.
+  systemd = {
+    services.systemd-oomd.after = [ "swap.target" ]; # https://github.com/systemd/systemd/pull/36718 forever and a day :)
+    oomd = {
+      enable = true;
+      enableRootSlice = true;
+      enableSystemSlice = true;
+      enableUserSlices = true;
+      extraConfig.DefaultMemoryPressureDurationSec = "20s";
+    };
+  };
 
   nix.settings = {
     substituters = [
       "https://nix-community.cachix.org"
       "https://chaotic-nyx.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
-      "https://hyprland.cachix.org"
     ];
     trusted-substituters = [
       "https://nix-community.cachix.org"
       "https://chaotic-nyx.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
-      "https://hyprland.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 

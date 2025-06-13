@@ -8,7 +8,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-23-11.follows = "nixpkgs";
-        flake-compat.follows = "";
+        flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
       };
     };
@@ -16,6 +16,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    flake-compat.url = "github:edolstra/flake-compat";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +47,7 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "";
+        flake-compat.follows = "flake-compat";
       };
     };
     browser-previews = {
@@ -62,7 +63,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-compat.follows = "";
+        flake-compat.follows = "flake-compat";
         crane.follows = "crane";
       };
     };
@@ -71,7 +72,7 @@
       inputs = {
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
-        flake-compat.follows = "";
+        flake-compat.follows = "flake-compat";
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -87,14 +88,6 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    vaultix = {
-      url = "github:milieuim/vaultix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        crane.follows = "crane";
-      };
-    };
     apple-emoji-linux = {
       url = "github:mcsimw/apple-emoji-linux";
       inputs = {
@@ -107,7 +100,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
-        flake-compat.follows = "";
+        flake-compat.follows = "flake-compat";
       };
     };
     typst = {
@@ -123,11 +116,6 @@
     alsa-ucm-conf = {
       url = "github:geoffreybennett/alsa-ucm-conf";
       flake = false;
-    };
-    hyprland.url = "github:hyprwm/Hyprland";
-    dwl = {
-      flake = false;
-      url = "git+https://codeberg.org/dwl/dwl";
     };
     systems.url = "github:nix-systems/default";
     rust-analyzer-src = {
@@ -145,6 +133,54 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
+    };
+    nix-filter.url = "github:numtide/nix-filter";
+    niri = {
+      url = "github:YaLTeR/niri";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+        nix-filter.follows = "nix-filter";
+      };
+    };
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    dwl = {
+      flake = false;
+      url = "git+https://codeberg.org/dwl/dwl?ref=main";
+    };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    blink-cmp = {
+      url = "github:Saghen/blink.cmp";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        fenix.follows = "fenix";
+      };
+    };
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-25_05.follows = "";
+      };
+    };
+    vaultix = {
+      url = "github:milieuim/vaultix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        crane.follows = "crane";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";

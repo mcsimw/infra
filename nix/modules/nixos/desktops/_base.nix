@@ -2,39 +2,70 @@
   self',
   pkgs,
   inputs',
+  lib,
+  config,
   ...
 }:
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   security.rtkit.enable = true;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
+  services = {
+    graphical-desktop.enable = lib.mkForce true;
+    dbus.packages = [ pkgs.dconf ];
+    pipewire = {
+      enable = lib.mkForce true;
+      jack.enable = lib.mkDefault true;
+      alsa = {
+        enable = lib.mkDefault true;
+        support32Bit = lib.mkDefault true;
+      };
+      pulse.enable = lib.mkDefault true;
+    };
   };
 
-  environment.systemPackages =
-    [ self'.packages.nyxt ]
-    ++ (with pkgs; [
-      adwaita-icon-theme
-      self'.packages.mpv
-      inkscape
-      gimp3
-      pulsemixer
-    ]);
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
+  };
+
+  hardware.graphics = {
+    enable = lib.mkForce true;
+    enable32Bit = lib.mkForce true;
+  };
+
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    systemPackages =
+      (with self'.packages; [
+        nyxt
+      ])
+      ++ (with inputs'; [
+        ghostty.packages.default
+        browser-previews.packages.google-chrome-dev
+      ])
+      ++ (with pkgs; [
+        adwaita-icon-theme
+        self'.packages.mpv
+        inkscape
+        gimp3
+        pulsemixer
+        wl-clipboard-rs
+      ])
+      ++ (lib.optional (
+        config.hardware.graphics.enable && config.programs.wireshark.enable
+      ) pkgs.wireshark);
+  };
 
   fonts = {
+    enableDefaultPackages = lib.mkForce false;
     fontconfig = {
       useEmbeddedBitmaps = true;
       antialias = false;
-      hinting.enable = false;
+      hinting = {
+        enable = false;
+        style = "none";
+      };
       subpixel.lcdfilter = "none";
       defaultFonts = {
         serif = [
@@ -46,18 +77,18 @@
           "Symbols Nerd Font"
         ];
         monospace = [
-          "Lucida Sans Typewriter"
+          "Comic Code Ligatures"
           "Symbols Nerd Font Mono"
         ];
         emoji = [ "Apple Color Emoji" ];
       };
     };
     packages = with pkgs; [
-      inputs'.apple-emoji-linux.packages.default
       spleen
       terminus_font
-      iosevka
       nerd-fonts.symbols-only
+      inputs'.apple-emoji-linux.packages.default
+      (pkgs.cascadia-code.override { useVariableFont = true; })
     ];
   };
 }

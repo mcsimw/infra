@@ -13,51 +13,77 @@
           pixman,
           pkg-config,
           stdenv,
+          nixosTests,
           testers,
           wayland,
           wayland-protocols,
           wayland-scanner,
           wlroots,
-          ...
+          libX11,
+          xcbutilwm,
+          xwayland,
+          enableXWayland ? false, # for some reason really broken in dwl
         }:
+
         stdenv.mkDerivation (finalAttrs: {
           pname = "dwl";
           version = inputs.dwl.rev;
+
           src = inputs.dwl;
+
           nativeBuildInputs = [
             installShellFiles
             pkg-config
             wayland-scanner
           ];
-          buildInputs = [
-            libinput
-            libxcb
-            libxkbcommon
-            pixman
-            wayland
-            wayland-protocols
-            wlroots
-          ];
+
+          buildInputs =
+            [
+              libinput
+              libxcb
+              libxkbcommon
+              pixman
+              wayland
+              wayland-protocols
+              wlroots
+            ]
+            ++ lib.optionals enableXWayland [
+              libX11
+              xcbutilwm
+              xwayland
+            ];
+
           outputs = [
             "out"
             "man"
           ];
-          postPatch = ''
-            patch -p0 < ${self}/dwl/wlroots-0.20.patch
-            cp ${self}/dwl/config.def.h ./config.def.h
-          '';
-          makeFlags = [
-            "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
-            "WAYLAND_SCANNER=wayland-scanner"
-            "PREFIX=$(out)"
-            "MANDIR=$(man)/share/man"
-          ];
+
+          patches = [ (self + "/dwl/today.patch") ];
+
+          makeFlags =
+            [
+              "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
+              "WAYLAND_SCANNER=wayland-scanner"
+              "PREFIX=$(out)"
+              "MANDIR=$(man)/share/man"
+            ]
+            ++ lib.optionals enableXWayland [
+              ''XWAYLAND="-DXWAYLAND"''
+              ''XLIBS="xcb xcb-icccm"''
+            ];
+
           strictDeps = true;
+
           __structuredAttrs = true;
-          passthru.tests.version = testers.testVersion {
-            package = finalAttrs.finalPackage;
-            command = "dwl -v 2>&1; return 0";
+
+          passthru.tests = {
+            version = testers.testVersion {
+              package = finalAttrs.finalPackage;
+              command = "dwl -v 2>&1; return 0";
+            };
+            basic = nixosTests.dwl;
           };
+
           meta = {
             homepage = "https://codeberg.org/dwl/dwl";
             changelog = "https://codeberg.org/dwl/dwl/src/branch/${finalAttrs.version}/CHANGELOG.md";

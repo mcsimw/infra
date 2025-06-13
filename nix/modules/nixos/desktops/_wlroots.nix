@@ -1,13 +1,12 @@
 {
   pkgs,
-  config,
   lib,
+  config,
   ...
 }:
 
 lib.mkMerge [
   {
-    services.blueman.enable = config.hardware.bluetooth.enable;
     environment.systemPackages = with pkgs; [
       sway-contrib.grimshot
       slurp
@@ -18,6 +17,5 @@ lib.mkMerge [
       wlr.enable = true;
     };
   }
-  (import ./_wayland.nix { inherit pkgs; })
-  (import ./_tilingwm.nix { inherit pkgs; })
+  (import ./_tilingwm.nix { inherit pkgs config; })
 ]

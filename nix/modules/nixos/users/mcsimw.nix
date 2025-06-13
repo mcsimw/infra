@@ -6,45 +6,18 @@
       config,
       lib,
       pkgs,
-      self,
       ...
     }:
     let
-      cfg = config.myShit.users.mcsimw.enable;
-      dwlEnabled = lib.attrByPath [ "myShit" "desktop" "dwl" "enable" ] false config;
-
-      dwl = pkgs.writeShellApplication {
-        name = "dwl";
-        runtimeInputs = [
-          pkgs.swaybg
-          self'.packages.dwl
-        ];
-        text = ''
-          dwl -s "
-            dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP=dwl;
-            systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE;
-            systemctl --user start yes.target;
-            swaybg -c '#CC0077'
-          "
-        '';
-      };
+      cfg = config.analfabeta.users.mcsimw.enable;
     in
     {
-      options.myShit.users.mcsimw.enable = lib.mkOption {
+      options.analfabeta.users.mcsimw.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
-        example = false;
-        description = "Whether to enable mcsimw.";
       };
 
       config = lib.mkIf cfg {
-        systemd.user.targets.yes = {
-          documentation = [ "man:systemd.special(7)" ];
-          bindsTo = [ "graphical-session.target" ];
-          wants = [ "graphical-session-pre.target" ];
-          after = [ "graphical-session-pre.target" ];
-        };
-
         preservation.preserveAt."/persist".users.mcsimw = {
           commonMountOptions = [ "x-gvfs-hide" ];
           directories = [
@@ -67,21 +40,21 @@
               nvim
               git
             ])
-            ++ lib.optionals dwlEnabled [ dwl ]
             ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ]
-            ++ [
-              (pkgs.emacsWithPackagesFromUsePackage {
-                config = "";
-                package = pkgs.emacs-igc-pgtk;
-                extraEmacsPackages = epkgs: [
-                  epkgs.treesit-grammars.with-all-grammars
-                ];
-              })
+            ++ (with pkgs; [
+              ((emacsPackagesFor emacs-igc-pgtk).emacsWithPackages (epkgs: [
+                epkgs.eat
+                epkgs.treesit-grammars.with-all-grammars
+                epkgs.lsp-mode
+                epkgs.haskell-mode
+                epkgs.ef-themes
+              ]))
+            ])
+            ++ lib.optionals config.programs.kakoune.enable [
+              (config.programs.kakoune.package.overrideAttrs (_oldAttrs: {
+                plugins = with pkgs.kakounePlugins; [ parinfer-rust ];
+              }))
             ];
-        };
-
-        hjem.users.mcsimw.files = lib.mkIf config.programs.hyprland.enable {
-          ".config/hypr/hyprland.conf".source = self + /hypr/hyprland.conf;
         };
 
         systemd.tmpfiles.settings.preservation = {

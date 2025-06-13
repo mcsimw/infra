@@ -8,10 +8,10 @@
       ...
     }:
     let
-      cfg = config.myShit.programs.kakoune;
+      cfg = config.programs.kakoune;
     in
     {
-      options.myShit.programs.kakoune = {
+      options.programs.kakoune = {
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
@@ -22,19 +22,22 @@
           default = true;
           description = "Set Kakoune as the default editor.";
         };
+        package = lib.mkOption {
+          type = lib.types.package;
+          description = "The package for Kakoune, can be overridden.";
+          default = pkgs.kakoune-unwrapped.overrideAttrs {
+            version = inputs.kakoune.rev;
+            src = inputs.kakoune;
+            postPatch = ''
+              echo "${inputs.kakoune.rev}" >.version
+            '';
+          };
+        };
       };
 
       config = lib.mkIf cfg.enable {
         environment = {
-          systemPackages = with pkgs; [
-            (kakoune-unwrapped.overrideAttrs {
-              version = inputs.kakoune.rev;
-              src = inputs.kakoune;
-              postPatch = ''
-                echo "${inputs.kakoune.rev}" >.version
-              '';
-            })
-          ];
+          systemPackages = [ cfg.package ];
           variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
         };
       };

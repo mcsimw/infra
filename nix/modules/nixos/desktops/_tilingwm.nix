@@ -1,18 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs = {
-    dconf = {
-      enable = true;
-      profiles.user.databases = [
-        {
-          lockAll = true;
-          settings = {
-            "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-            "org/gnome/desktop/wm/preferences".button-layout = "";
-          };
-        }
-      ];
-    };
     foot.enable = true;
   };
   environment.systemPackages = with pkgs; [
@@ -20,6 +8,10 @@
     mako
     zathura
     wmenu
+    pwvucontrol_git
   ];
-
+  services = {
+    blueman.enable = config.hardware.bluetooth.enable;
+    xserver.desktopManager.runXdgAutostartIfNone = true;
+  };
 }

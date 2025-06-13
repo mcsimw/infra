@@ -8,11 +8,11 @@
     }:
 
     let
-      cfg = config.myShit.rebuilder;
+      cfg = config.analfabeta.rebuilder;
       dotfilesPath = lib.escapeShellArg (toString cfg.dotfiles);
     in
     {
-      options.myShit.rebuilder = {
+      options.analfabeta.rebuilder = {
         enable = lib.mkEnableOption "installs switch/boot/update tools";
 
         dotfiles = lib.mkOption {
@@ -26,26 +26,17 @@
         environment.systemPackages = with pkgs; [
           (writeShellApplication {
             name = "switch";
-            runtimeInputs = [ ];
-            text = ''
-              nixos-rebuild switch --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo
-            '';
+            text = ''nixos-rebuild switch --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo'';
           })
 
           (writeShellApplication {
             name = "boot";
-            runtimeInputs = [ ];
-            text = ''
-              nixos-rebuild boot --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo
-            '';
+            text = ''nixos-rebuild boot --flake "${dotfilesPath}#$(hostname)" --show-trace --verbose --sudo'';
           })
 
           (writeShellApplication {
             name = "update";
-            runtimeInputs = [ nix ];
-            text = ''
-              nix flake update --flake "${dotfilesPath}"
-            '';
+            text = ''nix flake update --flake "${dotfilesPath}"'';
           })
         ];
       };

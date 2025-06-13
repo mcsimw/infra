@@ -1,6 +1,5 @@
 {
   moduleWithSystem,
-  self,
   ...
 }:
 {
@@ -14,18 +13,21 @@
       inputs,
       config,
       lib,
+      self,
       ...
     }:
     {
-      options.myShit.desktop.dwl.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable dwl.";
-      };
-
-      config = lib.mkIf config.myShit.desktop.dwl.enable (
+      config = lib.mkIf config.programs.dwl.enable (
         lib.mkMerge [
-          (import ./_base.nix { inherit inputs' pkgs self'; })
+          (import ./_base.nix {
+            inherit
+              inputs'
+              pkgs
+              self'
+              lib
+              config
+              ;
+          })
           (import ./_wlroots.nix {
             inherit
               pkgs
@@ -36,12 +38,11 @@
               ;
           })
           {
-            services.dbus.packages = [ pkgs.dconf ];
-            environment.systemPackages = [ pkgs.dwl ];
-            xdg.portal.config.dwl.default = [
-              "wlr"
-              "gtk"
-            ];
+            programs.dwl.package = lib.mkDefault (
+              self'.packages.dwl.overrideAttrs (old: {
+                patches = (old.patches or [ ]) ++ [ (self + "/dwl/sane.patch") ];
+              })
+            );
           }
         ]
       );

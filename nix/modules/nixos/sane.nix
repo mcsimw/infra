@@ -18,6 +18,12 @@
         udisks2.enable = lib.mkDefault true;
         dbus.implementation = lib.mkForce "broker";
         userborn.enable = lib.mkForce true;
+        openssh.hostKeys = [
+          {
+            path = "/etc/ssh/ssh_host_ed25519_key";
+            type = "ed25519";
+          }
+        ];
       };
       environment = {
         variables.NIXPKGS_CONFIG = lib.mkForce "";
