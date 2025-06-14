@@ -52,9 +52,7 @@
         pulsemixer
         wl-clipboard-rs
       ])
-      ++ (lib.optional (
-        config.hardware.graphics.enable && config.programs.wireshark.enable
-      ) pkgs.wireshark);
+      ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };
 
   fonts = {

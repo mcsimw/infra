@@ -16,6 +16,22 @@
       self,
       ...
     }:
+    let
+      dwl = pkgs.writeShellApplication {
+        name = "dwl";
+        runtimeInputs = [
+          pkgs.swaybg
+          (self'.packages.dwl.overrideAttrs (old: {
+            patches = (old.patches or [ ]) ++ [ (self + "/dwl/sane.patch") ];
+          }))
+        ];
+        text = ''
+          dwl -s "
+            swaybg -c '#CC0077'
+          "
+        '';
+      };
+    in
     {
       config = lib.mkIf config.programs.dwl.enable (
         lib.mkMerge [
@@ -37,13 +53,7 @@
               self
               ;
           })
-          {
-            programs.dwl.package = lib.mkDefault (
-              self'.packages.dwl.overrideAttrs (old: {
-                patches = (old.patches or [ ]) ++ [ (self + "/dwl/sane.patch") ];
-              })
-            );
-          }
+          { programs.dwl.package = lib.mkDefault dwl; }
         ]
       );
     }
