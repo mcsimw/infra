@@ -22,7 +22,7 @@
           libX11,
           xcbutilwm,
           xwayland,
-          enableXWayland ? false, # for some reason really broken in dwl
+          enableXWayland ? true, # for some reason kinda broken in dwl
         }:
 
         stdenv.mkDerivation (finalAttrs: {
@@ -58,7 +58,10 @@
             "man"
           ];
 
-          patches = [ (self + "/dwl/today.patch") ];
+          patches = [
+            inputs.center
+            (self + "/dwl/today.patch")
+          ];
 
           makeFlags =
             [

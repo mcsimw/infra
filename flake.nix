@@ -3,6 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
     nix = {
       url = "github:nixos/nix";
       inputs = {
@@ -23,10 +30,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     preservation.url = "github:nix-community/preservation";
-    wrapper-manager = {
-      url = "github:viperML/wrapper-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    wrapper-manager.url = "github:viperML/wrapper-manager";
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -140,7 +144,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
-        nix-filter.follows = "nix-filter";
       };
     };
     xwayland-satellite = {
@@ -153,10 +156,6 @@
     dwl = {
       flake = false;
       url = "git+https://codeberg.org/dwl/dwl?ref=main";
-    };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
@@ -185,6 +184,14 @@
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    center = {
+      url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch";
+      flake = false;
+    };
+    smartborders = {
+      flake = false;
+      url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/smartborders/smartborders.patch";
     };
   };
 

@@ -8,7 +8,6 @@
 {
   imports = [
     self.modules.nixos.kakoune
-    self.modules.nixos.bluetooth
   ];
 
   programs = {
@@ -21,10 +20,6 @@
     appimage = {
       enable = true;
       binfmt = true;
-    };
-    starship = {
-      enable = true;
-      settings = lib.importTOML (builtins.toPath "${self}/starship/starship.toml");
     };
   };
 

@@ -2,7 +2,7 @@
 {
   wrappers.mpv = {
     basePackage = pkgs.mpv;
-    flags = [
+    prependFlags = [
       "--no-config"
       "--config-dir=${self + /mpv/mpv.config}"
     ];

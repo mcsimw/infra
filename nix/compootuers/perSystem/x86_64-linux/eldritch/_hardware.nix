@@ -16,7 +16,6 @@
     cpu.intel.updateMicrocode = true;
     amdgpu = {
       initrd.enable = true;
-      opencl.enable = true;
     };
     enableAllFirmware = true;
   };
@@ -30,6 +29,7 @@
   }/share/alsa/ucm2";
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos-rc;
     kernel.sysctl = {
       "vm.swapiness" = 10;
       "net.ipv6.conf.enp7s0.disable_ipv6" = true;

@@ -12,8 +12,9 @@
 
   programs = {
     wireshark.enable = true;
-    niri.enable = true;
     dwl.enable = true;
+    niri.enable = true;
+    hyprland.enable = true;
     steam = {
       enable = true;
       extraCompatPackages = [
@@ -25,13 +26,15 @@
   environment.systemPackages = with pkgs; [
     obs-studio
     kdePackages.kdenlive
-    (cataclysm-dda.override { tiles = false; })
+    cataclysm-dda
     openmw
     openmw-tes3mp
     torzu_git
-    element-desktop
+    # element-desktop
     emacs-igc-pgtk
     mangohud_git
+    dwarf-fortress-full
+    pokemmo-installer
   ];
 
   networking.useNetworkd = true;

@@ -12,4 +12,10 @@
     enable = true;
     dotfiles = /mnt/nyx/.dotfiles;
   };
+  #  preservation.preserveAt."/persist".users.mcsimw = {
+  #  directories = [
+  #    ".local/share/Steam"
+  #    ".steam"
+  #  ];
+  #};
 }

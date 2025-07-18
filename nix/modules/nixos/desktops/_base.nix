@@ -35,22 +35,33 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
+    variables = {
+      GDK_BACKEND = "wayland";
+      MOZ_ENABLE_WAYLAND = 1;
+      MOZ_WEBRENDER = 1;
+      NIXOS_OZONE_WL = 1;
+      QT_QPA_PLATFORM = "wayland";
+      #        QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+      SDL_VIDEODRIVER = "wayland";
+      _JAVA_AWT_WM_NONREPARENTING = 1;
+    };
     systemPackages =
       (with self'.packages; [
         nyxt
       ])
       ++ (with inputs'; [
-        ghostty.packages.default
         browser-previews.packages.google-chrome-dev
+        flake-firefox-nightly.packages.firefox-nightly-bin
       ])
       ++ (with pkgs; [
         adwaita-icon-theme
         self'.packages.mpv
         inkscape
         gimp3
-        pulsemixer
         wl-clipboard-rs
+        pwvucontrol_git
+        xorg.xeyes
+        ghostty
       ])
       ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };
