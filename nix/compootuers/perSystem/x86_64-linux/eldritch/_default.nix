@@ -5,7 +5,6 @@
     ./_fileSystems.nix
     self.modules.nixos.systemd-bootloader
     self.modules.nixos.aliases
-    # inputs.vaultix.nixosModules.default
   ];
 
   analfabeta.rebuilder = {

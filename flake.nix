@@ -172,15 +172,6 @@
         nixpkgs-25_05.follows = "";
       };
     };
-    vaultix = {
-      url = "github:milieuim/vaultix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        crane.follows = "crane";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
