@@ -1,1 +1,1 @@
-../mcsimw.com/
+../mcsimw.com
