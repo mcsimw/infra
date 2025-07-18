@@ -10,6 +10,6 @@
       git-extras
       gitFull
     ];
-    env.GIT_CONFIG_GLOBAL.value = "${self}/git/config.ini";
+    env.GIT_CONFIG_GLOBAL.value = "${self}/dotfiles/git/config.ini";
   };
 }

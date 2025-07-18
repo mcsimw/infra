@@ -2,6 +2,6 @@
 {
   wrappers.nyxt = {
     basePackage = pkgs.nyxt;
-    prependFlags = [ "--init=${self + /nyxt/config.lisp}" ];
+    prependFlags = [ "--init=${self + dotfiles/nyxt/config.lisp}" ];
   };
 }

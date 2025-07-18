@@ -15,7 +15,7 @@
           lua-language-server
         ];
         plugins = {
-          dev.mcsimw.pure = ../../../nvim;
+          dev.mcsimw.pure = ../../../dotfiles/nvim;
           start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
           opt = [
             pkgs.vimPlugins.nvim-treesitter.withAllGrammars

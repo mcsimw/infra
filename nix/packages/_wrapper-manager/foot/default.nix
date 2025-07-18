@@ -2,6 +2,6 @@
 {
   wrappers.foot = {
     basePackage = pkgs.foot;
-    prependFlags = [ "--config=${self + /foot/foot.ini}" ];
+    prependFlags = [ "--config=${self + /dotfiles/foot/foot.ini}" ];
   };
 }

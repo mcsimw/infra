@@ -22,7 +22,7 @@
         runtimeInputs = [
           pkgs.swaybg
           (self'.packages.dwl.overrideAttrs (old: {
-            patches = (old.patches or [ ]) ++ [ (self + "/dwl/sane.patch") ];
+            patches = (old.patches or [ ]) ++ [ (self + "/dotfiles/dwl/sane.patch") ];
           }))
         ];
         text = ''

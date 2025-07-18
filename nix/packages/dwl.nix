@@ -60,7 +60,7 @@
 
           patches = [
             inputs.center
-            (self + "/dwl/today.patch")
+            (self + "/dotfiles/dwl/today.patch")
           ];
 
           makeFlags =
