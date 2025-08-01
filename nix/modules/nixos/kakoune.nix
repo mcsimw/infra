@@ -1,5 +1,7 @@
+{ moduleWithSystem, ... }:
 {
-  flake.modules.nixos.kakoune =
+  flake.modules.nixos.kakoune = moduleWithSystem (
+    _:
     {
       config,
       lib,
@@ -34,12 +36,12 @@
           };
         };
       };
-
       config = lib.mkIf cfg.enable {
         environment = {
           systemPackages = [ cfg.package ];
           variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 999 "kak");
         };
       };
-    };
+    }
+  );
 }
