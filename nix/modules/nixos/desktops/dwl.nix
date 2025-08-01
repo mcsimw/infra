@@ -56,14 +56,6 @@
               ;
           })
           {
-            programs.uwsm = {
-              enable = true;
-              waylandCompositors.dwl = {
-                prettyName = "dwl";
-                comment = "dwl compositor managed by UWSM";
-                binPath = "/run/current-system/sw/bin/dwl";
-              };
-            };
             programs.dwl = {
               package = lib.mkDefault dwl;
               extraSessionCommands = ''
@@ -74,6 +66,7 @@
                 export MOZ_ENABLE_WAYLAND=1
                 export XDG_SESSION_TYPE=wayland
                 export XDG_CURRENT_DESKTOP=dwl
+                export WLR_RENDERER=vulkan
               '';
 
             };

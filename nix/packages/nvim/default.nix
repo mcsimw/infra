@@ -20,7 +20,8 @@
           opt = [
             pkgs.vimPlugins.nvim-treesitter.withAllGrammars
             inputs'.blink-cmp.packages.default
-          ] ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
+          ]
+          ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
         };
       };
     };

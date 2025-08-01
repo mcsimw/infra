@@ -3,13 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
     nix = {
       url = "github:nixos/nix";
       inputs = {
@@ -93,7 +86,7 @@
       };
     };
     apple-emoji-linux = {
-      url = "github:mcsimw/apple-emoji-linux";
+      url = "github:samuelngs/apple-emoji-linux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "treefmt-nix";
@@ -139,20 +132,6 @@
       inputs.systems.follows = "systems";
     };
     nix-filter.url = "github:numtide/nix-filter";
-    niri = {
-      url = "github:YaLTeR/niri";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-    xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     dwl = {
       flake = false;
       url = "git+https://codeberg.org/dwl/dwl?ref=main";
@@ -172,10 +151,6 @@
         nixpkgs-25_05.follows = "";
       };
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     center = {
       url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch";
       flake = false;
@@ -188,5 +163,7 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./nix) ]; };
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./nix) ];
+    };
 }

@@ -9,12 +9,6 @@
 
   analfabeta.rebuilder = {
     enable = true;
-    dotfiles = /mnt/nyx/.dotfiles;
+    dotfiles = /mnt/nyx/infra;
   };
-  #  preservation.preserveAt."/persist".users.mcsimw = {
-  #  directories = [
-  #    ".local/share/Steam"
-  #    ".steam"
-  #  ];
-  #};
 }

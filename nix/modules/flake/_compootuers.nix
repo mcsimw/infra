@@ -5,6 +5,7 @@
   inputs,
   withSystem,
   self,
+  flake-parts-lib,
   ...
 }:
 
@@ -23,9 +24,9 @@ let
     lib.optional (basePath != null) "${basePath}/${name}.nix" |> lib.head or null |> pathIfExists;
 
   paths = {
-    perSystem = pathIfExists config.compootuers.perSystem;
-    perArch = pathIfExists config.compootuers.perArch;
-    allSystems = pathIfExists config.compootuers.allSystems;
+    perSystem = pathIfExists config.flake.compootuers.perSystem;
+    perArch = pathIfExists config.flake.compootuers.perArch;
+    allSystems = pathIfExists config.flake.compootuers.allSystems;
   };
 
   getConfigFiles =
@@ -108,18 +109,17 @@ let
         ...
       }:
       let
-        baseModules =
-          [
-            {
-              networking = { inherit hostName; };
-              nixpkgs.pkgs = withSystem system ({ pkgs, ... }: pkgs);
-            }
-            localFlake.modules.nixos.sane
-            localFlake.modules.nixos.nix-conf
-          ]
-          ++ globalFiles
-          ++ archFiles
-          ++ hostFiles;
+        baseModules = [
+          {
+            networking = { inherit hostName; };
+            nixpkgs.pkgs = withSystem system ({ pkgs, ... }: pkgs);
+          }
+          localFlake.modules.nixos.sane
+          localFlake.modules.nixos.nix-conf
+        ]
+        ++ globalFiles
+        ++ archFiles
+        ++ hostFiles;
 
         nonIsoModules = lib.optionals (!iso) [
           (
@@ -138,7 +138,7 @@ let
               boot.initrd.systemd.enable = lib.mkForce false;
               isoImage.squashfsCompression = "lz4";
               system.installer.channel.enable = lib.mkForce false;
-              networking.wireless.enable = lib.mkForce false;
+              networking.hostId = lib.mkForce <| genHostId hostName;
               systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {
                 enable = lib.mkForce false;
               });
@@ -149,7 +149,6 @@ let
                 password = lib.mkForce null;
                 hashedPasswordFile = lib.mkForce null;
               };
-              networking.hostId = lib.mkForce <| genHostId hostName;
             }
           )
         ];
@@ -171,21 +170,23 @@ let
     );
 in
 {
-  options.compootuers = {
-    perSystem = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Directory tree: <root>/<system>/<host>/_*.nix";
-    };
-    perArch = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Optional overrides per architecture: <root>/<system>/_both|_default|_iso.nix";
-    };
-    allSystems = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Optional global overrides applied to every host.";
+  options.flake = flake-parts-lib.mkSubmoduleOptions {
+    compootuers = {
+      perSystem = lib.mkOption {
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+        description = "directory tree: <root>/<system>/<host>/_*.nix";
+      };
+      perArch = lib.mkOption {
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+        description = "optional overrides per architecture: <root>/<system>/_both|_default|_iso.nix";
+      };
+      allSystems = lib.mkOption {
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+        description = "optional global overrides applied to every host.";
+      };
     };
   };
 

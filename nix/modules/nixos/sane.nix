@@ -26,7 +26,6 @@
         ];
       };
       environment = {
-        variables.NIXPKGS_CONFIG = lib.mkForce "";
         defaultPackages = [ ];
       };
       programs = {

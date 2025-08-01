@@ -20,17 +20,16 @@
       config = lib.mkIf cfg {
         preservation.preserveAt."/persist".users.mcsimw = {
           commonMountOptions = [ "x-gvfs-hide" ];
-          directories =
-            [
-              {
-                directory = ".ssh";
-                mode = "0700";
-              }
-            ]
-            ++ lib.optionals config.programs.steam.enable [
-              ".local/share/Steam"
-              ".steam"
-            ];
+          directories = [
+            {
+              directory = ".ssh";
+              mode = "0700";
+            }
+          ]
+          ++ lib.optionals config.programs.steam.enable [
+            ".local/share/Steam"
+            ".steam"
+          ];
         };
 
         users.users.mcsimw = {

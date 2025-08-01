@@ -1,15 +1,10 @@
 local opt = vim.opt
 
------ Interesting Options -----
-
--- You have to turn this one on :)
 opt.inccommand = "split"
 
--- Best search settings :)
 opt.smartcase = true
 opt.ignorecase = true
 
------ Personal Preferences -----
 opt.number = true
 opt.relativenumber = true
 
@@ -21,7 +16,6 @@ opt.shada = { "'10", "<0", "s10", "h" }
 
 opt.swapfile = false
 
--- Don't have `o` add a comment
 opt.formatoptions:remove("o")
 
 opt.wrap = true

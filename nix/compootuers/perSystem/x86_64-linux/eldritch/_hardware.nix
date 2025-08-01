@@ -14,9 +14,7 @@
     bluetooth.enable = true;
     xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
-    amdgpu = {
-      initrd.enable = true;
-    };
+    amdgpu.initrd.enable = true;
     enableAllFirmware = true;
   };
 
@@ -63,7 +61,7 @@
   services.scx = {
     enable = true;
     scheduler = "scx_bpfland";
-    package = pkgs.scx_git.full;
+    #    package = pkgs.scx_git.full;
   };
 
   systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {

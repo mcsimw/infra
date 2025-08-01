@@ -4,9 +4,11 @@ let
 in
 {
   inherit (compootuers) imports;
-  flake.modules.flake = { inherit compootuers; };
-  compootuers = {
-    perSystem = ../../compootuers/perSystem;
-    allSystems = ../../compootuers/allSystems;
+  flake = {
+    modules.flake = { inherit compootuers; };
+    compootuers = {
+      perSystem = ../../compootuers/perSystem;
+      allSystems = ../../compootuers/allSystems;
+    };
   };
 }
