@@ -46,10 +46,7 @@
       _JAVA_AWT_WM_NONREPARENTING = 1;
     };
     systemPackages =
-      (with self'.packages; [
-        nyxt
-      ])
-      ++ (with inputs'; [
+      (with inputs'; [
         browser-previews.packages.google-chrome-dev
         flake-firefox-nightly.packages.firefox-nightly-bin
       ])

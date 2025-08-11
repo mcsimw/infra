@@ -34,7 +34,6 @@
         unrar
         p7zip
         texliveFull
-        #inputs'.typst.packages.default
         typst
         dysk
         wget

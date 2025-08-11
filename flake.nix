@@ -16,6 +16,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    nix-maid.url = "github:viperML/nix-maid";
     flake-compat.url = "github:edolstra/flake-compat";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -24,18 +25,6 @@
     import-tree.url = "github:vic/import-tree";
     preservation.url = "github:nix-community/preservation";
     wrapper-manager.url = "github:viperML/wrapper-manager";
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hjem-rum = {
-      url = "github:/snugnug/hjem-rum";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        hjem.follows = "hjem";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.home-manager.follows = "";
@@ -98,16 +87,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
-      };
-    };
-    typst = {
-      url = "github:typst/typst";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        crane.follows = "crane";
-        fenix.follows = "fenix";
       };
     };
     alsa-ucm-conf = {
