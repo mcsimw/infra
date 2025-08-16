@@ -45,20 +45,33 @@
               git
             ])
             ++ lib.optionals config.programs.foot.enable [ self'.packages.foot ]
-            ++ (with pkgs; [
-              ((emacsPackagesFor emacs-igc-pgtk).emacsWithPackages (epkgs: [
-                epkgs.eat
-                epkgs.treesit-grammars.with-all-grammars
-                epkgs.lsp-mode
-                epkgs.haskell-mode
-                epkgs.ef-themes
-              ]))
-            ])
-            ++ lib.optionals config.programs.kakoune.enable [
-              (config.programs.kakoune.package.overrideAttrs (_oldAttrs: {
-                plugins = with pkgs.kakounePlugins; [ parinfer-rust ];
-              }))
-            ];
+            ++
+              lib.optionals
+                (
+                  lib.hasAttrByPath [ "programs" "emacs" "enable" ] config
+                  && config.programs.emacs.enable
+                  && config.hardware.graphics.enable
+                )
+                (
+                  with pkgs;
+                  [
+                    ((emacsPackagesFor emacs-igc-pgtk).emacsWithPackages (epkgs: [
+                      epkgs.eat
+                      epkgs.treesit-grammars.with-all-grammars
+                      epkgs.lsp-mode
+                      epkgs.haskell-mode
+                      epkgs.ef-themes
+                    ]))
+                  ]
+                )
+            ++
+              lib.optionals
+                (lib.hasAttrByPath [ "programs" "kakoune" "enable" ] config && config.programs.kakoune.enable)
+                [
+                  (config.programs.kakoune.package.overrideAttrs (_oldAttrs: {
+                    plugins = with pkgs.kakounePlugins; [ parinfer-rust ];
+                  }))
+                ];
         };
 
         systemd.tmpfiles.settings.preservation = {

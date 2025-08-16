@@ -1,0 +1,45 @@
+{ pkgs, inputs' }:
+with pkgs;
+[
+  npins
+  btop
+  unzip
+  unrar
+  p7zip
+  texliveFull
+  typst
+  dysk
+  wget
+  nethack
+  neomutt
+  file
+  yt-dlp_git
+  shpool
+  exfatprogs
+  amfora
+  parted
+  cryptsetup
+  btrfs-progs
+  xfsprogs
+  f2fs-tools
+  rsync
+  entr
+  xdg-user-dirs
+  openvi
+  pandoc
+  sc-im
+  onefetch
+  fastfetch
+  eza
+  ripgrep
+  fd
+  nnn
+  figlet
+  cowsay
+  toilet
+  lolcat
+]
+++ (with inputs'; [
+  typst.packages.default
+  nixos-search.packages.default
+])

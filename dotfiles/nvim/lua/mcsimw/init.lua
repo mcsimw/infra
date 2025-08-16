@@ -10,3 +10,5 @@ require("moonfly").custom_colors({
 
 -- Finally, apply the Moonfly colorscheme
 vim.cmd.colorscheme("moonfly")
+
+vim.lsp.enable({ "lua_ls" })

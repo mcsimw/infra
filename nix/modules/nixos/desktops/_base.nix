@@ -9,6 +9,8 @@
 {
   security.rtkit.enable = true;
 
+  programs.wireshark.enable = lib.mkDefault true;
+
   services = {
     graphical-desktop.enable = lib.mkForce true;
     dbus.packages = [ pkgs.dconf ];
@@ -41,7 +43,6 @@
       MOZ_WEBRENDER = 1;
       NIXOS_OZONE_WL = 1;
       QT_QPA_PLATFORM = "wayland";
-      #        QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
       SDL_VIDEODRIVER = "wayland";
       _JAVA_AWT_WM_NONREPARENTING = 1;
     };
@@ -59,6 +60,8 @@
         pwvucontrol_git
         xorg.xeyes
         ghostty
+        obs-studio
+        kdePackages.kdenlive
       ])
       ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };

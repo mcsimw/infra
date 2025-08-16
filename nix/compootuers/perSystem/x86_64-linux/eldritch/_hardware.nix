@@ -20,6 +20,8 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  networking.wireless.iwd.enable = true;
+
   environment.variables.ALSA_CONFIG_UCM2 = "${
     pkgs.alsa-ucm-conf.overrideAttrs (_old: {
       src = inputs.alsa-ucm-conf;
@@ -27,11 +29,8 @@
   }/share/alsa/ucm2";
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos-rc;
-    kernel.sysctl = {
-      "vm.swapiness" = 10;
-      "net.ipv6.conf.enp7s0.disable_ipv6" = true;
-    };
+    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernel.sysctl."vm.swapiness" = 10;
     kernelModules = [ "kvm_intel" ];
     kernelParams = [
       "zfs.zfs_arc_max=12884901888"
@@ -61,7 +60,7 @@
   services.scx = {
     enable = true;
     scheduler = "scx_bpfland";
-    #    package = pkgs.scx_git.full;
+    package = pkgs.scx_git.full;
   };
 
   systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {

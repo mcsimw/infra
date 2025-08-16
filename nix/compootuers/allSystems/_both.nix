@@ -3,14 +3,18 @@
   pkgs,
   self,
   inputs',
+  inputs,
   ...
 }:
 {
   imports = [
+    self.modules.nixos.emacs
     self.modules.nixos.kakoune
+    inputs.hjem.nixosModules.default
   ];
 
   programs = {
+    emacs.enable = true;
     kakoune = {
       enable = true;
       defaultEditor = true;
@@ -25,48 +29,7 @@
 
   environment = {
     variables.NIXPKGS_CONFIG = lib.mkForce "";
-    systemPackages =
-      with pkgs;
-      [
-        npins
-        btop
-        unzip
-        unrar
-        p7zip
-        texliveFull
-        typst
-        dysk
-        wget
-        nethack
-        neomutt
-        file
-        yt-dlp_git
-        shpool
-        exfatprogs
-        amfora
-        parted
-        cryptsetup
-        btrfs-progs
-        xfsprogs
-        f2fs-tools
-        rsync
-        entr
-        xdg-user-dirs
-        openvi
-        pandoc
-        sc-im
-        onefetch
-        fastfetch
-        eza
-        ripgrep
-        fd
-        nnn
-        figlet
-        cowsay
-        toilet
-        lolcat
-      ]
-      ++ [ inputs'.nixos-search.packages.default ];
+    systemPackages = import (self + "/nix/misc/_pkgs.nix") { inherit pkgs inputs'; };
   };
 
   boot = {
@@ -77,6 +40,7 @@
   networking = {
     networkmanager.enable = lib.mkForce false;
     wireless.enable = lib.mkForce false;
+    useNetworkd = true;
   };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
