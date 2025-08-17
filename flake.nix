@@ -79,7 +79,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
       inputs = {

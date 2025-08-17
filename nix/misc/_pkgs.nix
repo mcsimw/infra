@@ -11,6 +11,7 @@ with pkgs;
   dysk
   wget
   nethack
+  unnethack
   neomutt
   file
   yt-dlp_git

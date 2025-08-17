@@ -1,8 +1,4 @@
-{
-  self,
-  system,
-  ...
-}:
+{ self, ... }:
 {
   imports = [
     ./_hardware.nix
