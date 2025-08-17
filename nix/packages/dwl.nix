@@ -58,7 +58,7 @@
           ];
 
           patches = [
-            inputs.center
+            #            inputs.center
             (self + "/dotfiles/dwl/today.patch")
           ];
 
