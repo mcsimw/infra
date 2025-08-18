@@ -16,6 +16,7 @@
           inputs.neovim-nightly-overlay.overlays.default
           inputs.emacs-overlay.overlays.default
           inputs.nixpkgs-wayland.overlays.default
+          inputs.niri.overlays.default
           inputs.nyx.overlays.cache-friendly
           (_final: prev: { xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr_git; })
         ];

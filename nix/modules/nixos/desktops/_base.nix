@@ -62,6 +62,7 @@
         ghostty
         obs-studio
         kdePackages.kdenlive
+        nautilus
       ])
       ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };
