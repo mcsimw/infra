@@ -6,6 +6,7 @@
       config,
       lib,
       pkgs,
+      self,
       ...
     }:
     let
@@ -30,6 +31,10 @@
             ".local/share/Steam"
             ".steam"
           ];
+        };
+
+        hjem.users.mcsimw.files = {
+          ".config/niri/config.kdl".source = "${self}/dotfiles/niri/config.kdl";
         };
 
         users.users.mcsimw = {
@@ -72,29 +77,6 @@
                     plugins = with pkgs.kakounePlugins; [ parinfer-rust ];
                   }))
                 ];
-        };
-
-        systemd.tmpfiles.settings.preservation = {
-          "/home/mcsimw/.config".d = {
-            user = "mcsimw";
-            group = "users";
-            mode = "0755";
-          };
-          "/home/mcsimw/.local".d = {
-            user = "mcsimw";
-            group = "users";
-            mode = "0755";
-          };
-          "/home/mcsimw/.local/share".d = {
-            user = "mcsimw";
-            group = "users";
-            mode = "0755";
-          };
-          "/home/mcsimw/.local/state".d = {
-            user = "mcsimw";
-            group = "users";
-            mode = "0755";
-          };
         };
       };
     }

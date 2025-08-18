@@ -39,6 +39,7 @@ with pkgs;
   cowsay
   toilet
   lolcat
+  dislocker
 ]
 ++ (with inputs'; [
   typst.packages.default

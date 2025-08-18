@@ -33,6 +33,21 @@
         crane.follows = "crane";
       };
     };
+    niri = {
+      url = "github:YaLTeR/niri";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
     systems.url = "github:nix-systems/default";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-utils = {
@@ -56,18 +71,6 @@
     flake-firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dwl = {
-      flake = false;
-      url = "git+https://codeberg.org/dwl/dwl?ref=main";
-    };
-    center = {
-      url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch";
-      flake = false;
-    };
-    smartborders = {
-      flake = false;
-      url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/smartborders/smartborders.patch";
     };
     mnw.url = "github:Gerg-L/mnw";
     neovim-nightly-overlay = {
@@ -129,7 +132,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    preservation.url = "github:nix-community/preservation";
+    preservation.url = "github:nix-community/preservation/default-user-ownership";
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
@@ -138,6 +141,10 @@
         flake-compat.follows = "flake-compat";
         crane.follows = "crane";
       };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-analyzer-src = {
       url = "github:rust-lang/rust-analyzer/nightly";

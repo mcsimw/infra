@@ -101,18 +101,6 @@
         "type": "github"
       }
     },
-    "center": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-6PnTmgRcT0pdyR+LYBVfeMw35IW1F6M5Vlyw5kYsFHY=",
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1754269165,
@@ -126,23 +114,6 @@
         "owner": "ipetkov",
         "repo": "crane",
         "type": "github"
-      }
-    },
-    "dwl": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754342854,
-        "narHash": "sha256-AvhGE0PGlwtX+wn59kw+9cH3vHa3S+REEOD9IIzHNxU=",
-        "ref": "main",
-        "rev": "ab4cb6e28365cf8754d6d3bdd293c05abfc27e26",
-        "revCount": 1306,
-        "type": "git",
-        "url": "https://codeberg.org/dwl/dwl"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://codeberg.org/dwl/dwl"
       }
     },
     "emacs-overlay": {
@@ -765,6 +736,29 @@
         "type": "github"
       }
     },
+    "niri": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755443441,
+        "narHash": "sha256-cqVrVN8T2mNW02vu7dVaXgipEaRF9tBALE3qVlyJnPE=",
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "rev": "26a6e0cd985330c0515aea3ab1665f49e2e9ce93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-compat": [
@@ -1054,15 +1048,16 @@
     },
     "preservation": {
       "locked": {
-        "lastModified": 1751384068,
-        "narHash": "sha256-xGq+Om1ReXcQy6h57yj9V5nOM84g/GBJ3m6oxe1a3js=",
+        "lastModified": 1754755809,
+        "narHash": "sha256-DVDbeAg158ENqqRCesLE66reVcRoTZKd4OU0Vud6r/Q=",
         "owner": "nix-community",
         "repo": "preservation",
-        "rev": "286737ba485f30c1687c833e66f5901a6c8dc019",
+        "rev": "e9376d0e5b44007bdb0338dbf4f3f7e4dd7f3f85",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "default-user-ownership",
         "repo": "preservation",
         "type": "github"
       }
@@ -1073,9 +1068,7 @@
         "apple-emoji-linux": "apple-emoji-linux",
         "blink-cmp": "blink-cmp",
         "browser-previews": "browser-previews",
-        "center": "center",
         "crane": "crane",
-        "dwl": "dwl",
         "emacs-overlay": "emacs-overlay",
         "fenix": "fenix",
         "flake-compat": "flake-compat",
@@ -1088,6 +1081,7 @@
         "lanzaboote": "lanzaboote",
         "mnw": "mnw",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "niri": "niri",
         "nix": "nix",
         "nix-maid": "nix-maid",
         "nixos-mailserver": "nixos-mailserver",
@@ -1097,11 +1091,12 @@
         "nyx": "nyx",
         "preservation": "preservation",
         "rust-analyzer-src": "rust-analyzer-src",
-        "smartborders": "smartborders",
+        "rust-overlay": "rust-overlay_4",
         "systems": "systems_5",
         "treefmt-nix": "treefmt-nix",
         "typst": "typst",
-        "wrapper-manager": "wrapper-manager"
+        "wrapper-manager": "wrapper-manager",
+        "xwayland-satellite": "xwayland-satellite"
       }
     },
     "rust-analyzer-src": {
@@ -1197,16 +1192,24 @@
         "type": "github"
       }
     },
-    "smartborders": {
-      "flake": false,
+    "rust-overlay_4": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "narHash": "sha256-gKzJoOtSCaFQe2W6ra4eDyMdgu2hTshFOjxA3YioJl0=",
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/smartborders/smartborders.patch"
+        "lastModified": 1755398672,
+        "narHash": "sha256-vC/JDQFU7IKQYDA4nQeEjyIMihP1xvMg+wUdbUIN4ow=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "8269616684bacf71cd71d33ec29514f9adb37b89",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/smartborders/smartborders.patch"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "smfh": {
@@ -1372,6 +1375,32 @@
       "original": {
         "owner": "viperML",
         "repo": "wrapper-manager",
+        "type": "github"
+      }
+    },
+    "xwayland-satellite": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755219541,
+        "narHash": "sha256-yKV6xHaPbEbh5RPxAJnb9yTs1wypr7do86hFFGQm1w8=",
+        "owner": "Supreeeme",
+        "repo": "xwayland-satellite",
+        "rev": "5a184d435927c3423f0ad189ea2b490578450fb7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Supreeeme",
+        "repo": "xwayland-satellite",
         "type": "github"
       }
     }
