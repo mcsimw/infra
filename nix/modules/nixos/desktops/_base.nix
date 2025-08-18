@@ -9,7 +9,14 @@
 {
   security.rtkit.enable = true;
 
-  programs.wireshark.enable = lib.mkDefault true;
+  programs = {
+    uwsm.enable = true;
+    wireshark.enable = lib.mkDefault true;
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = lib.mkDefault "ghostty";
+    };
+  };
 
   services = {
     graphical-desktop.enable = lib.mkForce true;
@@ -59,10 +66,10 @@
         wl-clipboard-rs
         pwvucontrol_git
         xorg.xeyes
-        ghostty
         obs-studio
         kdePackages.kdenlive
         nautilus
+        inputs'.ghostty.packages.default
       ])
       ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };

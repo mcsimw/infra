@@ -14,7 +14,14 @@
       ...
     }:
     {
-      config = lib.mkIf config.programs.niri.enable (
+      options.analfabeta = {
+        desktop = lib.mkOption {
+          type = lib.types.enum [ "niri" ];
+          description = "Default Desktop Environment";
+          default = "niri";
+        };
+      };
+      config = lib.mkIf (config.analfabeta.desktop == "niri") (
         lib.mkMerge [
           (import ./_base.nix {
             inherit
@@ -37,13 +44,12 @@
           (import ./_minimal.nix { inherit pkgs config; })
           {
             programs = {
-              nautilus-open-any-terminal = {
+              nautilus-open-any-terminal.terminal = lib.mkForce "foot";
+              niri = {
                 enable = true;
-                terminal = "foot";
+                package = inputs'.niri.packages.niri;
               };
-              niri.package = inputs'.niri.packages.niri;
               uwsm = {
-                enable = true;
                 waylandCompositors.niri = {
                   prettyName = "Niri";
                   comment = "Niri compositor managed by UWSM";
@@ -55,7 +61,6 @@
               };
             };
             xdg.portal = {
-              enable = true;
               extraPortals = with pkgs; [
                 xdg-desktop-portal-gtk
                 xdg-desktop-portal-gnome

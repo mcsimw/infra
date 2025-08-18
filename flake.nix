@@ -40,6 +40,15 @@
         rust-overlay.follows = "rust-overlay";
       };
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+        zig.follows = "zig-overlay";
+      };
+    };
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs = {
@@ -156,6 +165,14 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-analyzer-src.follows = "rust-analyzer-src";
+      };
+    };
+    zig-overlay = {
+      url = "github:mitchellh/zig-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        flake-compat.follows = "flake-compat";
       };
     };
   };

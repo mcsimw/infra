@@ -5,7 +5,7 @@
     self.modules.nixos.desktop
   ];
 
-  programs.niri.enable = true;
+  analfabeta.desktop = "niri";
 
   system.stateVersion = "25.11";
 }

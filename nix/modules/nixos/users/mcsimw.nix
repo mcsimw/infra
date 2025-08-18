@@ -33,9 +33,7 @@
           ];
         };
 
-        hjem.users.mcsimw.files = {
-          ".config/niri/config.kdl".source = "${self}/dotfiles/niri/config.kdl";
-        };
+        hjem.users.mcsimw.files.".config/niri/config.kdl".source = "${self}/dotfiles/niri/config.kdl";
 
         users.users.mcsimw = {
           description = "Maor Haimovitz";
