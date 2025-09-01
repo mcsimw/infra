@@ -8,17 +8,18 @@
 }:
 {
   imports = [
-    self.modules.nixos.emacs
     self.modules.nixos.kakoune
     inputs.hjem.nixosModules.default
   ];
-
+  #  analfabeta.programs.kakoune = {
+  #  enable = true;
+  #  defaultEditor = true;
+  #};
   hjem.clobberByDefault = true;
   programs = {
-    emacs.enable = true;
-    kakoune = {
+    gnupg.agent = {
       enable = true;
-      defaultEditor = true;
+      pinentryPackage = lib.mkDefault pkgs.pinentry-curses;
     };
     bat.enable = true;
     tmux.enable = true;

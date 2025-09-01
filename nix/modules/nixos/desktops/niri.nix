@@ -1,26 +1,14 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.desktop = moduleWithSystem (
-    {
-      inputs',
-      self',
-    }:
+    { inputs', self', ... }:
     {
       pkgs,
-      inputs,
       config,
       lib,
-      self,
       ...
     }:
     {
-      options.analfabeta = {
-        desktop = lib.mkOption {
-          type = lib.types.enum [ "niri" ];
-          description = "Default Desktop Environment";
-          default = "niri";
-        };
-      };
       config = lib.mkIf (config.analfabeta.desktop == "niri") (
         lib.mkMerge [
           (import ./_base.nix {
@@ -32,19 +20,9 @@
               config
               ;
           })
-          (import ./_wlroots.nix {
-            inherit
-              pkgs
-              inputs
-              lib
-              config
-              self
-              ;
-          })
-          (import ./_minimal.nix { inherit pkgs config; })
+          (import ./_minimal.nix { inherit pkgs config lib; })
           {
             programs = {
-              nautilus-open-any-terminal.terminal = lib.mkForce "foot";
               niri = {
                 enable = true;
                 package = inputs'.niri.packages.niri;

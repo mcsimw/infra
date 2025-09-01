@@ -10,10 +10,10 @@
       ...
     }:
     let
-      cfg = config.programs.kakoune;
+      cfg = config.analfabeta.programs.kakoune;
     in
     {
-      options.programs.kakoune = {
+      options.analfabeta.programs.kakoune = {
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;

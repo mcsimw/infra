@@ -1,12 +1,14 @@
 {
   inputs,
   self,
+  config,
+  lib,
   ...
 }:
 {
   imports = [
     inputs.nixpkgs.nixosModules.readOnlyPkgs
-    self.modules.nixos.mcsimw
+    self.modules.nixos.users
     inputs.preservation.nixosModules.default
   ];
   preservation = {
@@ -14,6 +16,9 @@
       directories = [
         "/var/log"
         "/var/lib/systemd/coredump"
+      ]
+      ++ lib.optionals config.networking.wireless.iwd.enable [
+        "/var/lib/iwd"
       ];
       files = [
         {

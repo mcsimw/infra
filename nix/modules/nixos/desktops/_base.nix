@@ -9,6 +9,21 @@
 {
   security.rtkit.enable = true;
 
+  programs.dconf.profiles.user.databases = [
+    {
+      lockAll = true; # prevents overriding
+      settings = {
+        "org/gnome/desktop/interface" = {
+          accent-color = "pink";
+          color-scheme = "prefer-dark";
+        };
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "";
+        };
+      };
+    }
+  ];
+
   programs = {
     uwsm.enable = true;
     wireshark.enable = lib.mkDefault true;
@@ -57,6 +72,7 @@
       (with inputs'; [
         browser-previews.packages.google-chrome-dev
         flake-firefox-nightly.packages.firefox-nightly-bin
+        ghostty.packages.default
       ])
       ++ (with pkgs; [
         adwaita-icon-theme
@@ -65,11 +81,11 @@
         gimp3
         wl-clipboard-rs
         pwvucontrol_git
-        xorg.xeyes
         obs-studio
         kdePackages.kdenlive
-        nautilus
-        inputs'.ghostty.packages.default
+        rmpc
+        legcord
+        mpd
       ])
       ++ (lib.optional config.programs.wireshark.enable pkgs.wireshark);
   };

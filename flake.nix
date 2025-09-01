@@ -14,7 +14,10 @@
     };
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.home-manager.follows = "";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "";
+      };
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -113,14 +116,6 @@
       url = "github:geoffreybennett/alsa-ucm-conf";
       flake = false;
     };
-    nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-25_05.follows = "";
-      };
-    };
     nixos-search = {
       url = "github:diamondburned/nix-search";
       inputs = {
@@ -174,6 +169,10 @@
         flake-utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -21,12 +20,6 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   networking.wireless.iwd.enable = true;
-
-  environment.variables.ALSA_CONFIG_UCM2 = "${
-    pkgs.alsa-ucm-conf.overrideAttrs (_old: {
-      src = inputs.alsa-ucm-conf;
-    })
-  }/share/alsa/ucm2";
 
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
