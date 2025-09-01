@@ -36,8 +36,6 @@
         hjem.users.mcsimw = {
           files = {
             ".config/niri/config.kdl".source = "${self}/dotfiles/niri/config.kdl";
-            ".config/mpd/mpd.conf".source =
-              lib.mkIf config.analfabeta.programs.mpd.enable "${self}/dotfiles/mpd.conf";
           };
         };
 

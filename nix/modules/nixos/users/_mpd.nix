@@ -9,6 +9,7 @@
     }:
     let
       cfg = config.analfabeta.programs.mpd;
+      hasHjem = lib.hasAttrByPath [ "hjem" ] config;
     in
     {
       options.analfabeta.programs.mpd = {
@@ -23,19 +24,20 @@
           description = "Users to configure MPD for";
         };
       };
+
       config = lib.mkIf cfg.enable (
-        lib.mkMerge [
+        if !hasHjem then
+          throw "The MPD part of the users module requires the hjem module to be imported."
+        else
           {
             users.users = lib.genAttrs cfg.users (_: {
               packages = [ pkgs.mpd ];
             });
-          }
-          (lib.mkIf (lib.hasAttrByPath [ "hjem" ] config) {
+
             hjem.users = lib.genAttrs cfg.users (_: {
               files.".config/mpd/mpd.conf".source = "${self}/dotfiles/mpd.conf";
             });
-          })
-        ]
+          }
       );
     };
 }

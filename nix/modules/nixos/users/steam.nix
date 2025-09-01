@@ -1,10 +1,6 @@
 {
   flake.modules.nixos.users =
-    {
-      lib,
-      config,
-      ...
-    }:
+    { lib, config, ... }:
     let
       cfg = config.analfabeta.programs.steam;
     in
@@ -17,27 +13,29 @@
         };
         users = lib.mkOption {
           type = lib.types.listOf lib.types.str;
-          default = config.analfabeta.enabledUsers or [ ];
+          default = lib.attrByPath [ "analfabeta" "enabledUsers" ] [ ] config;
           description = "Users to configure Steam for";
         };
       };
-      config = lib.mkIf cfg.enable (lib.mkMerge [
-        {
-          programs.steam.enable = true;
-        }
-        (lib.mkIf (
-          lib.hasAttrByPath [ "preservation" "enable" ] config &&
-          config.preservation.enable
-        ) {
-          preservation.preserveAt."/persist" = lib.mkMerge (
-            map (user: {
-              users.${user}.directories = [
-                ".local/share/Steam"
-                ".steam"
-              ];
-            }) cfg.users
-          );
-        })
-      ]);
+      config = lib.mkIf cfg.enable (
+        lib.mkMerge [
+          {
+            programs.steam.enable = true;
+          }
+          (lib.mkIf (lib.hasAttrByPath [ "preservation" ] config) {
+            preservation = {
+              enable = true;
+              preserveAt."/persist" = lib.mkMerge (
+                map (user: {
+                  users.${user}.directories = [
+                    ".local/share/Steam"
+                    ".steam"
+                  ];
+                }) cfg.users
+              );
+            };
+          })
+        ]
+      );
     };
 }
