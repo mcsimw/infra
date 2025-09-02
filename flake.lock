@@ -779,21 +779,6 @@
         "type": "github"
       }
     },
-    "nix-maid": {
-      "locked": {
-        "lastModified": 1753201460,
-        "narHash": "sha256-OBRN1DqwitwxymeuNGEouTvRIPqMEbMQM5cvXfZvDPQ=",
-        "owner": "viperML",
-        "repo": "nix-maid",
-        "rev": "bf9cac33b417af732dd7c9626c1846d0132cfd27",
-        "type": "github"
-      },
-      "original": {
-        "owner": "viperML",
-        "repo": "nix-maid",
-        "type": "github"
-      }
-    },
     "nixos-search": {
       "inputs": {
         "flake-compat": [
@@ -1023,7 +1008,6 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "niri": "niri",
         "nix": "nix",
-        "nix-maid": "nix-maid",
         "nixos-search": "nixos-search",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-wayland": "nixpkgs-wayland",
