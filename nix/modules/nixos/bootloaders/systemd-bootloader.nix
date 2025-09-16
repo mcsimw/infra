@@ -1,15 +1,28 @@
 {
-  flake.modules.nixos.systemd-bootloader =
-    { lib, pkgs, ... }:
+  flake.modules.nixos.infra =
     {
-      boot.loader = {
-        systemd-boot = {
-          enable = lib.mkForce true;
-          editor = lib.mkForce false;
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      options.analfabeta.bootloader = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "whether to enable bootloader.";
         };
-        efi.canTouchEfiVariables = lib.mkForce true;
       };
-
-      environment.systemPackages = [ pkgs.efibootmgr ];
+      config = lib.mkIf config.analfabeta.bootloader.enable {
+        boot.loader = {
+          systemd-boot = {
+            enable = lib.mkDefault true;
+            editor = lib.mkForce false;
+          };
+          efi.canTouchEfiVariables = lib.mkForce true;
+        };
+        environment.systemPackages = [ pkgs.efibootmgr ];
+      };
     };
 }

@@ -22,7 +22,6 @@
   networking.wireless.iwd.enable = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
     kernel.sysctl."vm.swapiness" = 10;
     kernelModules = [ "kvm_intel" ];
     kernelParams = [

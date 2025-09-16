@@ -103,7 +103,6 @@ let
     in
     withSystem system (
       {
-        config,
         inputs',
         self',
         ...

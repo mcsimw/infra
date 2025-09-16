@@ -3,19 +3,16 @@
   pkgs,
   self,
   inputs',
-  inputs,
   ...
 }:
 {
   imports = [
-    self.modules.nixos.kakoune
-    inputs.hjem.nixosModules.default
+    self.modules.nixos.infra
   ];
-  #  analfabeta.programs.kakoune = {
-  #  enable = true;
-  #  defaultEditor = true;
-  #};
-  hjem.clobberByDefault = true;
+  analfabeta.programs.kakoune = {
+    enable = true;
+    defaultEditor = true;
+  };
   programs = {
     gnupg.agent = {
       enable = true;
@@ -31,11 +28,55 @@
 
   environment = {
     variables.NIXPKGS_CONFIG = lib.mkForce "";
-    systemPackages = import (self + "/nix/misc/_pkgs.nix") { inherit pkgs inputs'; };
+    systemPackages =
+      with pkgs;
+      [
+        npins
+        btop
+        unzip
+        unrar
+        p7zip
+        texliveFull
+        typst
+        dysk
+        wget
+        nethack
+        unnethack
+        neomutt
+        file
+        yt-dlp_git
+        shpool
+        exfatprogs
+        amfora
+        parted
+        cryptsetup
+        btrfs-progs
+        xfsprogs
+        f2fs-tools
+        rsync
+        entr
+        xdg-user-dirs
+        openvi
+        pandoc
+        sc-im
+        onefetch
+        fastfetch
+        eza
+        ripgrep
+        fd
+        nnn
+        figlet
+        cowsay
+        toilet
+        lolcat
+      ]
+      ++ (with inputs'; [
+        typst.packages.default
+      ]);
   };
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-rc;
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
 
@@ -46,6 +87,7 @@
   };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
+  i18n.defaultLocale = "en_CA.UTF-8";
 
   security.sudo.wheelNeedsPassword = lib.mkDefault false;
 

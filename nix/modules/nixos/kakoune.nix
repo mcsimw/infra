@@ -1,6 +1,6 @@
 { moduleWithSystem, ... }:
 {
-  flake.modules.nixos.kakoune = moduleWithSystem (
+  flake.modules.nixos.infra = moduleWithSystem (
     { self', ... }:
     {
       config,
@@ -15,7 +15,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
-          description = "Whether to enable Kakoune.";
+          description = "whether to enable kakoune.";
         };
         defaultEditor = lib.mkOption {
           type = lib.types.bool;

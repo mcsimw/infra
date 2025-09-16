@@ -13,7 +13,7 @@
     {
       options.analfabeta.users.mcsimw.enable = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = false;
       };
 
       config = lib.mkIf cfg {
@@ -25,18 +25,8 @@
               directory = ".ssh";
               mode = "0700";
             }
-          ]
-          ++ lib.optionals config.programs.steam.enable [
-            ".local/share/Steam"
-            ".steam"
           ];
         };
-
-        #        hjem.users.mcsimw = {
-        #  files = {
-        #    ".config/niri/config.kdl".source = "${self}/dotfiles/niri/config.kdl";
-        #  };
-        #};
 
         users.users.mcsimw = {
           description = "Maor Haimovitz";

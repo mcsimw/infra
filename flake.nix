@@ -36,30 +36,6 @@
         crane.follows = "crane";
       };
     };
-    niri = {
-      url = "github:YaLTeR/niri";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-utils.follows = "flake-utils";
-        zig.follows = "zig-overlay";
-      };
-    };
-    xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
     systems.url = "github:nix-systems/default";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-utils = {
@@ -111,18 +87,6 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    alsa-ucm-conf = {
-      url = "github:geoffreybennett/alsa-ucm-conf";
-      flake = false;
-    };
-    nixos-search = {
-      url = "github:diamondburned/nix-search";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "flake-compat";
-      };
-    };
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {
@@ -135,20 +99,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    preservation.url = "github:nix-community/preservation/default-user-ownership";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-compat.follows = "flake-compat";
-        crane.follows = "crane";
-      };
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    preservation.url = "github:nix-community/preservation";
     rust-analyzer-src = {
       url = "github:rust-lang/rust-analyzer/nightly";
       flake = false;
@@ -159,14 +110,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-analyzer-src.follows = "rust-analyzer-src";
-      };
-    };
-    zig-overlay = {
-      url = "github:mitchellh/zig-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "flake-compat";
       };
     };
     sops-nix = {
