@@ -1,12 +1,10 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.kakoune = moduleWithSystem (
-    _:
+    { self', ... }:
     {
       config,
       lib,
-      pkgs,
-      inputs,
       ...
     }:
     let
@@ -27,13 +25,7 @@
         package = lib.mkOption {
           type = lib.types.package;
           description = "The package for Kakoune, can be overridden.";
-          default = pkgs.kakoune-unwrapped.overrideAttrs {
-            version = inputs.kakoune.rev;
-            src = inputs.kakoune;
-            postPatch = ''
-              echo "${inputs.kakoune.rev}" >.version
-            '';
-          };
+          default = self'.packages.kakoune;
         };
       };
       config = lib.mkIf cfg.enable {
