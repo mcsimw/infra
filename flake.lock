@@ -199,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758544622,
-        "narHash": "sha256-F8hZvWFJelbBaVeLMfD/sybYs0KNwMvpYowNNwe5XjM=",
+        "lastModified": 1758565522,
+        "narHash": "sha256-PsrOP/v8TKdoPyZAn9sHZlpU9dB10lIUY5kZsNAZ8A8=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "28b13fb77c13e4285d9e944690490608087b4383",
+        "rev": "07d3b1aebd24d447366d5d1cf9def74183033765",
         "type": "github"
       },
       "original": {
@@ -224,45 +224,6 @@
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "rev": "4524271976b625a4a605beefd893f270620fd751",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_2": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "neovim-nightly-overlay",
-          "hercules-ci-effects",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1754487366,
-        "narHash": "sha256-pHYj8gUBapuUzKV/kN/tR3Zvqc7o6gdFB9XKXIp1SQ8=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "af66ad14b28a127c5c0f3bbb298218fc63528a18",
-        "type": "github"
-      },
-      "original": {
-        "id": "flake-parts",
-        "type": "indirect"
-      }
-    },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_3"
-      },
-      "locked": {
-        "lastModified": 1754487366,
-        "narHash": "sha256-pHYj8gUBapuUzKV/kN/tR3Zvqc7o6gdFB9XKXIp1SQ8=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "af66ad14b28a127c5c0f3bbb298218fc63528a18",
         "type": "github"
       },
       "original": {
@@ -440,9 +401,10 @@
     },
     "hercules-ci-effects": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": [
+          "flake-parts"
+        ],
         "nixpkgs": [
-          "neovim-nightly-overlay",
           "nixpkgs"
         ]
       },
@@ -575,7 +537,9 @@
           "flake-parts"
         ],
         "git-hooks": "git-hooks",
-        "hercules-ci-effects": "hercules-ci-effects",
+        "hercules-ci-effects": [
+          "hercules-ci-effects"
+        ],
         "neovim-src": "neovim-src",
         "nixpkgs": [
           "nixpkgs"
@@ -632,11 +596,11 @@
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
-        "lastModified": 1758558780,
-        "narHash": "sha256-LamtYeGMqVp6NghuzmXKLzs3PxqJ2wZEG+pXgkvstBo=",
+        "lastModified": 1758565595,
+        "narHash": "sha256-4ykEwYvAVyM7H1PFOHIlc5u5a3+iEKbyanNLyXO2Ikk=",
         "owner": "nixos",
         "repo": "nix",
-        "rev": "169a3684596a7571a804c06e35c9998d0f7d3513",
+        "rev": "5292b0e49ec8576a91ba2dc89604c439c75fd076",
         "type": "github"
       },
       "original": {
@@ -729,21 +693,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib_3": {
-      "locked": {
-        "lastModified": 1753579242,
-        "narHash": "sha256-zvaMGVn14/Zz8hnp4VWT9xVnhc8vuL3TStRqwk22biA=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "0f36c44e01a6129be94e3ade315a5883f0228a6e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -786,11 +735,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1758560786,
-        "narHash": "sha256-qilUP81z6a0PxisA1MKckPeC/5zjjON1OLiI9b0VwgM=",
+        "lastModified": 1758569721,
+        "narHash": "sha256-vdy6BI5N9rKHsF/b1Vzg7vIw97UZX1HbfmImA/vU5fc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2df70e59285757d84963daf039e709369af2352d",
+        "rev": "cf32e86232ddc7d027f8b3e587fb9e1af4891a3d",
         "type": "github"
       },
       "original": {
@@ -851,6 +800,7 @@
         "flake-firefox-nightly": "flake-firefox-nightly",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils_3",
+        "hercules-ci-effects": "hercules-ci-effects",
         "import-tree": "import-tree",
         "kakoune": "kakoune",
         "mnw": "mnw",
@@ -1099,7 +1049,9 @@
     "xlibre-overlay": {
       "inputs": {
         "fetchurl-sources": "fetchurl-sources",
-        "flake-parts": "flake-parts_3",
+        "flake-parts": [
+          "flake-parts"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],

@@ -14,7 +14,10 @@
     };
     xlibre-overlay = {
       url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -50,6 +53,13 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
     nix-maid.url = "github:viperML/nix-maid";
     wrapper-manager.url = "github:viperML/wrapper-manager";
     browser-previews = {
@@ -68,6 +78,7 @@
         treefmt-nix.follows = "treefmt-nix";
         flake-compat.follows = "flake-compat";
         nixpkgs.follows = "nixpkgs";
+        hercules-ci-effects.follows = "hercules-ci-effects";
       };
     };
     blink-cmp = {
