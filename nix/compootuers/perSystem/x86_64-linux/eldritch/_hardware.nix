@@ -13,7 +13,10 @@
     bluetooth.enable = true;
     xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
-    amdgpu.initrd.enable = true;
+    amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+    };
     enableAllFirmware = true;
   };
 
@@ -49,10 +52,21 @@
     };
   };
 
-  services.scx = {
-    enable = true;
-    scheduler = "scx_bpfland";
-    package = pkgs.scx_git.full;
+  services = {
+    scx = {
+      enable = true;
+      scheduler = "scx_bpfland";
+      package = pkgs.scx_git.full;
+    };
+    pipewire = {
+      enable = true;
+      jack.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+    };
   };
 
   systemd.targets = lib.genAttrs [ "sleep" "suspend" "hibernate" "hybrid-sleep" ] (_: {

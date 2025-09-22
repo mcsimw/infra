@@ -1,6 +1,5 @@
 {
   inputs,
-  self,
   config,
   lib,
   ...
@@ -8,7 +7,6 @@
 {
   imports = [
     inputs.nixpkgs.nixosModules.readOnlyPkgs
-    self.modules.nixos.users
     inputs.preservation.nixosModules.default
   ];
   preservation = {

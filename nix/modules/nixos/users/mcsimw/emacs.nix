@@ -1,6 +1,6 @@
 { moduleWithSystem, ... }:
 {
-  flake.modules.nixos.users = moduleWithSystem (
+  flake.modules.nixos.infra = moduleWithSystem (
     _:
     {
       config,

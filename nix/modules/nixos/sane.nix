@@ -3,6 +3,7 @@
     { lib, ... }:
     {
       systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
+
       networking = {
         useDHCP = lib.mkDefault true;
         networkmanager.wifi.powersave = lib.mkDefault false;
@@ -11,6 +12,7 @@
       users.mutableUsers = lib.mkForce false;
       security = {
         polkit.enable = lib.mkDefault true;
+        rtkit.enable = lib.mkDefault true;
         sudo.execWheelOnly = lib.mkForce true;
       };
       services = {
@@ -18,17 +20,12 @@
         udisks2.enable = lib.mkDefault true;
         dbus.implementation = lib.mkForce "broker";
         userborn.enable = lib.mkForce true;
-        openssh.hostKeys = [
-          {
-            path = "/etc/ssh/ssh_host_ed25519_key";
-            type = "ed25519";
-          }
-        ];
       };
       environment = {
         defaultPackages = [ ];
       };
       programs = {
+        wireshark.enable = true;
         direnv = {
           enable = lib.mkDefault true;
           silent = lib.mkDefault true;

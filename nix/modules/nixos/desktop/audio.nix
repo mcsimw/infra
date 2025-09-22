@@ -1,18 +1,20 @@
+{ moduleWithSystem, self, ... }:
 {
   flake.modules.nixos.infra =
-    { lib, config, ... }:
-    {
-      config = lib.mkIf config.analfabeta.desktop.enable {
-        security.rtkit.enable = true;
-        services.pipewire = {
-          enable = lib.mkDefault true;
-          jack.enable = lib.mkDefault true;
-          alsa = {
-            enable = lib.mkDefault true;
-            support32Bit = lib.mkDefault true;
+    (
+      { self }:
+      moduleWithSystem (
+        { pkgs, ... }:
+        { config, lib, ... }:
+        let
+          vars = import (self + /nix/modules/nixos/desktop/_vars.nix) config;
+        in
+        {
+          config = lib.mkIf vars.minimal {
+            environment.systemPackages = [ pkgs.pwvucontrol_git ];
           };
-          pulse.enable = lib.mkDefault true;
-        };
-      };
-    };
+        }
+      )
+    )
+      { inherit self; };
 }

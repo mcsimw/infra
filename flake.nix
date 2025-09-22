@@ -12,6 +12,10 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    xlibre-overlay = {
+      url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs = {
@@ -46,10 +50,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-maid.url = "github:viperML/nix-maid";
     wrapper-manager.url = "github:viperML/wrapper-manager";
     browser-previews = {
       url = "github:nix-community/browser-previews";

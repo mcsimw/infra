@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.zfs-rollback =
+  flake.modules.nixos.infra =
     {
       config,
       lib,
@@ -7,11 +7,11 @@
       ...
     }:
     let
-      cfg = config.zfs-rollback;
+      cfg = config.analfabeta.zfs-rollback;
       cfgZfs = config.boot.zfs;
     in
     {
-      options = {
+      options.analfabeta = {
         zfs-rollback = {
           enable = lib.mkEnableOption "Impermanence on safe-shutdown through ZFS snapshots";
           volume = lib.mkOption {

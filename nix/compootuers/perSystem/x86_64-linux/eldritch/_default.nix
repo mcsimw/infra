@@ -2,9 +2,7 @@
   imports = [
     ./_hardware.nix
     ./_fileSystems.nix
+    ./_bootloader.nix
   ];
-  analfabeta = {
-    users.mcsimw.enable = true;
-    bootloader.enable = true;
-  };
+  analfabeta.users.mcsimw.enable = true;
 }

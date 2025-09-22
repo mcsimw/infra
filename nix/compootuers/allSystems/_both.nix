@@ -3,11 +3,14 @@
   pkgs,
   self,
   inputs',
+  #  inputs,
   ...
 }:
 {
   imports = [
     self.modules.nixos.infra
+    # inputs.xlibre-overlay.nixosModules.overlay-xlibre-xserver
+    #    inputs.xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
   ];
   analfabeta.programs.kakoune = {
     enable = true;

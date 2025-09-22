@@ -1,21 +1,22 @@
-{ self, ... }:
 {
-  imports = [
-    self.modules.nixos.zfs-rollback
-  ];
-
   boot = {
     kernelParams = [ "nohibernate" ];
     tmp.cleanOnBoot = true;
   };
 
-  zfs-rollback = {
+  preservation = {
+    enable = true;
+    preserveAt."/persist".commonMountOptions = [
+      "x-gvfs-hide"
+      "x-gdu.hide"
+    ];
+  };
+
+  analfabeta.zfs-rollback = {
     enable = true;
     snapshot = "blank";
     volume = "nyx/faketmpfs";
   };
-
-  preservation.enable = true;
 
   fileSystems = {
     "/" = {
