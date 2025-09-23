@@ -1,4 +1,4 @@
-{ localFlake, ... }:
+{ ... }:
 {
   config,
   lib,
@@ -113,8 +113,6 @@ let
             networking = { inherit hostName; };
             nixpkgs.pkgs = withSystem system ({ pkgs, ... }: pkgs);
           }
-          localFlake.modules.nixos.sane
-          localFlake.modules.nixos.nix-conf
         ]
         ++ globalFiles
         ++ archFiles
