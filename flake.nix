@@ -10,6 +10,7 @@
         nixpkgs-23-11.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
+        git-hooks-nix.follows = "git-hooks";
       };
     };
     xlibre-overlay = {
@@ -31,6 +32,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+        lib-aggregate.follows = "lib-aggregate";
       };
     };
     typst = {
@@ -53,22 +55,22 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    hercules-ci-effects = {
-      url = "github:hercules-ci/hercules-ci-effects";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     nix-maid.url = "github:viperML/nix-maid";
     wrapper-manager.url = "github:viperML/wrapper-manager";
     browser-previews = {
       url = "github:nix-community/browser-previews";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
     flake-firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        lib-aggregate.follows = "lib-aggregate";
+      };
     };
     mnw.url = "github:Gerg-L/mnw";
     neovim-nightly-overlay = {
@@ -78,7 +80,7 @@
         treefmt-nix.follows = "treefmt-nix";
         flake-compat.follows = "flake-compat";
         nixpkgs.follows = "nixpkgs";
-        hercules-ci-effects.follows = "hercules-ci-effects";
+        git-hooks.follows = "git-hooks";
       };
     };
     blink-cmp = {
@@ -127,6 +129,20 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lib-aggregate = {
+      url = "github:nix-community/lib-aggregate";
+      inputs = {
+        nixpkgs-lib.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
     };
   };
 
