@@ -3,9 +3,10 @@ let
   prog = config.analfabeta.programs;
 in
 rec {
-  desktop = prog.dwl.enable || prog.sway.enable;
+  desktop = wlroots || smithay;
   wlroots = prog.dwl.enable || prog.sway.enable;
-  minimalWayland = prog.dwl.enable || prog.sway.enable;
+  smithay = prog.niri.enable;
+  minimalWayland = prog.dwl.enable || prog.sway.enable || prog.niri.enable;
   minimal = minimalWayland;
-  wayland = wlroots;
+  wayland = wlroots || smithay;
 }

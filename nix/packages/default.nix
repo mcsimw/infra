@@ -17,6 +17,7 @@
           inputs.emacs-overlay.overlays.default
           inputs.nixpkgs-wayland.overlays.default
           inputs.nyx.overlays.cache-friendly
+          inputs.ghostty.overlays.default
           (_final: prev: { xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr_git; })
         ];
       };

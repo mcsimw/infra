@@ -1,0 +1,4 @@
+theme = 12-bit Rainbow
+font-size = 18
+font-family =  Spleen
+freetype-load-flags = no-hinting,monochrome,no-autohint

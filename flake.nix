@@ -13,6 +13,29 @@
         git-hooks-nix.follows = "git-hooks";
       };
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+    niri = {
+      url = "github:YaLTeR/niri";
+      inputs = {
+        #    nixpkgs.follows = "nixpkgs";
+        #rust-overlay.follows = "rust-overlay";
+      };
+    };
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+        flake-utils.follows = "flake-utils";
+      };
+    };
     xlibre-overlay = {
       url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
       inputs = {
@@ -143,6 +166,10 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
       };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

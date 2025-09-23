@@ -8,5 +8,6 @@
   analfabeta.programs = {
     sway.enable = true;
     dwl.enable = true;
+    niri.enable = true;
   };
 }
