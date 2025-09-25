@@ -13,34 +13,12 @@
         git-hooks-nix.follows = "git-hooks";
       };
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-    niri = {
-      url = "github:YaLTeR/niri";
-      inputs = {
-        #    nixpkgs.follows = "nixpkgs";
-        #rust-overlay.follows = "rust-overlay";
-      };
-    };
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
         flake-utils.follows = "flake-utils";
-      };
-    };
-    xlibre-overlay = {
-      url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
     nyx = {
@@ -58,6 +36,7 @@
         lib-aggregate.follows = "lib-aggregate";
       };
     };
+    niri.url = "github:yalter/niri";
     typst = {
       url = "github:typst/typst";
       inputs = {
@@ -78,7 +57,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    nix-maid.url = "github:viperML/nix-maid";
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wrapper-manager.url = "github:viperML/wrapper-manager";
     browser-previews = {
       url = "github:nix-community/browser-previews";

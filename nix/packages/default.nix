@@ -17,8 +17,7 @@
           inputs.emacs-overlay.overlays.default
           inputs.nixpkgs-wayland.overlays.default
           inputs.nyx.overlays.cache-friendly
-          inputs.ghostty.overlays.default
-          (_final: prev: { xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr_git; })
+          inputs.niri.overlays.default
         ];
       };
       inherit
@@ -31,7 +30,10 @@
               );
             in
             map (n: ./_wrapper-manager/${n}) dirNames;
-          specialArgs = { inherit self inputs'; };
+          specialArgs = {
+            inherit self inputs';
+            dotfiles = "${self}/dotfiles";
+          };
         }).config.build
         )
         packages
