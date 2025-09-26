@@ -15,14 +15,28 @@
             hasPreservation = options ? preservation;
           in
           lib.optionalAttrs hasPreservation {
-            preservation.preserveAt."/persist".users = lib.genAttrs normalUsers (_user: {
-              directories = [
+            preservation.preserveAt."/persist" = {
+              files = [
                 {
-                  directory = ".ssh";
-                  mode = "0700";
+                  file = "/etc/ssh/ssh_host_ed25519_key";
+                  how = "symlink";
+                  configureParent = true;
+                }
+                {
+                  file = "/etc/ssh/ssh_host_ed25519_key.pub";
+                  how = "symlink";
+                  configureParent = true;
                 }
               ];
-            });
+              users = lib.genAttrs normalUsers (_user: {
+                directories = [
+                  {
+                    directory = ".ssh";
+                    mode = "0700";
+                  }
+                ];
+              });
+            };
           }
         ))
         {

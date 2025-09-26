@@ -24,6 +24,8 @@
 
   networking.wireless.iwd.enable = true;
 
+  environment.variables.RUSTICL_ENABLE = "radeonsi";
+
   boot = {
     kernel.sysctl."vm.swapiness" = 10;
     kernelModules = [ "kvm_intel" ];
@@ -55,7 +57,7 @@
   services = {
     scx = {
       enable = true;
-      scheduler = "scx_bpfland";
+      scheduler = "scx_lavd";
       package = pkgs.scx_git.full;
     };
     pipewire = {

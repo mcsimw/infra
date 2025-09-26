@@ -2,6 +2,7 @@
   inputs',
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -17,6 +18,7 @@
         users.mcsimw.enable = true;
         desktop.enable = true;
       };
+      environment.systemPackages = with pkgs; [ fish ];
     }
     (lib.mkIf config.analfabeta.desktop.enable {
       hjem.users.mcsimw.files.".config/niri/config.kdl".source = ./config.kdl;

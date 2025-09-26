@@ -92,7 +92,9 @@
       enable = lib.mkForce false;
       wifi.powersave = lib.mkDefault false;
     };
-    wireless.enable = lib.mkForce false;
+    wireless = {
+      enable = lib.mkForce false;
+    };
     useNetworkd = lib.mkDefault true;
   };
 

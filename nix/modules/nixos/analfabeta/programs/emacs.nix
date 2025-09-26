@@ -1,37 +1,33 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { self', ... }:
+    { pkgs, ... }:
     {
       config,
       lib,
       ...
     }:
     let
-      cfg = config.analfabeta.programs.kakoune;
+      cfg = config.analfabeta.programs.emacs;
     in
     {
-      options.analfabeta.programs.kakoune = {
+      options.analfabeta.programs.emacs = {
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
           description = "whether to enable kakoune.";
         };
-        defaultEditor = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Set Kakoune as the default editor.";
-        };
         package = lib.mkOption {
           type = lib.types.package;
           description = "The package for Kakoune, can be overridden.";
-          default = self'.packages.kakoune;
+          default = pkgs.emacs-igc-pgtk;
         };
+        defaultEditor = lib.mkEnableOption "emacs as the default editor";
       };
       config = lib.mkIf cfg.enable {
         environment = {
           systemPackages = [ cfg.package ];
-          variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 900 "kak");
+          variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 900 "emacs");
         };
       };
     }

@@ -20,28 +20,44 @@
           enable32Bit = lib.mkForce true;
         };
         programs = {
+          uwsm = {
+            enable = true;
+            waylandCompositors.niri = {
+              prettyName = "Niri";
+              comment = "Niri compositor managed by UWSM";
+              # https://github.com/YaLTeR/niri/issues/254
+              binPath = pkgs.writeShellScript "niri" ''
+                ${lib.getExe config.programs.niri.package} --session
+              '';
+            };
+          };
           niri = {
             enable = true;
             package = inputs'.niri.packages.default;
           };
           foot.enable = true;
-          dconf.profiles.user.databases = [
-            {
-              lockAll = true;
-              settings = {
-                "org/gnome/desktop/interface" = {
-                  accent-color = "pink";
-                  color-scheme = "prefer-dark";
+          dconf = {
+            enable = true;
+            profiles.user.databases = [
+              {
+                lockAll = true;
+                settings = {
+                  "org/gnome/desktop/interface" = {
+                    accent-color = "pink";
+                    color-scheme = "prefer-dark";
+                  };
+                  "org/gnome/desktop/wm/preferences" = {
+                    button-layout = "";
+                  };
                 };
-                "org/gnome/desktop/wm/preferences" = {
-                  button-layout = "";
-                };
-              };
-            }
-          ];
+              }
+            ];
+          };
         };
+        qt.enable = true;
         environment.systemPackages = [
           inputs'.xwayland-satellite.packages.default
+          inputs'.browser-previews.packages.google-chrome-dev
           self'.packages.mpv
         ]
         ++ (with pkgs; [
@@ -69,18 +85,27 @@
               enable = false;
               style = "none";
             };
-            subpixel.lcdfilter = "none";
+            subpixel = {
+              lcdfilter = "none";
+              rgba = "none";
+            };
             defaultFonts = {
               serif = [
                 "Fraunces"
+                "Apple Color Emoji"
+                "Noto Sans Symbols"
                 "Symbols Nerd Font"
               ];
               sansSerif = [
                 "Inter Variable"
+                "Apple Color Emoji"
+                "Noto Sans Symbols"
                 "Symbols Nerd Font"
               ];
               monospace = [
                 "Cascadia Code"
+                "Apple Color Emoji"
+                "Noto Sans Symbols"
                 "Symbols Nerd Font Mono"
               ];
               emoji = [ "Apple Color Emoji" ];
@@ -96,6 +121,11 @@
             (pkgs.cascadia-code.override { useVariableFont = true; })
             corefonts
             vista-fonts
+            noto-fonts
+            noto-fonts-color-emoji
+            noto-fonts-cjk-serif
+            noto-fonts-cjk-sans
+            noto-fonts-lgc-plus
           ];
         };
         xdg.portal = {
