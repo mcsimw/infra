@@ -15,11 +15,11 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
-          description = "whether to enable kakoune.";
+          description = "whether to enable emacs.";
         };
         package = lib.mkOption {
           type = lib.types.package;
-          description = "The package for Kakoune, can be overridden.";
+          description = "The package for emacs, can be overridden.";
           default = pkgs.emacs-igc-pgtk;
         };
         defaultEditor = lib.mkEnableOption "emacs as the default editor";

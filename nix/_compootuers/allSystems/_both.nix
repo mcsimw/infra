@@ -2,7 +2,6 @@
   lib,
   pkgs,
   self,
-  inputs',
   inputs,
   config,
   ...
@@ -41,45 +40,6 @@
   documentation = lib.genAttrs [ "doc" "nixos" "info" ] (_: {
     enable = lib.mkForce false;
   });
-
-  environment = {
-    defaultPackages = [ ];
-    variables.NIXPKGS_CONFIG = lib.mkForce "";
-    systemPackages =
-      with pkgs;
-      [
-        npins
-        btop
-        unzip
-        unrar
-        p7zip
-        texliveFull
-        typst
-        wget
-        nethack
-        unnethack
-        neomutt
-        file
-        yt-dlp_git
-        shpool
-        exfatprogs
-        amfora
-        parted
-        cryptsetup
-        btrfs-progs
-        xfsprogs
-        f2fs-tools
-        rsync
-        entr
-        xdg-user-dirs
-        openvi
-        pandoc
-        sc-im
-      ]
-      ++ (with inputs'; [
-        typst.packages.default
-      ]);
-  };
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-rc;
@@ -185,12 +145,5 @@
     };
   };
 
-  services = {
-    openssh.enable = lib.mkDefault true;
-    gpm.enable = lib.mkDefault true;
-    pulseaudio.enable = lib.mkForce false;
-    udisks2.enable = lib.mkDefault true;
-    dbus.implementation = lib.mkForce "broker";
-    userborn.enable = lib.mkForce true;
-  };
+  services.openssh.enable = lib.mkDefault true;
 }
