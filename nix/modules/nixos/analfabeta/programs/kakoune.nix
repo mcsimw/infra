@@ -19,7 +19,7 @@
         };
         defaultEditor = lib.mkOption {
           type = lib.types.bool;
-          default = false;
+          default = true;
           description = "Set Kakoune as the default editor.";
         };
         package = lib.mkOption {

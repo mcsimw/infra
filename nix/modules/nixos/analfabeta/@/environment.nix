@@ -37,6 +37,12 @@
             openvi
             pandoc
             sc-im
+            fastfetch
+            onefetch
+            eza
+            figlet
+            toilet
+            cowsay
           ]
           ++ [ inputs'.typst.packages.default ];
       };

@@ -9,10 +9,6 @@
 {
   imports = [ self.modules.nixos.analfabeta ];
   system.rebuild.enableNg = true;
-  analfabeta.programs.kakoune = {
-    enable = true;
-    defaultEditor = true;
-  };
   programs = {
     gnupg.agent = {
       enable = true;
