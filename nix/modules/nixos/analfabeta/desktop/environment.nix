@@ -16,14 +16,15 @@
           self'.packages.mpv
         ]
         ++ (with pkgs; [
+          (lib.mkIf config.services.pipewire.enable pwvucontrol_git)
+          (lib.mkIf config.programs.wireshark.enable wireshark)
           mako
           wmenu
-          (lib.mkIf config.services.pipewire.enable pwvucontrol_git)
           adwaita-icon-theme
           zathura
           imv
           wl-clipboard-rs
-          (lib.mkIf config.programs.wireshark.enable wireshark)
+          ani-cli
         ]);
       };
     }
