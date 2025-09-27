@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }:
@@ -15,12 +14,9 @@
     {
       analfabeta = {
         users.mcsimw.enable = true;
-        desktop.enable = true;
+        desktop.users.mcsimw = ./config.kdl;
       };
       environment.systemPackages = with pkgs; [ fish ];
     }
-    (lib.mkIf config.analfabeta.desktop.enable {
-      hjem.users.mcsimw.files.".config/niri/config.kdl".source = ./config.kdl;
-    })
   ];
 }

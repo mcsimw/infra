@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  hjem.users.nixos.files.".config/niri/config.kdl".source = ./config.kdl;
+  #  analfabeta.desktop.users.nixos = ./config.kdl
   environment.systemPackages = [
     (pkgs.writeShellApplication {
       name = "recovery";
