@@ -61,15 +61,6 @@
     extraLocaleSettings.LC_TIME = lib.mkDefault "C.UTF-8";
   };
 
-  security = {
-    polkit.enable = lib.mkDefault true;
-    rtkit.enable = lib.mkDefault true;
-    sudo = {
-      wheelNeedsPassword = lib.mkDefault false;
-      execWheelOnly = lib.mkForce true;
-    };
-  };
-
   xdg.portal.xdgOpenUsePortal = lib.mkDefault true;
   users.mutableUsers = lib.mkForce false;
 
