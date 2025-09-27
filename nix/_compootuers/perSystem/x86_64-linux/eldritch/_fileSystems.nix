@@ -88,8 +88,12 @@
     }
   ];
 
-  services.zfs = {
-    autoScrub.enable = true;
-    trim.enable = true;
+  services = {
+    zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
+    fstrim.enable = true;
   };
+
 }

@@ -1,11 +1,7 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    {
-      inputs',
-      pkgs,
-      ...
-    }:
+    { inputs', pkgs, ... }:
     { config, lib, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
@@ -44,32 +40,41 @@
               emoji = [ "Apple Color Emoji" ];
             };
           };
-          packages = with pkgs; [
-            spleen
-            terminus_font
-            nerd-fonts.symbols-only
-            inputs'.apple-emoji-linux.packages.default
-            inter
-            fraunces
-            (pkgs.cascadia-code.override { useVariableFont = true; })
-            corefonts
-            vista-fonts
-            vista-fonts-cht
-            vista-fonts-chs
-            noto-fonts
-            noto-fonts-color-emoji
-            noto-fonts-cjk-serif
-            noto-fonts-cjk-sans
-            noto-fonts-lgc-plus
-            inputs'.apple-fonts.packages.sf-pro
-            inputs'.apple-fonts.packages.sf-compact
-            inputs'.apple-fonts.packages.sf-mono
-            inputs'.apple-fonts.packages.sf-arabic
-            inputs'.apple-fonts.packages.sf-armenian
-            inputs'.apple-fonts.packages.sf-georgian
-            inputs'.apple-fonts.packages.sf-hebrew
-            inputs'.apple-fonts.packages.ny
-          ];
+          packages =
+            with pkgs;
+            [
+              spleen
+              terminus_font
+              nerd-fonts.symbols-only
+              inter
+              fraunces
+              (pkgs.cascadia-code.override { useVariableFont = true; })
+              corefonts
+              vista-fonts
+              vista-fonts-cht
+              vista-fonts-chs
+              noto-fonts
+              noto-fonts-color-emoji
+              noto-fonts-cjk-serif
+              noto-fonts-cjk-sans
+              noto-fonts-lgc-plus
+            ]
+            ++ (
+              with inputs';
+              [
+                apple-emoji-linux.packages.default
+              ]
+              ++ (with apple-fonts.packages; [
+                sf-pro
+                sf-compact
+                sf-mono
+                sf-arabic
+                sf-armenian
+                sf-georgian
+                sf-hebrew
+                ny
+              ])
+            );
         };
       };
     }

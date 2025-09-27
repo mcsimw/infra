@@ -7,7 +7,7 @@
       ...
     }:
     {
-      config = lib.mkIf config.analfebta.desktop.enable {
+      config = lib.mkIf config.analfabeta.desktop.enable {
         xdg.portal = {
           enable = true;
           extraPortals = with pkgs; [
