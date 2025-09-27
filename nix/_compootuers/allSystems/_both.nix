@@ -33,10 +33,6 @@
     nano.enable = lib.mkForce false;
   };
 
-  documentation = lib.genAttrs [ "doc" "nixos" "info" ] (_: {
-    enable = lib.mkForce false;
-  });
-
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-rc;
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
@@ -56,13 +52,9 @@
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
 
-  i18n = {
-    defaultLocale = lib.mkDefault "en_CA.UTF-8";
-    extraLocaleSettings.LC_TIME = lib.mkDefault "C.UTF-8";
-  };
+  i18n.defaultLocale = lib.mkDefault "en_CA.UTF-8";
 
   xdg.portal.xdgOpenUsePortal = lib.mkDefault true;
-  users.mutableUsers = lib.mkForce false;
 
   systemd = {
     services = {
