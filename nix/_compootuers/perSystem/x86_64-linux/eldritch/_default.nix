@@ -1,22 +1,17 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     ./_hardware.nix
     ./_fileSystems.nix
     ./_bootloader.nix
+    inputs.nix-maid.nixosModules.default
   ];
 
-  config = lib.mkMerge [
-    {
-      analfabeta = {
-        users.mcsimw.enable = true;
-        desktop.users.mcsimw = ./config.kdl;
-      };
-      environment.systemPackages = with pkgs; [ fish ];
-    }
-  ];
+  analfabeta = {
+    users.mcsimw.enable = true;
+    desktop.users.mcsimw = ./config.kdl;
+  };
+
+  users.users.mcsimw.maid.gsettings.settings.org.gnome.desktop.interface.accent-color = "red";
+
 }

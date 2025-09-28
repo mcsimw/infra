@@ -37,6 +37,7 @@
       };
     };
     niri.url = "github:yalter/niri";
+    nix-maid.url = "github:viperML/nix-maid";
     typst = {
       url = "github:typst/typst";
       inputs = {

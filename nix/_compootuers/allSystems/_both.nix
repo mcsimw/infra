@@ -38,18 +38,6 @@
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
 
-  networking = {
-    useDHCP = lib.mkDefault true;
-    networkmanager = {
-      enable = lib.mkForce false;
-      wifi.powersave = lib.mkDefault false;
-    };
-    wireless = {
-      enable = lib.mkForce false;
-    };
-    useNetworkd = lib.mkDefault true;
-  };
-
   time.timeZone = lib.mkDefault "Canada/Eastern";
 
   i18n.defaultLocale = lib.mkDefault "en_CA.UTF-8";

@@ -7,7 +7,7 @@
           enable = true;
           profiles.user.databases = [
             {
-              lockAll = true;
+              lockAll = false;
               settings = {
                 "org/gnome/desktop/interface" = {
                   accent-color = "pink";
