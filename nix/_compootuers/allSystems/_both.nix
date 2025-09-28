@@ -8,30 +8,8 @@
 }:
 {
   imports = [ self.modules.nixos.analfabeta ];
+
   system.rebuild.enableNg = true;
-  programs = {
-    gnupg.agent = {
-      enable = true;
-      pinentryPackage = lib.mkDefault pkgs.pinentry-curses;
-    };
-    tmux.enable = true;
-    appimage = {
-      enable = true;
-      binfmt = true;
-    };
-    wireshark.enable = lib.mkDefault true;
-    direnv = {
-      enable = lib.mkDefault true;
-      silent = lib.mkDefault true;
-    };
-    command-not-found.enable = lib.mkForce false;
-    fuse.userAllowOther = true;
-    git = {
-      enable = lib.mkForce true;
-      lfs.enable = lib.mkDefault true;
-    };
-    nano.enable = lib.mkForce false;
-  };
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-rc;
@@ -41,8 +19,6 @@
   time.timeZone = lib.mkDefault "Canada/Eastern";
 
   i18n.defaultLocale = lib.mkDefault "en_CA.UTF-8";
-
-  xdg.portal.xdgOpenUsePortal = lib.mkDefault true;
 
   systemd = {
     services = {
