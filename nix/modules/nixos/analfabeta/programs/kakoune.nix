@@ -15,7 +15,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
-          description = "whether to enable kakoune.";
+          description = "whether to enable Kakoune.";
         };
         defaultEditor = lib.mkOption {
           type = lib.types.bool;

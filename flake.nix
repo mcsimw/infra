@@ -28,6 +28,14 @@
         home-manager.follows = "";
       };
     };
+    tmux = {
+      url = "github:tmux/tmux";
+      flake = false;
+    };
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {

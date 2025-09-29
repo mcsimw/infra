@@ -5,7 +5,7 @@
     { lib, ... }:
     {
       environment = {
-        defaultPackages = [ ];
+        defaultPackages = lib.mkForce [ ];
         variables.NIXPKGS_CONFIG = lib.mkDefault "";
         systemPackages =
           with pkgs;

@@ -422,6 +422,22 @@
         "type": "github"
       }
     },
+    "libnbtplusplus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744811532,
+        "narHash": "sha256-qhmjaRkt+O7A+gu6HjUkl7QzOEb4r8y8vWZMG2R/C6o=",
+        "owner": "PrismLauncher",
+        "repo": "libnbtplusplus",
+        "rev": "531449ba1c930c98e0bcf5d332b237a8566f9d78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "libnbtplusplus",
+        "type": "github"
+      }
+    },
     "mnw": {
       "locked": {
         "lastModified": 1758834834,
@@ -718,6 +734,44 @@
         "type": "github"
       }
     },
+    "prismlauncher": {
+      "inputs": {
+        "libnbtplusplus": "libnbtplusplus",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "qrcodegenerator": "qrcodegenerator"
+      },
+      "locked": {
+        "lastModified": 1758812365,
+        "narHash": "sha256-wYzrFM2ihVSiMVPCkOeVfqKfPr9nTlbazuVAnaJPPT4=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "fcd385262108349f11fdab09b14a55aa6f3a8a03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "type": "github"
+      }
+    },
+    "qrcodegenerator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737616857,
+        "narHash": "sha256-6SugPt0lp1Gz7nV23FLmsmpfzgFItkSw7jpGftsDPWc=",
+        "owner": "nayuki",
+        "repo": "QR-Code-generator",
+        "rev": "2c9044de6b049ca25cb3cd1649ed7e27aa055138",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nayuki",
+        "repo": "QR-Code-generator",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "apple-emoji-linux": "apple-emoji-linux",
@@ -745,10 +799,12 @@
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nyx": "nyx",
         "preservation": "preservation",
+        "prismlauncher": "prismlauncher",
         "rust-analyzer-src": "rust-analyzer-src",
         "rust-overlay": "rust-overlay_4",
         "sops-nix": "sops-nix",
         "systems": "systems_3",
+        "tmux": "tmux",
         "treefmt-nix": "treefmt-nix",
         "typst": "typst",
         "wrapper-manager": "wrapper-manager",
@@ -1037,6 +1093,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757674869,
+        "narHash": "sha256-EIytv4wIxLnvTE9fXIJIbrxABAaEHnHpQ9irc3bRxSI=",
+        "owner": "tmux",
+        "repo": "tmux",
+        "rev": "3e28777ecbc8de3df803d5d7429a5ecd35f61553",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tmux",
+        "repo": "tmux",
         "type": "github"
       }
     },
