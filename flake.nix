@@ -14,6 +14,14 @@
       };
     };
     template.url = "github:NixOS/templates";
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter/main";
+      flake = false;
+    };
+    nvim-treesitter-textobjects = {
+      url = "github:nvim-treesitter/nvim-treesitter-textobjects/main";
+      flake = false;
+    };
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs = {

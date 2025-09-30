@@ -18,6 +18,7 @@
           inputs.nixpkgs-wayland.overlays.default
           inputs.nyx.overlays.cache-friendly
           inputs.niri.overlays.default
+          (import ./nvim/_plugins.nix { inherit inputs; })
         ];
       };
       inherit

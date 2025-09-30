@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
   flake.modules.nixos.analfabeta =
-    { lib, pkgs, ... }:
+    { pkgs, ... }:
     {
       programs.gnupg.agent = {
         enable = true;

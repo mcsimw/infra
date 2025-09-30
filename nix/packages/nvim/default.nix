@@ -20,9 +20,13 @@
         ];
         plugins = {
           dev.mcsimw.pure = ../../../dotfiles/nvim;
-          start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
-          opt = [
+          start = [
             pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+            pkgs.vimPlugins.nvim-treesitter-context
+            pkgs.vimPlugins.nvim-treesitter-textobjects
+          ]
+          ++ inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
+          opt = [
             inputs'.blink-cmp.packages.default
           ]
           ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;

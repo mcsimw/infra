@@ -682,6 +682,40 @@
         "type": "github"
       }
     },
+    "nvim-treesitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759109949,
+        "narHash": "sha256-AAX/MECcahlb9zr9MUQFxbbpxo2guKI7eT3ihA66+IQ=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "77362027f7aa850c87419fd571151e76b0b342a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "main",
+        "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
+    "nvim-treesitter-textobjects": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756368113,
+        "narHash": "sha256-+KmOpRi4JAqm6UqYdtk80jwFrJhLCs0lZM/Liofq0R4=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
+        "rev": "1b2d85d3de6114c4bcea89ffb2cd1ce9e3a19931",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "main",
+        "repo": "nvim-treesitter-textobjects",
+        "type": "github"
+      }
+    },
     "ny": {
       "flake": false,
       "locked": {
@@ -797,6 +831,8 @@
         "nix-maid": "nix-maid",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-wayland": "nixpkgs-wayland",
+        "nvim-treesitter": "nvim-treesitter",
+        "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
         "nyx": "nyx",
         "preservation": "preservation",
         "prismlauncher": "prismlauncher",
