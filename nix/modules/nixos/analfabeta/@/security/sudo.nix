@@ -1,10 +1,7 @@
+{ lib, ... }:
 {
-  flake.modules.nixos.analfabeta =
-    { lib, ... }:
-    {
-      security.sudo = {
-        wheelNeedsPassword = lib.mkDefault false;
-        execWheelOnly = lib.mkForce true;
-      };
-    };
+  flake.modules.nixos.analfabeta.security.sudo = {
+    wheelNeedsPassword = lib.mkDefault false;
+    execWheelOnly = lib.mkForce true;
+  };
 }
