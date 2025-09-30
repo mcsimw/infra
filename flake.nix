@@ -13,6 +13,7 @@
         git-hooks-nix.follows = "git-hooks";
       };
     };
+    template.url = "github:NixOS/templates";
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs = {

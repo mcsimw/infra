@@ -804,6 +804,7 @@
         "rust-overlay": "rust-overlay_4",
         "sops-nix": "sops-nix",
         "systems": "systems_3",
+        "template": "template",
         "tmux": "tmux",
         "treefmt-nix": "treefmt-nix",
         "typst": "typst",
@@ -1093,6 +1094,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "template": {
+      "locked": {
+        "lastModified": 1725249436,
+        "narHash": "sha256-qqKaxlPv+6Fyj+NUuOLPOlD82caqDkmpw63qOQkIzzc=",
+        "owner": "NixOS",
+        "repo": "templates",
+        "rev": "ad0e221dda33c4b564fad976281130ce34a20cb9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "templates",
         "type": "github"
       }
     },

@@ -43,6 +43,7 @@
             figlet
             toilet
             cowsay
+            pandoc
           ]
           ++ [ inputs'.typst.packages.default ];
       };

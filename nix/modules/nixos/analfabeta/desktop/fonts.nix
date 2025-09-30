@@ -9,7 +9,7 @@
           enableDefaultPackages = lib.mkForce false;
           fontconfig = {
             useEmbeddedBitmaps = true;
-            antialias = false;
+            antialias = true;
             hinting = {
               enable = false;
               style = "none";
