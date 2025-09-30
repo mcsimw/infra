@@ -1,4 +1,4 @@
 { lib, ... }:
 {
-  flake.modules.nixos.analfabeta.environment.variables.NIXPKGS_CONFIG = lib.mkDefault "";
+  flake.modules.nixos.analfabeta.environment.defaultPackages = lib.mkForce [ ];
 }
