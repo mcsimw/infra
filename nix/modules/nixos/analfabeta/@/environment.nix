@@ -44,6 +44,9 @@
             toilet
             cowsay
             pandoc
+            fd
+            ripgrep
+            fzf
           ]
           ++ [ inputs'.typst.packages.default ];
       };
