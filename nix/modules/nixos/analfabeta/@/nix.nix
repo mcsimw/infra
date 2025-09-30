@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
   flake.modules.nixos.analfabeta =
-    { lib, config, ... }:
+    { config, ... }:
     {
       nix = {
         channel.enable = false;

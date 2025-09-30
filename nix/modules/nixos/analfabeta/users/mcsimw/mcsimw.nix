@@ -4,7 +4,7 @@
     (
       { self }:
       moduleWithSystem (
-        { self', ... }:
+        { self' }:
         {
           config,
           lib,

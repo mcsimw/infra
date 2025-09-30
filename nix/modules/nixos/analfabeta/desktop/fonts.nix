@@ -1,8 +1,8 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { inputs', pkgs, ... }:
-    { config, lib, ... }:
+    { inputs', pkgs }:
+    { config, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         fonts = {

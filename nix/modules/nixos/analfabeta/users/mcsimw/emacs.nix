@@ -1,7 +1,7 @@
 { moduleWithSystem, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { pkgs, ... }:
+    { pkgs }:
     {
       config,
       lib,
