@@ -13,8 +13,8 @@
         extraBinPath = with pkgs; [
           lua-language-server
           nixd
-            deadnix
-      statix
+          deadnix
+          statix
           ripgrep
           fd
         ];
