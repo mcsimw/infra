@@ -12,6 +12,11 @@
         aliases = [ "vi" ];
         extraBinPath = with pkgs; [
           lua-language-server
+          nixd
+            deadnix
+      statix
+          ripgrep
+          fd
         ];
         plugins = {
           dev.mcsimw.pure = ../../../dotfiles/nvim;
