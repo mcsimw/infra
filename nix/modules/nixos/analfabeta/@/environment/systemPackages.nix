@@ -2,8 +2,7 @@
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     { pkgs, inputs', ... }:
-    _:
-    {
+    _: {
       environment.systemPackages =
         with pkgs;
         [
