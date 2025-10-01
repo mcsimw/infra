@@ -1,9 +1,9 @@
+{ lib, ... }:
 {
   flake.modules.nixos.analfabeta =
     {
       pkgs,
       config,
-      lib,
       ...
     }:
     {
