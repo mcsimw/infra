@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.analfabeta = {
+  flake.modules.nixos.hjem = {
     imports = [ inputs.hjem.nixosModules.default ];
     hjem.clobberByDefault = true;
   };
