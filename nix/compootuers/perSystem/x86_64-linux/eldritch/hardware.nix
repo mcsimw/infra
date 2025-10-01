@@ -6,10 +6,6 @@
 {
 
   hardware = {
-    graphics = {
-      package = lib.mkForce pkgs.mesa_git;
-      package32 = lib.mkForce pkgs.mesa32_git;
-    };
     bluetooth.enable = true;
     xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
