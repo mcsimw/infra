@@ -5,7 +5,7 @@
   ...
 }:
 {
-  flake.modules.nixos.analfabeta = moduleWithSystem (
+  flake.modules.nixos.mcsimww = moduleWithSystem (
     { self' }:
     { config, ... }:
     let
