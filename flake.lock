@@ -99,6 +99,29 @@
         "type": "github"
       }
     },
+    "compootuers": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759315364,
+        "narHash": "sha256-5/N4bo5P8vUEQqq3fuQIRkf1wZOSHWpHwFtws4bX/Ao=",
+        "owner": "mcsimw",
+        "repo": "compootuers",
+        "rev": "cc574fb7edf8b753acfa1350183df3a8250b6646",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mcsimw",
+        "repo": "compootuers",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1758758545,
@@ -812,6 +835,7 @@
         "apple-fonts": "apple-fonts",
         "blink-cmp": "blink-cmp",
         "browser-previews": "browser-previews",
+        "compootuers": "compootuers",
         "crane": "crane",
         "emacs-overlay": "emacs-overlay",
         "fenix": "fenix",

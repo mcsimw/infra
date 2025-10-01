@@ -2,6 +2,13 @@
   description = "MCSIMW's personal nix dotfiles";
 
   inputs = {
+    compootuers = {
+      url = "github:mcsimw/compootuers";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
     nixpkgs.url = "github:nixos/nixpkgs";
     nix = {
       url = "github:nixos/nix";
