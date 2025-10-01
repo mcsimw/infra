@@ -1,11 +1,12 @@
 { moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { inputs', self', pkgs }:
     {
-      config,
-      ...
+      inputs',
+      self',
+      pkgs,
     }:
+    { config, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         environment.systemPackages = [

@@ -1,12 +1,8 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     { pkgs }:
-    {
-      config,
-      lib,
-      ...
-    }:
+    { config, ... }:
     {
       config = lib.mkIf (config.analfabeta.users.mcsimw.enable && config.hardware.graphics.enable) {
         users.users.mcsimw.packages = with pkgs; [

@@ -1,4 +1,9 @@
-{ moduleWithSystem, self, lib, ... }:
+{
+  moduleWithSystem,
+  self,
+  lib,
+  ...
+}:
 {
   flake.modules.nixos.analfabeta =
     (

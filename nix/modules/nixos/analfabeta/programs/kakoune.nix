@@ -2,10 +2,7 @@
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     { self' }:
-    {
-      config,
-      ...
-    }:
+    { config, ... }:
     let
       cfg = config.analfabeta.programs.kakoune;
     in
