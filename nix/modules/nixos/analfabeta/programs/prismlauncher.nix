@@ -1,14 +1,12 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     {
       inputs',
-      ...
     }:
     {
       config,
       options,
-      lib,
       ...
     }:
     let
