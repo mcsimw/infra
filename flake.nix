@@ -9,6 +9,13 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
     nixpkgs.url = "github:nixos/nixpkgs";
     nix = {
       url = "github:nixos/nix";

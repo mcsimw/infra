@@ -21,7 +21,7 @@
 
   systemd = {
     services = {
-      systemd-oomd.after = [ "swap.target" ]; # https://github.com/systemd/systemd/pull/36718 forever and a day :)
+      systemd-oomd.after = [ "swap.target" ]; # https://github.com/systemd/systemd/pull/36718 forever and a day :) REMOVE ON SYSTEMD V258 RELEASE IN NIXOS
       NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
     };
     oomd = {
@@ -58,5 +58,4 @@
     };
   };
 
-  services.openssh.enable = lib.mkDefault true;
 }
