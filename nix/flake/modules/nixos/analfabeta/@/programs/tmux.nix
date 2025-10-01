@@ -1,8 +1,7 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { self', ... }:
-    { lib, ... }:
+    { self' }:
     {
       programs.tmux = {
         enable = lib.mkDefault true;
