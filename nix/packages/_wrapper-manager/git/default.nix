@@ -1,6 +1,6 @@
 {
   pkgs,
-  dotfiles,
+  self,
   ...
 }:
 {
@@ -10,6 +10,6 @@
       git-extras
       gitFull
     ];
-    env.GIT_CONFIG_GLOBAL.value = "${dotfiles}/git/config.ini";
+    env.GIT_CONFIG_GLOBAL.value = "${self}/stow/git/.config/git/config";
   };
 }

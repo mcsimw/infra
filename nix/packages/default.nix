@@ -31,10 +31,7 @@
               );
             in
             map (n: ./_wrapper-manager/${n}) dirNames;
-          specialArgs = {
-            inherit self inputs';
-            dotfiles = "${self}/dotfiles";
-          };
+          specialArgs = { inherit self inputs'; };
         }).config.build
         )
         packages
