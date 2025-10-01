@@ -83,7 +83,7 @@ let
     let
       inherit (sub) system src hostName;
 
-      fileNameSelector = [ "_both" ] ++ (if iso then [ "_iso" ] else [ "_default" ]);
+      fileNameSelector = [ "both" ] ++ (if iso then [ "iso" ] else [ "default" ]);
 
       globalFiles = getConfigFiles {
         pathType = "global";
@@ -172,12 +172,12 @@ in
       perSystem = lib.mkOption {
         type = lib.types.nullOr lib.types.path;
         default = null;
-        description = "directory tree: <root>/<system>/<host>/_*.nix";
+        description = "directory tree: <root>/<system>/<host>/*.nix";
       };
       perArch = lib.mkOption {
         type = lib.types.nullOr lib.types.path;
         default = null;
-        description = "optional overrides per architecture: <root>/<system>/_both|_default|_iso.nix";
+        description = "optional overrides per architecture: <root>/<system>/both|default|iso.nix";
       };
       allSystems = lib.mkOption {
         type = lib.types.nullOr lib.types.path;

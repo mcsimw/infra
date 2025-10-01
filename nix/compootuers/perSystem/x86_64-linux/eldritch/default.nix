@@ -1,9 +1,9 @@
 { config, ... }:
 {
   imports = [
-    ./_hardware.nix
-    ./_fileSystems.nix
-    ./_bootloader.nix
+    ./hardware.nix
+    ./fileSystems.nix
+    ./bootloader.nix
   ];
 
   analfabeta = {

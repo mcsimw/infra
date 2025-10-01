@@ -7,8 +7,8 @@ in
   flake = {
     modules.flake = { inherit compootuers; };
     compootuers = {
-      perSystem = ../../_compootuers/perSystem;
-      allSystems = ../../_compootuers/allSystems;
+      perSystem = ../../../compootuers/perSystem;
+      allSystems = ../../../compootuers/allSystems;
     };
   };
 }
