@@ -19,7 +19,7 @@
           fd
         ];
         plugins = {
-          dev.mcsimw.pure = ../../../stow/nvim/.config/nvim;
+          dev.mcsimw.pure = ../../../../stow/nvim/.config/nvim;
           start = [
             pkgs.vimPlugins.nvim-treesitter.withAllGrammars
             pkgs.vimPlugins.nvim-treesitter-context

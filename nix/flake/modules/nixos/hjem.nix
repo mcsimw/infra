@@ -1,7 +1,4 @@
-{ inputs, ... }:
+{ lib, ... }:
 {
-  flake.modules.nixos.analfabeta = {
-    imports = [ inputs.hjem.nixosModules.default ];
-    hjem.clobberByDefault = true;
-  };
+  flake.modules.nixos.analfabeta.hjem.clobberByDefault = lib.mkDefault true;
 }
