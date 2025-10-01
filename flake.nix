@@ -187,6 +187,11 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ (inputs.import-tree ./nix/flake) ];
+      imports = with inputs; [
+        (import-tree ./nix/flake)
+        flake-parts.flakeModules.modules
+        compootuers.modules.flake.compootuers
+        treefmt-nix.flakeModule
+      ];
     };
 }
