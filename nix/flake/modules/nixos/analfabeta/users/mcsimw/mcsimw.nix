@@ -31,7 +31,9 @@
           extraGroups = [
             "wheel"
           ]
-          ++ (import (self + /nix/modules/nixos/analfabeta/users/_extraGroups.nix) { inherit config lib; });
+          ++ (import (self + /nix/flake/modules/nixos/analfabeta/users/_extraGroups.nix) {
+            inherit config lib;
+          });
           inherit (cfg) uid;
           initialHashedPassword = "$y$j9T$HmE1eeCA3RdENLRrDyjmC/$QROkFnFmJC18wgrAGu24j8EiCGTEv3N9oC7mN7aj9A8";
           packages = with self'.packages; [
