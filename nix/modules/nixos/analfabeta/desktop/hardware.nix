@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   flake.modules.nixos.analfabeta =
-    {  config, ... }:
+    { config, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         hardware.graphics = {
