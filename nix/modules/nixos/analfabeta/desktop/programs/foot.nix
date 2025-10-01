@@ -1,8 +1,8 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     { pkgs }:
-    { config, lib, ... }:
+    { config, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         programs.foot = {

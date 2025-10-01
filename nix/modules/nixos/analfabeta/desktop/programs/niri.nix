@@ -1,8 +1,8 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { inputs', ... }:
-    { config, lib, ... }:
+    { inputs' }:
+    { config, ... }:
     let
       cfg = config.analfabeta.desktop;
     in

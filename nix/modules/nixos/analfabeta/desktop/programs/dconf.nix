@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
   flake.modules.nixos.analfabeta =
-    { config, lib, ... }:
+    { config, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         programs.dconf = {

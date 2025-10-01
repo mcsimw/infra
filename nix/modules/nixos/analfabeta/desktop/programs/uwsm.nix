@@ -1,11 +1,7 @@
+{ lib, ... }:
 {
   flake.modules.nixos.analfabeta =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
+    { config, pkgs, ... }:
     {
       config = lib.mkIf config.analfabeta.desktop.enable {
         programs.uwsm = {
