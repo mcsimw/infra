@@ -1,4 +1,11 @@
 { lib, ... }:
 {
-  flake.modules.nixos.analfabeta.services.dbus.implementation = lib.mkForce "broker";
+  flake.modules.nixos.analfabeta =
+    { pkgs, ... }:
+    {
+      services.dbus = {
+        implementation = lib.mkForce "broker";
+        packages = [ pkgs.dconf ];
+      };
+    };
 }

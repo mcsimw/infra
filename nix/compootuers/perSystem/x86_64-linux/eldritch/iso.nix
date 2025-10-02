@@ -6,6 +6,5 @@
       text = builtins.readFile ./recovery.bash;
     })
   ];
-  analfabeta.desktop.users.nixos = ./config.kdl;
 
 }

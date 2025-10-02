@@ -4,7 +4,7 @@
     basePackage = pkgs.mpv;
     prependFlags = [
       "--no-config"
-      "--config-dir=${self + dotfiles/mpv/mpv.config}"
+      "--config-dir=${self + /stow/linux/mpv/mpv.config}"
     ];
   };
 }

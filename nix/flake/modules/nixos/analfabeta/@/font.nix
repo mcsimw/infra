@@ -4,7 +4,7 @@
     { inputs', pkgs }:
     { config, ... }:
     {
-      config = lib.mkIf config.analfabeta.desktop.enable {
+      config = lib.mkIf config.programs.niri.enable {
         fonts = {
           enableDefaultPackages = lib.mkForce false;
           fontconfig = {

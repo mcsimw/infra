@@ -7,5 +7,6 @@
 
   services.openssh.enable = true;
 
-  analfabeta.desktop.enable = true;
+  programs.niri.enable = true;
+
 }

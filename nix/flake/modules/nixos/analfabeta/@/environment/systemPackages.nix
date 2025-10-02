@@ -1,8 +1,13 @@
-{ moduleWithSystem, ... }:
+{ moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { pkgs, inputs', ... }:
-    _: {
+    {
+      pkgs,
+      inputs',
+      self',
+    }:
+    { config, ... }:
+    {
       environment.systemPackages =
         with pkgs;
         [
@@ -39,12 +44,29 @@
           figlet
           toilet
           cowsay
-          pandoc
           fd
           ripgrep
           fzf
         ]
-        ++ [ inputs'.typst.packages.default ];
+        ++ (lib.optionals config.programs.niri.enable [
+          mako
+          wmenu
+          adwaita-icon-theme
+          zathura
+          imv
+          wl-clipboard-rs
+          ani-cli
+          nur.repos.Ev357.helium
+
+        ])
+        ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol_git)
+        ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark)
+        ++ [ inputs'.typst.packages.default ]
+        ++ (lib.optionals config.programs.niri.enable [
+          inputs'.xwayland-satellite.packages.default
+          inputs'.browser-previews.packages.google-chrome-dev
+          self'.packages.mpv
+        ]);
     }
   );
 }
