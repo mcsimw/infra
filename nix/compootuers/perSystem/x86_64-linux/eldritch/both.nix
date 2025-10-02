@@ -15,9 +15,8 @@
 
   hjem.users.mcsimw.files.".config/niri/config.kdl".source = ./config.kdl;
 
-  analfabeta = {
-    users.mcsimw.enable = true;
-    programs.prismlauncher.enable = config.programs.niri.enable;
-  };
+  analfabeta.programs.prismlauncher.enable = config.programs.niri.enable;
+
+  users.users.mcsimw.enable = true;
 
 }
