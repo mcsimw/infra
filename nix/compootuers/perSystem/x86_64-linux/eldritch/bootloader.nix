@@ -8,4 +8,5 @@
     efi.canTouchEfiVariables = true;
   };
   environment.systemPackages = [ pkgs.efibootmgr ];
+
 }

@@ -7,6 +7,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
     nur = {
@@ -27,7 +28,6 @@
         git-hooks-nix.follows = "git-hooks";
       };
     };
-    template.url = "github:NixOS/templates";
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter/main";
       flake = false;
@@ -67,7 +67,13 @@
         lib-aggregate.follows = "lib-aggregate";
       };
     };
-    niri.url = "github:yalter/niri";
+    niri = {
+      url = "github:yalter/niri";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
     nix-maid.url = "github:viperML/nix-maid";
     typst = {
       url = "github:typst/typst";

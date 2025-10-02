@@ -1,10 +1,6 @@
 {
   flake.modules.nixos.analfabeta =
-    {
-      pkgs,
-      config,
-      ...
-    }:
+    { pkgs, config, ... }:
     {
       xdg.portal = {
         inherit (config.programs.niri) enable;

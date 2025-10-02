@@ -34,10 +34,7 @@
   };
 
   nix = {
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      template.flake = inputs.template;
-    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
     settings = {
       substituters = [
@@ -57,5 +54,20 @@
       ];
     };
   };
+
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "soft";
+      item = "nofile";
+      value = "65536";
+    }
+    {
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+    }
+  ];
 
 }
