@@ -17,7 +17,7 @@
         extraGroups = [
           "wheel"
         ]
-        ++ (import "${self}/nix/flake/modules/nixos/@/users/_extraGroups.nix" {
+        ++ (import "${self}/nix/flake/modules/nixos/analfabeta/@/users/_extraGroups.nix" {
           inherit config lib;
         });
         uid = lib.mkDefault 1000;
