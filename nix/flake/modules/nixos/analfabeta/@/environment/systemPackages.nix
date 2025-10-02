@@ -57,16 +57,18 @@
           wl-clipboard-rs
           ani-cli
           nur.repos.Ev357.helium
-
         ])
         ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol_git)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark)
-        ++ [ inputs'.typst.packages.default ]
-        ++ (lib.optionals config.programs.niri.enable [
-          inputs'.xwayland-satellite.packages.default
-          inputs'.browser-previews.packages.google-chrome-dev
-          self'.packages.mpv
-        ]);
+        ++ (with inputs'.packages; [ typst.default ])
+        ++ (lib.optionals config.programs.niri.enable (
+          with inputs'.packages;
+          [
+            xwayland-satellite.default
+            browser-previews.google-chrome-dev
+          ]
+          ++ [ self'.packages.mpv ]
+        ));
     }
   );
 }
