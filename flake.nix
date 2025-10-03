@@ -202,6 +202,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = with inputs; [
         (import-tree ./nix/flake)
+        (import-tree ./nix/perSystem)
         flake-parts.flakeModules.modules
         compootuers.modules.flake.compootuers
         treefmt-nix.flakeModule
