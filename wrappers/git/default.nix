@@ -1,6 +1,5 @@
 {
   pkgs,
-  self,
   ...
 }:
 {
@@ -10,6 +9,6 @@
       git-extras
       gitFull
     ];
-    env.GIT_CONFIG_GLOBAL.value = "${self}/stow/unix/git/.config/git/config";
+    env.GIT_CONFIG_GLOBAL.value = ./config;
   };
 }

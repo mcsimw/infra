@@ -28,22 +28,6 @@
         git-hooks-nix.follows = "git-hooks";
       };
     };
-    nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter/main";
-      flake = false;
-    };
-    nvim-treesitter-textobjects = {
-      url = "github:nvim-treesitter/nvim-treesitter-textobjects/main";
-      flake = false;
-    };
-    xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-        flake-utils.follows = "flake-utils";
-      };
-    };
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs = {
@@ -65,24 +49,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         lib-aggregate.follows = "lib-aggregate";
-      };
-    };
-    niri = {
-      url = "github:yalter/niri";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-    nix-maid.url = "github:viperML/nix-maid";
-    typst = {
-      url = "github:typst/typst";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        fenix.follows = "fenix";
-        systems.follows = "systems";
-        crane.follows = "crane";
       };
     };
     systems.url = "github:nix-systems/default";
@@ -115,34 +81,9 @@
         lib-aggregate.follows = "lib-aggregate";
       };
     };
-    mnw.url = "github:Gerg-L/mnw";
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
-        git-hooks.follows = "git-hooks";
-      };
-    };
-    blink-cmp = {
-      url = "github:Saghen/blink.cmp";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        fenix.follows = "fenix";
-      };
-    };
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
-    };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs";
-      };
     };
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
@@ -161,18 +102,6 @@
     };
     import-tree.url = "github:vic/import-tree";
     preservation.url = "github:nix-community/preservation";
-    rust-analyzer-src = {
-      url = "github:rust-lang/rust-analyzer/nightly";
-      flake = false;
-    };
-    crane.url = "github:ipetkov/crane";
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-analyzer-src.follows = "rust-analyzer-src";
-      };
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -191,18 +120,14 @@
         flake-compat.follows = "flake-compat";
       };
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = with inputs; [
-        (import-tree ./nix/flake)
-        (import-tree ./nix/perSystem)
+        (import-tree ./flake)
+        (import-tree ./perSystem)
         flake-parts.flakeModules.modules
         compootuers.modules.flake.compootuers
         treefmt-nix.flakeModule
