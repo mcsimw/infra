@@ -23,11 +23,12 @@
           inherit (_module.args) pkgs;
           modules =
             let
+              wrappersPath = ../../../wrappers;
               dirNames = builtins.attrNames (
-                lib.filterAttrs (_n: t: t == "directory") (builtins.readDir ../../../wrappers)
+                lib.filterAttrs (_n: t: t == "directory") (builtins.readDir wrappersPath)
               );
             in
-            map (n: ../../../wrappers/${n}) dirNames;
+            map (n: wrappersPath + "/${n}") dirNames;
           specialArgs = { inherit self inputs'; };
         }).config.build
         )
