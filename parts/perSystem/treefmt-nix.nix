@@ -7,8 +7,6 @@
       statix.enable = true;
       dos2unix.enable = true;
       stylua.enable = true;
-      shfmt.enable = true;
-      shellcheck.enable = true;
     };
   };
 }
