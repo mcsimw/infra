@@ -123,8 +123,10 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
+    inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ./parts/_imports.nix ];
+      imports = [
+        (import-tree ./parts)
+      ];
     };
 }
