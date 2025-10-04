@@ -123,6 +123,6 @@
   };
 
   outputs =
-    inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (import-tree ./parts) ]; };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./parts) ]; };
 }
