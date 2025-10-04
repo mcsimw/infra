@@ -124,9 +124,5 @@
 
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        (import-tree ./parts)
-      ];
-    };
+    flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (import-tree ./parts) ]; };
 }
