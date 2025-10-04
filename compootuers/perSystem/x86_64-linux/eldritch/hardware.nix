@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   ...
 }:
 {
@@ -54,7 +53,6 @@
     scx = {
       enable = true;
       scheduler = "scx_lavd";
-      package = pkgs.scx_git.full;
     };
     pipewire = {
       enable = true;

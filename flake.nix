@@ -22,10 +22,10 @@
       url = "github:nixos/nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-23-11.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
+        nixpkgs-23-11.follows = "";
+        flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-        git-hooks-nix.follows = "git-hooks";
+        git-hooks-nix.follows = "";
       };
     };
     nyx = {
@@ -43,16 +43,7 @@
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        lib-aggregate.follows = "lib-aggregate";
-      };
-    };
     systems.url = "github:nix-systems/default";
-    flake-compat.url = "github:edolstra/flake-compat";
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
@@ -66,21 +57,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrapper-manager.url = "github:viperML/wrapper-manager";
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-    flake-firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        lib-aggregate.follows = "lib-aggregate";
-      };
-    };
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
@@ -105,20 +81,6 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lib-aggregate = {
-      url = "github:nix-community/lib-aggregate";
-      inputs = {
-        nixpkgs-lib.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-      };
     };
   };
 

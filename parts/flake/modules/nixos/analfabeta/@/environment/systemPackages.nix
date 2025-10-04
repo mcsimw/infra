@@ -21,7 +21,6 @@
           unnethack
           neomutt
           file
-          yt-dlp_git
           shpool
           exfatprogs
           amfora
@@ -57,7 +56,7 @@
           nur.repos.Ev357.helium
           mpv
         ])
-        ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol_git)
+        ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark);
     }
   );

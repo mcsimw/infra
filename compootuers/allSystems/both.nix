@@ -1,8 +1,8 @@
 {
   lib,
-  pkgs,
   self,
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -11,8 +11,8 @@
   system.rebuild.enableNg = true;
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-rc;
-    zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    zfs.package = lib.mkOverride 99 pkgs.zfs_unstable;
   };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
