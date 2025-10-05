@@ -10,19 +10,12 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     nixpkgs.url = "github:nixos/nixpkgs";
     nix = {
       url = "github:nixos/nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
+        flake-parts.follows = "";
         nixpkgs-23-11.follows = "";
         flake-compat.follows = "";
         git-hooks-nix.follows = "";
@@ -35,15 +28,6 @@
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    systems.url = "github:nix-systems/default";
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     hjem = {
       url = "github:feel-co/hjem";
@@ -74,6 +58,10 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
   };
 

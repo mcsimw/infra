@@ -53,8 +53,8 @@
           imv
           wl-clipboard-rs
           ani-cli
-          nur.repos.Ev357.helium
           mpv
+          qutebrowser
         ])
         ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark);

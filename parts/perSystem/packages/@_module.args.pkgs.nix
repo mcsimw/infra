@@ -13,7 +13,6 @@
         config.allowUnfree = true;
         overlays = [
           inputs.nix.overlays.default
-          inputs.nur.overlays.default
         ];
       };
       inherit
