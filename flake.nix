@@ -22,17 +22,10 @@
       url = "github:nixos/nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
         nixpkgs-23-11.follows = "";
         flake-compat.follows = "";
-        flake-parts.follows = "flake-parts";
         git-hooks-nix.follows = "";
-      };
-    };
-    nyx = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "";
       };
     };
     tmux = {
