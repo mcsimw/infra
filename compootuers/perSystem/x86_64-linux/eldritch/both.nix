@@ -13,7 +13,10 @@
     steam.enable = config.programs.niri.enable;
   };
 
-  hjem.users.mcsimw.files.".config/niri/config.kdl".source = ./config.kdl;
+  hjem.users.mcsimw.rum.desktops.niri = {
+    enable = true;
+    config = builtins.readFile ./config.kdl;
+  };
 
   analfabeta.programs.prismlauncher.enable = config.programs.niri.enable;
 

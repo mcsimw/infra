@@ -11,16 +11,14 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [
-          inputs.nix.overlays.default
-        ];
+        overlays = [ inputs.nix.overlays.default ];
       };
       inherit
         ((inputs.wrapper-manager.lib {
           inherit (_module.args) pkgs;
           modules =
             let
-              wrappersPath = ../../../wrappers;
+              wrappersPath = self + /wrappers;
               dirNames = builtins.attrNames (
                 lib.filterAttrs (_n: t: t == "directory") (builtins.readDir wrappersPath)
               );

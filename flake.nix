@@ -33,6 +33,13 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hjem-rum = {
+      url = "github:snugnug/hjem-rum";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        hjem.follows = "hjem";
+      };
+    };
     wrapper-manager.url = "github:viperML/wrapper-manager";
     kakoune = {
       url = "github:mawww/kakoune";
@@ -42,7 +49,7 @@
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
     };
     apple-fonts = {

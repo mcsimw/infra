@@ -1,0 +1,18 @@
+{
+  "pins": {
+    "ghostty": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "ghostty-org",
+        "repo": "ghostty"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "39d3af469e0ca76e4644b25be4b8c041aafec81b",
+      "url": "https://github.com/ghostty-org/ghostty/archive/39d3af469e0ca76e4644b25be4b8c041aafec81b.tar.gz",
+      "hash": "0rf01284b9hxrlis22gj9cgwvsk7ia0pbsclfqzvm3s33p3gds5h"
+    }
+  },
+  "version": 5
+}
