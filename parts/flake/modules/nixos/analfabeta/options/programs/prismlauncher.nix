@@ -1,10 +1,7 @@
 { moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    {
-      inputs',
-    }:
-    _:
+    { inputs' }:
     {
       options.programs.prismlauncher = {
         enable = lib.mkEnableOption "Install Prism Launcher";

@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.compootuers = {
-    perSystem = self + /compootuers/perSystem;
-    allSystems = self + /compootuers/allSystems;
+    perSystem = self + /_compootuers/perSystem;
+    allSystems = self + /_compootuers/allSystems;
   };
 }
