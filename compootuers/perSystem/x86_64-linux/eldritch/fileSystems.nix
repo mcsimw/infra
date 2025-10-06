@@ -12,12 +12,6 @@
     ];
   };
 
-  analfabeta.services.zfs-rollback = {
-    enable = true;
-    snapshot = "blank";
-    volume = "nyx/faketmpfs";
-  };
-
   fileSystems = {
     "/" = {
       device = "nyx/faketmpfs";
@@ -92,6 +86,11 @@
     zfs = {
       autoScrub.enable = true;
       trim.enable = true;
+      rollback = {
+        enable = true;
+        snapshot = "blank";
+        volume = "nyx/faketmpfs";
+      };
     };
     fstrim.enable = true;
   };

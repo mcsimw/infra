@@ -7,11 +7,11 @@
       ...
     }:
     let
-      cfg = config.analfabeta.services.zfs-rollback;
+      cfg = config.services.zfs.rollback;
       cfgZfs = config.boot.zfs;
     in
     {
-      options.analfabeta.services.zfs-rollback = {
+      options.services.zfs.rollback = {
         enable = lib.mkEnableOption "Impermanence on safe-shutdown through ZFS snapshots";
         volume = lib.mkOption {
           type = lib.types.str;

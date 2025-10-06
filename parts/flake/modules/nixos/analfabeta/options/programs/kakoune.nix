@@ -2,12 +2,8 @@
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
     { self' }:
-    { config, ... }:
-    let
-      cfg = config.analfabeta.programs.kakoune;
-    in
     {
-      options.analfabeta.programs.kakoune = {
+      options.programs.kakoune = {
         enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
@@ -22,12 +18,6 @@
           type = lib.types.package;
           description = "The package for Kakoune, can be overridden.";
           default = self'.packages.kakoune;
-        };
-      };
-      config = lib.mkIf cfg.enable {
-        environment = {
-          systemPackages = [ cfg.package ];
-          variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 900 "kak");
         };
       };
     }
