@@ -11,14 +11,13 @@
   programs = {
     niri.enable = true;
     steam.enable = config.programs.niri.enable;
+    prismlauncher.enable = config.programs.niri.enable;
   };
 
   hjem.users.mcsimw.rum.desktops.niri = {
     enable = true;
     config = builtins.readFile ./config.kdl;
   };
-
-  analfabeta.programs.prismlauncher.enable = config.programs.niri.enable;
 
   users.users.mcsimw.enable = true;
 
