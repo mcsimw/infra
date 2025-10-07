@@ -1,5 +1,18 @@
 {
   "pins": {
+    "PrismLauncher": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher"
+      },
+      "branch": "develop",
+      "submodules": false,
+      "revision": "8b5e91920dda7324ad3db98f56b209bba0f4e57d",
+      "url": "https://github.com/PrismLauncher/PrismLauncher/archive/8b5e91920dda7324ad3db98f56b209bba0f4e57d.tar.gz",
+      "hash": "1q2fkvdg67033bm43qccjgw242ri4i2njkq5kmmskxilpyfi8khl"
+    },
     "ghostty": {
       "type": "Git",
       "repository": {
@@ -9,9 +22,48 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "39d3af469e0ca76e4644b25be4b8c041aafec81b",
-      "url": "https://github.com/ghostty-org/ghostty/archive/39d3af469e0ca76e4644b25be4b8c041aafec81b.tar.gz",
-      "hash": "0rf01284b9hxrlis22gj9cgwvsk7ia0pbsclfqzvm3s33p3gds5h"
+      "revision": "67ece534237ea5ebf99f2fe5628c56d52e3291f3",
+      "url": "https://github.com/ghostty-org/ghostty/archive/67ece534237ea5ebf99f2fe5628c56d52e3291f3.tar.gz",
+      "hash": "0dya7xkdvainrahrg6xph96xj44gzvay4plnab3gs9pyj476rcpj"
+    },
+    "kakoune": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "mawww",
+        "repo": "kakoune"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "e3263887653ce5ec817c1aad51389c9600dfeabe",
+      "url": "https://github.com/mawww/kakoune/archive/e3263887653ce5ec817c1aad51389c9600dfeabe.tar.gz",
+      "hash": "141wxn7bnb4rvknyfgh2ijr1sl7ga8jpria0ylsy2aa4wpa10dn0"
+    },
+    "nixpkgs-wayland": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "nixpkgs-wayland"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "7b2cab209f42d8400d447c534d7f2e67785123a5",
+      "url": "https://github.com/nix-community/nixpkgs-wayland/archive/7b2cab209f42d8400d447c534d7f2e67785123a5.tar.gz",
+      "hash": "0s96a1xlz64jhzs1xgbd9g37yc4sbl5m79fs7vx2fhj37q5qmmsr"
+    },
+    "tmux": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "tmux",
+        "repo": "tmux"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "0ff2676a2594aa6a26de7232e605640c28021f28",
+      "url": "https://github.com/tmux/tmux/archive/0ff2676a2594aa6a26de7232e605640c28021f28.tar.gz",
+      "hash": "0r5cnvxrnhvik8fsp85jx1mxpbrnkj7lrbczz65zpl135c87mdjv"
     }
   },
   "version": 5

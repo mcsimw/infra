@@ -11,7 +11,6 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ inputs.nix.overlays.default ];
       };
       inherit
         ((inputs.wrapper-manager.lib {

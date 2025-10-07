@@ -1,9 +1,7 @@
 { moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    {
-      pkgs,
-    }:
+    { pkgs }:
     { config, ... }:
     {
       environment.systemPackages =
@@ -56,6 +54,7 @@
           mpv
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
+        ++ (lib.optionals config.programs.ghostty.enable [ config.programs.ghostty.package ])
         ++ (lib.optionals config.programs.prismlauncher.enable [ config.programs.prismlauncher.package ])
         ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark);

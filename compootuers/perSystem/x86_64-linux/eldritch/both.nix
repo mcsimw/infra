@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./hardware.nix
@@ -8,9 +8,14 @@
 
   services.openssh.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    nushell
+    fish
+  ];
+
   programs = {
     niri.enable = true;
-    steam.enable = config.programs.niri.enable;
+    #steam.enable = config.programs.niri.enable;
     prismlauncher.enable = config.programs.niri.enable;
   };
 

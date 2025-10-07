@@ -6,7 +6,10 @@
   ...
 }:
 {
-  imports = [ self.modules.nixos.analfabeta ];
+  imports = [
+    inputs.determinate.nixosModules.default
+    self.modules.nixos.analfabeta
+  ];
 
   system.rebuild.enableNg = true;
 
@@ -29,7 +32,7 @@
       enableRootSlice = true;
       enableSystemSlice = true;
       enableUserSlices = true;
-      extraConfig.DefaultMemoryPressureDurationSec = "20s";
+      settings.OOM.DefaultMemoryPressureDurationSec = "20s";
     };
   };
 
@@ -37,17 +40,24 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
     settings = {
+      lazy-trees = true;
       substituters = [
         "https://nix-community.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
         "https://ghostty.cachix.org"
+        "https://prismlauncher.cachix.org"
       ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
         "https://ghostty.cachix.org"
+        "https://prismlauncher.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
       ];
     };
   };

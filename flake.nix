@@ -11,24 +11,7 @@
       };
     };
     nixpkgs.url = "github:nixos/nixpkgs";
-    nix = {
-      url = "github:nixos/nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "";
-        nixpkgs-23-11.follows = "";
-        flake-compat.follows = "";
-        git-hooks-nix.follows = "";
-      };
-    };
-    tmux = {
-      url = "github:tmux/tmux";
-      flake = false;
-    };
-    prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,10 +24,6 @@
       };
     };
     wrapper-manager.url = "github:viperML/wrapper-manager";
-    kakoune = {
-      url = "github:mawww/kakoune";
-      flake = false;
-    };
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {

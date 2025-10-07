@@ -1,11 +1,14 @@
-{ inputs, ... }:
+{ self, ... }:
+let
+  sources = import (self + /npins);
+in
 {
   perSystem =
     { pkgs, ... }:
     {
       packages.tmux = pkgs.tmux.overrideAttrs {
-        version = inputs.tmux.rev;
-        src = inputs.tmux;
+        version = sources.tmux.revision;
+        src = sources.tmux;
       };
     };
 }
