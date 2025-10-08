@@ -94,5 +94,4 @@
     };
     fstrim.enable = true;
   };
-
 }

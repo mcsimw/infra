@@ -2,20 +2,22 @@
   lib,
   self,
   inputs,
-  pkgs,
+  system,
   ...
 }:
+let
+  chaotic = inputs.chaotic.legacyPackages.${system};
+in
 {
   imports = [
-    inputs.determinate.nixosModules.default
     self.modules.nixos.analfabeta
   ];
 
   system.rebuild.enableNg = true;
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    zfs.package = lib.mkOverride 99 pkgs.zfs_unstable;
+    kernelPackages = lib.mkDefault chaotic.linuxPackages_cachyos-gcc;
+    zfs.package = lib.mkOverride 99 chaotic.zfs_cachyos;
   };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
@@ -40,21 +42,23 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
     settings = {
-      lazy-trees = true;
       substituters = [
         "https://nix-community.cachix.org"
+        "https://chaotic-nyx.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://ghostty.cachix.org"
         "https://prismlauncher.cachix.org"
       ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
+        "https://chaotic-nyx.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://ghostty.cachix.org"
         "https://prismlauncher.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
         "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="

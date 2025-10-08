@@ -4,6 +4,4 @@
     ./fileSystems.nix
     ./bootloader.nix
   ];
-
-  programs.ghostty.enable = true;
 }

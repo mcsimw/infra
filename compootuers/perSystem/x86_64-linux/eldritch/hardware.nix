@@ -1,12 +1,13 @@
 {
   lib,
+  system,
+  inputs,
   ...
 }:
 {
 
   hardware = {
     bluetooth.enable = true;
-    xpadneo.enable = true;
     cpu.intel.updateMicrocode = true;
     amdgpu = {
       initrd.enable = true;
@@ -53,6 +54,7 @@
     scx = {
       enable = true;
       scheduler = "scx_lavd";
+      package = inputs.chaotic.legacyPackages.${system}.scx_git.full;
     };
     pipewire = {
       enable = true;

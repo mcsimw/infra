@@ -1,18 +1,16 @@
-{ lib, self, ... }:
-let
-  sources = import (self + /npins);
-in
+{ moduleWithSystem, lib, ... }:
 {
-  flake.modules.nixos.analfabeta =
-    { pkgs, ... }:
+  flake.modules.nixos.analfabeta = moduleWithSystem (
+    { self' }:
     {
       options.programs.ghostty = {
         enable = lib.mkEnableOption "Install Ghostty Terminal";
         package = lib.mkOption {
           type = lib.types.package;
           description = "The package for Ghostty can be overridden.";
-          inherit ((import sources.ghostty).packages.${pkgs.system}) default;
+          default = self'.packages.ghostty;
         };
       };
-    };
+    }
+  );
 }

@@ -13,6 +13,19 @@
       "url": "https://github.com/PrismLauncher/PrismLauncher/archive/8b5e91920dda7324ad3db98f56b209bba0f4e57d.tar.gz",
       "hash": "1q2fkvdg67033bm43qccjgw242ri4i2njkq5kmmskxilpyfi8khl"
     },
+    "emacs-overlay": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "emacs-overlay"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "8f30aec081459f2d312cef92d9c9948918e9c309",
+      "url": "https://github.com/nix-community/emacs-overlay/archive/8f30aec081459f2d312cef92d9c9948918e9c309.tar.gz",
+      "hash": "1ry3893bdp9k04b6lnzn2gyrr0s1dc8iyyy1g0b0hbjc7zs4vxw2"
+    },
     "ghostty": {
       "type": "Git",
       "repository": {
@@ -48,9 +61,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "7b2cab209f42d8400d447c534d7f2e67785123a5",
-      "url": "https://github.com/nix-community/nixpkgs-wayland/archive/7b2cab209f42d8400d447c534d7f2e67785123a5.tar.gz",
-      "hash": "0s96a1xlz64jhzs1xgbd9g37yc4sbl5m79fs7vx2fhj37q5qmmsr"
+      "revision": "95d5c5d20e3a41fabd15ad8ea2dac000565c70bf",
+      "url": "https://github.com/nix-community/nixpkgs-wayland/archive/95d5c5d20e3a41fabd15ad8ea2dac000565c70bf.tar.gz",
+      "hash": "1w8s4mi0dqgh4rk8ddikpl1l7098i9ihq1gb659dnkln5l74l1yq"
     },
     "tmux": {
       "type": "Git",

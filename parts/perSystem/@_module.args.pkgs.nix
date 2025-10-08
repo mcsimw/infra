@@ -4,6 +4,9 @@
   self,
   ...
 }:
+let
+  sources = import (self + /npins);
+in
 {
   perSystem =
     { system, inputs', ... }:
@@ -11,6 +14,7 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ (import sources.emacs-overlay) ];
       };
       inherit
         ((inputs.wrapper-manager.lib {

@@ -1,3 +1,4 @@
+# Stolen from https://github.com/chaotic-cx/nyx/blob/main/modules/nixos/zfs-impermanence-on-shutdown.nix
 { lib, ... }:
 {
   flake.modules.nixos.analfabeta =

@@ -10,12 +10,23 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    nixpkgs.url = "github:nixos/nixpkgs";
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
+    nixpkgs.url = "github:mcsimw/nixpkgs?ref=tmp";
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs = {
+        home-manager.follows = "";
+        rust-overlay.follows = "";
+        flake-schemas.follows = "";
+      };
+    };
+
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hjem-rum = {
       url = "github:snugnug/hjem-rum";
       inputs = {
@@ -23,7 +34,9 @@
         hjem.follows = "hjem";
       };
     };
+
     wrapper-manager.url = "github:viperML/wrapper-manager";
+
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs = {
@@ -31,24 +44,31 @@
         treefmt-nix.follows = "";
       };
     };
+
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     import-tree.url = "github:vic/import-tree";
+
     preservation.url = "github:nix-community/preservation";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
   };
 
   outputs =

@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{ config, ... }:
+let
+  niri = config.programs.niri.enable;
+in
 {
   imports = [
     ./hardware.nix
@@ -8,15 +11,10 @@
 
   services.openssh.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    nushell
-    fish
-  ];
-
   programs = {
     niri.enable = true;
-    #steam.enable = config.programs.niri.enable;
-    prismlauncher.enable = config.programs.niri.enable;
+    steam.enable = niri;
+    prismlauncher.enable = niri;
   };
 
   hjem.users.mcsimw.rum.desktops.niri = {
@@ -25,5 +23,4 @@
   };
 
   users.users.mcsimw.enable = true;
-
 }
