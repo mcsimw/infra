@@ -74,11 +74,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1760152188,
-        "narHash": "sha256-k9sqEYgJ2QH257T4p6MeKCHLYi2k9XH7Cjv8LPrtuvY=",
+        "lastModified": 1760184540,
+        "narHash": "sha256-zzkbK1k1CQrQR6Va0YN9x60SEfyXDunq8xdG6qKmYLY=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "3f06ccee77dcae294d48cf7741dd3647fc3613a7",
+        "rev": "044947d09d3717d1b296e5cae11458c46e1a9073",
         "type": "github"
       },
       "original": {
@@ -137,11 +137,11 @@
     },
     "emoji-picker-nix": {
       "locked": {
-        "lastModified": 1760210443,
-        "narHash": "sha256-QuXTWzxXjr0TsXPhFOr92+2GjtiW2xb/hWdRVhZotlI=",
+        "lastModified": 1760211333,
+        "narHash": "sha256-QtdxslWv/1/eXS2RLBKKpfD8JR78pDW4fzkloNJgMHE=",
         "owner": "mcsimw",
         "repo": "emoji-picker-nix",
-        "rev": "50740a1acb83beab523fa2f497e6949f60ff5cca",
+        "rev": "6c2b9d01f8a329c8b2acf32f38d15ea37af8fd86",
         "type": "github"
       },
       "original": {
@@ -180,26 +180,9 @@
         "type": "github"
       }
     },
-    "flake-compat_3": {
-      "locked": {
-        "lastModified": 1747046372,
-        "narHash": "sha256-CIVLLkVgvHYbgI2UpXvIIBJ12HWgX+fjA8Xf8PUmqCY=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "9100a0f413b0c601e0533d1d94ffd501ce2e7885",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-firefox-nightly": {
       "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
+        "flake-compat": [],
         "lib-aggregate": [
           "lib-aggregate"
         ],
@@ -406,7 +389,7 @@
     },
     "ndg": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
+        "flake-compat": "flake-compat",
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
           "hjem",
@@ -429,7 +412,7 @@
     },
     "ndg_2": {
       "inputs": {
-        "flake-compat": "flake-compat_3",
+        "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "hjem-rum",
@@ -485,11 +468,11 @@
         "nixpkgs-regression": []
       },
       "locked": {
-        "lastModified": 1760138716,
-        "narHash": "sha256-S/0f3x3WKbN7kdZwAS8JaW6ubZoTPQIeAXpHG2yW2Xo=",
+        "lastModified": 1760206884,
+        "narHash": "sha256-4o8TziTXmDX633c17sKmmjlhtcZaCNZvh+9aijTHB/E=",
         "owner": "nixos",
         "repo": "nix",
-        "rev": "8064c756940a13d1f6543c4c0be624fc7a938c31",
+        "rev": "682cf0b266e79967430e50036a934883abed662f",
         "type": "github"
       },
       "original": {
@@ -585,14 +568,12 @@
     },
     "nixpkgs-wayland": {
       "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
+        "flake-compat": [],
         "lib-aggregate": [
           "lib-aggregate"
         ],
         "nixpkgs": [
-          "flake-compat"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -611,11 +592,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760206865,
-        "narHash": "sha256-u0oG8OozsAiQ72w+u1AOlDf5RIpKMaXhCnHgb1NZhmU=",
+        "lastModified": 1760212221,
+        "narHash": "sha256-gKHszMSReQIAIrHDhYMuS2CDmL440UdsKmNNgn+zo5M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ed79f4bf13c5784b71ff07aad8357ffee9a16f32",
+        "rev": "a61d1ce9dd76f4ef73ef639903e05c06bfc99508",
         "type": "github"
       },
       "original": {
@@ -634,11 +615,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760205451,
-        "narHash": "sha256-MjSi99KRmD+YoDhdm0MuLBHojzl6wGtFMvRSCstMMUQ=",
+        "lastModified": 1760211868,
+        "narHash": "sha256-94NlU7LUXuL2fnUoaPDF1Xu9kVOicO+4+DEjIAxggNU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9e7136e2d133bbb553580e3699315d795c6a720b",
+        "rev": "9e2d8216b3fb1d5963c162a17fe796c8d7f3d112",
         "type": "github"
       },
       "original": {
@@ -683,7 +664,6 @@
         "compootuers": "compootuers",
         "emacs-overlay": "emacs-overlay",
         "emoji-picker-nix": "emoji-picker-nix",
-        "flake-compat": "flake-compat",
         "flake-firefox-nightly": "flake-firefox-nightly",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",

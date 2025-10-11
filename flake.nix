@@ -59,9 +59,9 @@
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
         lib-aggregate.follows = "lib-aggregate";
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "flake-compat";
+        flake-compat.follows = "";
       };
     };
 
@@ -130,7 +130,7 @@
       url = "github:nix-community/flake-firefox-nightly";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
+        flake-compat.follows = "";
         lib-aggregate.follows = "lib-aggregate";
       };
     };
@@ -157,8 +157,6 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
-
-    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs =
