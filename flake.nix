@@ -59,7 +59,7 @@
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "";
         lib-aggregate.follows = "lib-aggregate";
         flake-compat.follows = "";
       };

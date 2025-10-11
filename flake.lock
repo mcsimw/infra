@@ -572,9 +572,7 @@
         "lib-aggregate": [
           "lib-aggregate"
         ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1760187616,
@@ -592,11 +590,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760212221,
-        "narHash": "sha256-gKHszMSReQIAIrHDhYMuS2CDmL440UdsKmNNgn+zo5M=",
+        "lastModified": 1760212467,
+        "narHash": "sha256-xxQeZBi98irPXm1a8H72eD5lIg6bUpqmjvjB+mYcyaY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a61d1ce9dd76f4ef73ef639903e05c06bfc99508",
+        "rev": "7b0021129ce21e0a6b453df7f12fc7ac0cc5e998",
         "type": "github"
       },
       "original": {
