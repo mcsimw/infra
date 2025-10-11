@@ -4,17 +4,24 @@
   self,
   ...
 }:
-let
-  sources = import (self + /npins);
-in
 {
   perSystem =
-    { system, inputs', ... }:
+    {
+      system,
+      inputs',
+      ...
+    }:
     rec {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ (import sources.emacs-overlay) ];
+        overlays = with inputs; [
+          nur.overlays.default
+          nixpkgs-wayland.overlay
+          chaotic.overlays.cache-friendly
+          emacs-overlay.overlays.default
+          nix.overlays.default
+        ];
       };
       inherit
         ((inputs.wrapper-manager.lib {

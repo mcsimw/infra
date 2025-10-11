@@ -8,16 +8,37 @@
         fonts = {
           enableDefaultPackages = lib.mkForce false;
           fontconfig = {
+            # https://github.com/NixOS/nixpkgs/issues/449657
+            localConf = ''
+              <?xml version="1.0"?>
+              <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+              <fontconfig>
+                <description>Accept bitmap fonts</description>
+              <!-- Accept bitmap fonts -->
+               <selectfont>
+                <acceptfont>
+                 <pattern>
+                   <patelt name="outline"><bool>false</bool></patelt>
+                 </pattern>
+                </acceptfont>
+               </selectfont>
+              </fontconfig>
+            '';
+
             useEmbeddedBitmaps = true;
+
             antialias = false;
+
             hinting = {
               enable = false;
               style = "none";
             };
+
             subpixel = {
               lcdfilter = "none";
               rgba = "none";
             };
+
             defaultFonts = {
               serif = [
                 "Fraunces"
@@ -40,6 +61,7 @@
               emoji = [ "Apple Color Emoji" ];
             };
           };
+
           packages =
             with pkgs;
             [

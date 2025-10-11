@@ -1,7 +1,3 @@
-{ config, ... }:
-let
-  niri = config.programs.niri.enable;
-in
 {
   imports = [
     ./hardware.nix
@@ -13,8 +9,7 @@ in
 
   programs = {
     niri.enable = true;
-    steam.enable = niri;
-    prismlauncher.enable = niri;
+    helium.enable = true;
   };
 
   hjem.users.mcsimw.rum.desktops.niri = {

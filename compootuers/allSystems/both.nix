@@ -2,22 +2,17 @@
   lib,
   self,
   inputs,
-  system,
+  pkgs,
   ...
 }:
-let
-  chaotic = inputs.chaotic.legacyPackages.${system};
-in
 {
-  imports = [
-    self.modules.nixos.analfabeta
-  ];
+  imports = [ self.modules.nixos.analfabeta ];
 
   system.rebuild.enableNg = true;
 
   boot = {
-    kernelPackages = lib.mkDefault chaotic.linuxPackages_cachyos-gcc;
-    zfs.package = lib.mkOverride 99 chaotic.zfs_cachyos;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-gcc;
+    zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";

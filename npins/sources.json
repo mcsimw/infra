@@ -13,19 +13,6 @@
       "url": "https://github.com/PrismLauncher/PrismLauncher/archive/8b5e91920dda7324ad3db98f56b209bba0f4e57d.tar.gz",
       "hash": "1q2fkvdg67033bm43qccjgw242ri4i2njkq5kmmskxilpyfi8khl"
     },
-    "emacs-overlay": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "emacs-overlay"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "8f30aec081459f2d312cef92d9c9948918e9c309",
-      "url": "https://github.com/nix-community/emacs-overlay/archive/8f30aec081459f2d312cef92d9c9948918e9c309.tar.gz",
-      "hash": "1ry3893bdp9k04b6lnzn2gyrr0s1dc8iyyy1g0b0hbjc7zs4vxw2"
-    },
     "ghostty": {
       "type": "Git",
       "repository": {
@@ -35,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "67ece534237ea5ebf99f2fe5628c56d52e3291f3",
-      "url": "https://github.com/ghostty-org/ghostty/archive/67ece534237ea5ebf99f2fe5628c56d52e3291f3.tar.gz",
-      "hash": "0dya7xkdvainrahrg6xph96xj44gzvay4plnab3gs9pyj476rcpj"
+      "revision": "c5ad7563f92656ec02bd08856b46431f2e222e69",
+      "url": "https://github.com/ghostty-org/ghostty/archive/c5ad7563f92656ec02bd08856b46431f2e222e69.tar.gz",
+      "hash": "1xscnz6hcddw44xxr9i6sfk2hzm4dmvjif5pqn1b8ycpn68hj46q"
     },
     "kakoune": {
       "type": "Git",
@@ -52,19 +39,6 @@
       "url": "https://github.com/mawww/kakoune/archive/e3263887653ce5ec817c1aad51389c9600dfeabe.tar.gz",
       "hash": "141wxn7bnb4rvknyfgh2ijr1sl7ga8jpria0ylsy2aa4wpa10dn0"
     },
-    "nixpkgs-wayland": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "nixpkgs-wayland"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "95d5c5d20e3a41fabd15ad8ea2dac000565c70bf",
-      "url": "https://github.com/nix-community/nixpkgs-wayland/archive/95d5c5d20e3a41fabd15ad8ea2dac000565c70bf.tar.gz",
-      "hash": "1w8s4mi0dqgh4rk8ddikpl1l7098i9ihq1gb659dnkln5l74l1yq"
-    },
     "tmux": {
       "type": "Git",
       "repository": {
@@ -77,6 +51,19 @@
       "revision": "0ff2676a2594aa6a26de7232e605640c28021f28",
       "url": "https://github.com/tmux/tmux/archive/0ff2676a2594aa6a26de7232e605640c28021f28.tar.gz",
       "hash": "0r5cnvxrnhvik8fsp85jx1mxpbrnkj7lrbczz65zpl135c87mdjv"
+    },
+    "tofi": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "philj56",
+        "repo": "tofi"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "1eb6137572ab6c257ab6ab851d5d742167c18120",
+      "url": "https://github.com/philj56/tofi/archive/1eb6137572ab6c257ab6ab851d5d742167c18120.tar.gz",
+      "hash": "1cg9zc2f51hl7kxpwzpcbw1psfgvdwzb2f8glvwhcppb02pplgiq"
     }
   },
   "version": 5

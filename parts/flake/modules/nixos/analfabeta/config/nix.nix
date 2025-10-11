@@ -4,7 +4,7 @@
     { config, ... }:
     {
       nix = {
-        channel.enable = false;
+        channel.enable = lib.mkForce false;
         settings = {
           auto-allocate-uids = true;
           trusted-users = [ "@wheel" ];
@@ -27,7 +27,6 @@
           http-connections = 0;
           max-substitution-jobs = 128;
           system-features = [ "uid-range" ];
-          #lazy-trees = true;
           extra-experimental-features = [
             "nix-command"
             "flakes"

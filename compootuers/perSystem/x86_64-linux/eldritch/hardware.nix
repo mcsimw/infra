@@ -1,7 +1,6 @@
 {
   lib,
-  system,
-  inputs,
+  pkgs,
   ...
 }:
 {
@@ -54,7 +53,7 @@
     scx = {
       enable = true;
       scheduler = "scx_lavd";
-      package = inputs.chaotic.legacyPackages.${system}.scx_git.full;
+      package = pkgs.scx_git.full;
     };
     pipewire = {
       enable = true;
