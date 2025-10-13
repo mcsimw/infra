@@ -56,6 +56,7 @@
           pkgs.nautilus
           inputs'.xwayland-satellite.packages.default
           banana-cursor
+          fuzzel
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
         ++ (lib.optionals config.programs.ghostty.enable [ config.programs.ghostty.package ])

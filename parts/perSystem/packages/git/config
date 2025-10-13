@@ -1,3 +1,5 @@
 [user]
   name = Maor Haimovitz
   email = maor@mcsimw.com
+[init]
+defaultBranch = master

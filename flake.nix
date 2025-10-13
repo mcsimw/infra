@@ -59,8 +59,8 @@
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs = {
-        nixpkgs.follows = "";
         lib-aggregate.follows = "lib-aggregate";
+        nixpkgs.follows = "";
         flake-compat.follows = "";
       };
     };
@@ -72,11 +72,6 @@
         rust-overlay.follows = "";
         flake-schemas.follows = "";
       };
-    };
-
-    alsa-ucm-conf = {
-      url = "github:geoffreybennett/alsa-ucm-conf";
-      flake = false;
     };
 
     hjem = {
@@ -92,7 +87,7 @@
       };
     };
 
-    wrapper-manager.url = "github:viperML/wrapper-manager";
+    wrappers.url = "github:lassulus/wrappers";
 
     apple-emoji-linux = {
       url = "github:samuelngs/apple-emoji-linux";
@@ -157,6 +152,7 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+
   };
 
   outputs =
