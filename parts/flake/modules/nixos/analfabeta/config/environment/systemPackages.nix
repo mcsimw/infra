@@ -43,6 +43,7 @@
           ripgrep
           fzf
           yt-dlp_git
+          shpool
         ]
         ++ (lib.optionals config.programs.niri.enable [
           mako
@@ -55,7 +56,6 @@
           mpv
           pkgs.nautilus
           inputs'.xwayland-satellite.packages.default
-          banana-cursor
           fuzzel
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])

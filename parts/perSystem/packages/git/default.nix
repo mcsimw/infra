@@ -10,9 +10,7 @@
           gitFull
           git-extras
         ];
-        env = {
-          GIT_CONFIG_GLOBAL = ./config;
-        };
+        env.GIT_CONFIG_GLOBAL = ./config;
       };
     };
 
