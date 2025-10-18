@@ -26,6 +26,8 @@
 
     emoji-picker-nix.url = "github:mcsimw/emoji-picker-nix";
 
+    nvim.url = "github:mcsimw/nvim";
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
@@ -71,6 +73,7 @@
         home-manager.follows = "";
         rust-overlay.follows = "";
         flake-schemas.follows = "";
+        jovian.follows = "";
       };
     };
 

@@ -9,7 +9,7 @@
         package = lib.mkDefault pkgs.foot;
         settings = {
           main = {
-            font = "Spleen:size=12, Symbols Nerd Font Mono:size=9, Apple Color Emoji:size=9";
+            font = "Terminus:size=12, Symbols Nerd Font Mono:size=9, Apple Color Emoji:size=9";
             font-size-adjustment = 6;
             bold-text-in-bright = true;
             pad = "40x40";

@@ -1,7 +1,11 @@
 { moduleWithSystem, lib, ... }:
 {
   flake.modules.nixos.analfabeta = moduleWithSystem (
-    { pkgs, inputs' }:
+    {
+      pkgs,
+      inputs',
+      self',
+    }:
     { config, ... }:
     {
       environment.systemPackages =
@@ -57,6 +61,7 @@
           pkgs.nautilus
           inputs'.xwayland-satellite.packages.default
           fuzzel
+          self'.packages.ghostty
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
         ++ (lib.optionals config.programs.ghostty.enable [ config.programs.ghostty.package ])
