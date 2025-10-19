@@ -48,6 +48,7 @@
           fzf
           yt-dlp_git
           shpool
+          tree
         ]
         ++ (lib.optionals config.programs.niri.enable [
           mako

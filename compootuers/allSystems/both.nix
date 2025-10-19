@@ -11,7 +11,7 @@
   system.rebuild.enableNg = true;
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-gcc;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
     zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
   };
 

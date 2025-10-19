@@ -68,9 +68,7 @@
             ]
             ++ (
               with inputs';
-              [
-                apple-emoji-linux.packages.default
-              ]
+              [ apple-emoji-linux.packages.default ]
               ++ (with apple-fonts.packages; [
                 sf-pro
                 sf-compact

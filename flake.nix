@@ -124,15 +124,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    flake-firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "";
-        lib-aggregate.follows = "lib-aggregate";
-      };
-    };
-
     nur = {
       url = "github:nix-community/NUR";
       inputs = {
