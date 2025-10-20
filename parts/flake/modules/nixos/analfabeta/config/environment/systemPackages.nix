@@ -67,7 +67,7 @@
           inputs'.zen-browser.packages.twilight
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
-        ++ (lib.optionals config.programs.helium.enable [ config.programs.helium.package ])
+        ++ (lib.optionals config.programs.chromium.enable [ config.programs.google-chrome.package ])
         ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark);
     }

@@ -49,6 +49,32 @@
         "type": "github"
       }
     },
+    "browser-previews": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760729188,
+        "narHash": "sha256-Dm1sb/mgyHuoCqj4xf43cYVeEG6JytqJz2NeLY6lrhI=",
+        "owner": "nix-community",
+        "repo": "browser-previews",
+        "rev": "8237e2940e7caa3679e2d17abfa0be605fac4ee5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "browser-previews",
+        "type": "github"
+      }
+    },
     "chaotic": {
       "inputs": {
         "flake-schemas": [],
@@ -152,6 +178,30 @@
       "original": {
         "owner": "edolstra",
         "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-firefox-nightly": {
+      "inputs": {
+        "flake-compat": [],
+        "lib-aggregate": [
+          "lib-aggregate"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760987929,
+        "narHash": "sha256-Khnfb5Sn8e0RpZVy7qVWlMafdCkYQGpRli6LyPqxy7Q=",
+        "owner": "nix-community",
+        "repo": "flake-firefox-nightly",
+        "rev": "b9ad217559ec74c123455dc11e83e738207999e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flake-firefox-nightly",
         "type": "github"
       }
     },
@@ -535,10 +585,12 @@
       "inputs": {
         "apple-emoji-linux": "apple-emoji-linux",
         "apple-fonts": "apple-fonts",
+        "browser-previews": "browser-previews",
         "chaotic": "chaotic",
         "compootuers": "compootuers",
         "emacs-overlay": "emacs-overlay",
         "emoji-picker-nix": "emoji-picker-nix",
+        "flake-firefox-nightly": "flake-firefox-nightly",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "hjem": "hjem",

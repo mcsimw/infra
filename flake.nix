@@ -20,6 +20,24 @@
 
     emoji-picker-nix.url = "github:mcsimw/emoji-picker-nix";
 
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    flake-firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        lib-aggregate.follows = "lib-aggregate";
+        flake-compat.follows = "";
+      };
+    };
+
     nvim.url = "github:mcsimw/nvim";
 
     kakoune = {

@@ -8,10 +8,7 @@
 
   services.openssh.enable = true;
 
-  programs = {
-    niri.enable = true;
-    helium.enable = true;
-  };
+  programs.niri.enable = true;
 
   hjem.users.mcsimw.rum.desktops.niri = {
     inherit (config.programs.niri) enable;

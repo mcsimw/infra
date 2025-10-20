@@ -2,6 +2,6 @@
   flake.modules.nixos.analfabeta =
     { config, ... }:
     {
-      programs.helium.enable = config.programs.niri.enable;
+      programs.google-chrome.enable = config.programs.niri.enable;
     };
 }
