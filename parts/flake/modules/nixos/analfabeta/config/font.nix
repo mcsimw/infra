@@ -56,6 +56,7 @@
               fraunces
               (pkgs.cascadia-code.override { useVariableFont = true; })
               fira-code
+              iosevka
               corefonts
               vista-fonts
               vista-fonts-cht

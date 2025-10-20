@@ -4,7 +4,6 @@
     {
       pkgs,
       inputs',
-      self',
     }:
     { config, ... }:
     {
@@ -49,6 +48,7 @@
           yt-dlp_git
           shpool
           tree
+          nvfetcher
         ]
         ++ (lib.optionals config.programs.niri.enable [
           mako
@@ -62,12 +62,12 @@
           pkgs.nautilus
           inputs'.xwayland-satellite.packages.default
           fuzzel
-          self'.packages.ghostty
+          discord
+          signal-desktop
+          inputs'.zen-browser.packages.twilight
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
-        ++ (lib.optionals config.programs.ghostty.enable [ config.programs.ghostty.package ])
         ++ (lib.optionals config.programs.helium.enable [ config.programs.helium.package ])
-        ++ (lib.optionals config.programs.prismlauncher.enable [ config.programs.prismlauncher.package ])
         ++ (lib.optional (config.programs.niri.enable && config.services.pipewire.enable) pwvucontrol)
         ++ (lib.optional (config.programs.niri.enable && config.programs.wireshark.enable) wireshark);
     }

@@ -2,7 +2,7 @@
 {
   imports = with inputs; [
     flake-parts.flakeModules.modules
-    compootuers.modules.flake.compootuers
+    compootuers.flakeModule
     treefmt-nix.flakeModule
   ];
 }

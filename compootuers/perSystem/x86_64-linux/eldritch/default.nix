@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   niri = config.programs.niri.enable;
 in
@@ -14,12 +18,13 @@ in
       enable = niri;
       extraCompatPackages = [ pkgs.proton-cachyos ];
     };
-    prismlauncher.enable = niri;
   };
 
   environment.systemPackages = with pkgs; [
     mangohud
     openmw
+    gimp
+    kdePackages.kdenlive
   ];
 
   preservation.preserveAt."/persist".users.mcsimw = {

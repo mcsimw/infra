@@ -2,16 +2,10 @@
   description = "MCSIMW's personal nix dotfiles";
 
   inputs = {
-    compootuers = {
-      url = "github:mcsimw/compootuers";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
 
     nixpkgs.url = "github:nixos/nixpkgs";
+
+    compootuers.url = "github:mcsimw/compootuers";
 
     nix = {
       url = "github:nixos/nix";
@@ -28,6 +22,19 @@
 
     nvim.url = "github:mcsimw/nvim";
 
+    kakoune = {
+      url = "github:mawww/kakoune";
+      flake = false;
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "";
+      };
+    };
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
@@ -40,8 +47,13 @@
       url = "github:YaLTeR/niri";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
+        rust-overlay.follows = "";
       };
+    };
+
+    tmux = {
+      url = "github:tmux/tmux";
+      flake = false;
     };
 
     xwayland-satellite = {
@@ -70,6 +82,7 @@
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "";
         rust-overlay.follows = "";
         flake-schemas.follows = "";
@@ -122,14 +135,6 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
     };
 
     lib-aggregate = {

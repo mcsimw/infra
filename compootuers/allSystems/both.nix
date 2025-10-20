@@ -36,29 +36,6 @@
   nix = {
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
-    settings = {
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://chaotic-nyx.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://ghostty.cachix.org"
-        "https://prismlauncher.cachix.org"
-      ];
-      trusted-substituters = [
-        "https://nix-community.cachix.org"
-        "https://chaotic-nyx.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://ghostty.cachix.org"
-        "https://prismlauncher.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
-        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
-      ];
-    };
   };
 
   security.pam.loginLimits = [

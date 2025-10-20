@@ -1,16 +1,13 @@
-{ self, ... }:
-let
-  sources = import (self + /npins);
-in
+{ inputs, ... }:
 {
   perSystem =
     { pkgs, ... }:
     {
       packages.kakoune = pkgs.kakoune-unwrapped.overrideAttrs {
-        version = sources.kakoune.revision;
-        src = sources.kakoune;
+        version = inputs.kakoune.rev;
+        src = inputs.kakoune;
         postPatch = ''
-          echo "${sources.kakoune.revision}" >.version
+          echo "${inputs.kakoune.rev}" >.version
         '';
       };
     };
