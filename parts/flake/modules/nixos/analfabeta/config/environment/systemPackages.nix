@@ -45,7 +45,7 @@
           fd
           ripgrep
           fzf
-          yt-dlp_git
+          yt-dlp
           shpool
           tree
           nvfetcher
@@ -64,7 +64,7 @@
           fuzzel
           discord
           signal-desktop
-          inputs'.zen-browser.packages.twilight
+          obs-studio
         ])
         ++ (lib.optionals config.programs.kakoune.enable [ config.programs.kakoune.package ])
         ++ (lib.optionals config.programs.chromium.enable [ config.programs.google-chrome.package ])

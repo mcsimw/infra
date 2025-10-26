@@ -1,7 +1,4 @@
 { lib, ... }:
 {
-  flake.modules.nixos.analfabeta.programs.direnv = {
-    enable = lib.mkDefault true;
-    silent = lib.mkDefault true;
-  };
+  flake.modules.nixos.analfabeta.programs.direnv.enable = lib.mkDefault true;
 }

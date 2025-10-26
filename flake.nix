@@ -2,8 +2,19 @@
   description = "MCSIMW's personal nix dotfiles";
 
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    elephant = {
+      url = "github:abenz1267/elephant";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     compootuers.url = "github:mcsimw/compootuers";
 
@@ -25,7 +36,6 @@
       inputs = {
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
       };
     };
 
@@ -43,14 +53,6 @@
     kakoune = {
       url = "github:mawww/kakoune";
       flake = false;
-    };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "";
-      };
     };
 
     emacs-overlay = {
@@ -150,11 +152,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     lib-aggregate = {
       url = "github:nix-community/lib-aggregate";
       inputs = {
@@ -163,13 +160,15 @@
       };
     };
 
-    systems.url = "github:nix-systems/default";
+    flake-utils.url = "github:numtide/flake-utils";
 
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        elephant.follows = "elephant";
+      };
     };
-
   };
 
   outputs =

@@ -10,7 +10,7 @@
           nixpkgs-wayland.overlay
           chaotic.overlays.cache-friendly
           emacs-overlay.overlays.default
-          nix.overlays.default
+          #nix.overlays.default
         ];
       };
 

@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, ... }:
 {
 
   hardware = {
@@ -30,10 +26,8 @@
       "nopti"
       "tsx=on"
 
-      # Laptops and dekstops don't need Watchdog
       "nowatchdog"
 
-      # https://www.phoronix.com/news/Linux-Splitlock-Hurts-Gaming
       "split_lock_detect=off"
     ];
     initrd = {
@@ -53,7 +47,6 @@
     scx = {
       enable = true;
       scheduler = "scx_lavd";
-      package = pkgs.scx_git.full;
     };
     pipewire = {
       enable = true;

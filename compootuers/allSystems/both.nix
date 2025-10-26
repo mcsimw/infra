@@ -7,6 +7,7 @@
 }:
 {
   imports = [ self.modules.nixos.analfabeta ];
+  disabledModules = [ "hardware/facter/system.nix" ];
 
   system.rebuild.enableNg = true;
 
@@ -23,6 +24,7 @@
     services = {
       systemd-oomd.after = [ "swap.target" ]; # https://github.com/systemd/systemd/pull/36718 forever and a day :) REMOVE ON SYSTEMD V258 RELEASE IN NIXOS
       NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
+      systemd-networkd-wait-online.wantedBy = lib.mkForce [ ];
     };
     oomd = {
       enable = true;
