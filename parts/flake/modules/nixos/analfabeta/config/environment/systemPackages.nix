@@ -45,7 +45,7 @@
           fd
           ripgrep
           fzf
-          yt-dlp
+          yt-dlp_git
           shpool
           tree
           nvfetcher

@@ -25,6 +25,7 @@ in
     openmw
     gimp
     kdePackages.kdenlive
+    (emacs-igc-pgtk.override { withTreeSitter = true; })
   ];
 
   preservation.preserveAt."/persist".users.mcsimw = {
