@@ -1,9 +1,10 @@
 # shellcheck shell=bash
+
+# Bash settings
 shopt -s cdspell autocd dirspell extglob checkwinsize huponexit histappend
 HISTCONTROL=ignoredups HISTSIZE='' HISTFILESIZE=''
 
 # Zathura
-_ZATHURA_VALID_EXTS="pdf|ps|eps|djvu|djv|cbr|cbz|cbt|cb7|epub"
 zathura() {
     if [ $# -eq 0 ]; then
         echo "Usage: zathura <document>"
@@ -13,22 +14,21 @@ zathura() {
         echo "Error: File '$1' not found or is not a regular file"
         return 1
     fi
-    if [[ "${1,,}" =~ \.(${_ZATHURA_VALID_EXTS})$ ]]; then
-        nohup "$(command -v zathura)" "$1" &>/dev/null & disown
-        echo "Zathura opened in the background with: $1"
+    if [[ "${1,,}" =~ \.(pdf|ps|eps|djvu|djv|cbr|cbz|cbt|cb7|epub)$ ]]; then
+        setsid -f "$(command -v zathura)" "$1" &>/dev/null
+        echo "Opening '$1' in zathura"
     else
-        echo "Error: '$1' is not a valid document type for zathura"
+        echo "Error: '$1' does not have a supported file extension"
         echo "Supported formats: PDF, PS, EPS, DjVu, CBR/CBZ/CBT/CB7, EPUB"
         return 1
     fi
 }
-_zathura_completion() {
-    local cur="${COMP_WORDS[COMP_CWORD]}"
-    local IFS=$'\n'
-    local pattern="*.@(pdf|ps|eps|djvu|djv|cbr|cbz|cbt|cb7|epub|PDF|PS|EPS|DJVU|DJV|CBR|CBZ|CBT|CB7|EPUB)"
 
-    mapfile -t COMPREPLY < <(compgen -f -X "!$pattern" -- "$cur")
-    mapfile -t -O "${#COMPREPLY[@]}" COMPREPLY < <(compgen -d -- "$cur")
+# mkcd function
+mkcd() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: mkcd <directory>"
+        return 1
+    fi
+    mkdir -p "$1" && cd "$1" || return 1
 }
-complete -r zathura 2>/dev/null
-complete -o filenames -F _zathura_completion zathura
