@@ -67,7 +67,7 @@
       url = "github:YaLTeR/niri";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "";
+        rust-overlay.follows = "rust-overlay";
       };
     };
 
@@ -104,7 +104,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "";
-        rust-overlay.follows = "";
+        rust-overlay.follows = "rust-overlay";
         flake-schemas.follows = "";
         jovian.follows = "";
       };
