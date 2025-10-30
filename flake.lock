@@ -102,11 +102,11 @@
     },
     "compootuers": {
       "locked": {
-        "lastModified": 1760919597,
-        "narHash": "sha256-51IDK+Yfb1wc4WNXcoQEIbZh3QIWOYko1rprjVGOyEw=",
+        "lastModified": 1761857426,
+        "narHash": "sha256-SFA2Ilt1qNWYr3dFcL31EB/HayMcENcrNxzVhPAntxw=",
         "owner": "mcsimw",
         "repo": "compootuers",
-        "rev": "05d336be427ea4019d648aca89c41b84d074329d",
+        "rev": "305964c84ff13f46c17702bf1feafa7a47ececf7",
         "type": "github"
       },
       "original": {

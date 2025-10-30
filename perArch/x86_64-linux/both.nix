@@ -13,13 +13,10 @@
     };
   };
 
-  boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-    zfs.package = lib.mkOverride 99 (
-      if lib.hasInfix "cachyos" config.boot.kernelPackages.kernel.pname then
-        pkgs.zfs_cachyos
-      else
-        pkgs.zfs
-    );
-  };
+  boot.zfs.package = lib.mkOverride 99 (
+    if lib.hasInfix "cachyos" (config.boot.kernelPackages.kernel.pname or "") then
+      pkgs.zfs_cachyos
+    else
+      pkgs.zfs
+  );
 }
