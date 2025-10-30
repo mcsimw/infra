@@ -88,11 +88,6 @@
           extraModules = [ inputs.hjem-rum.hjemModules.default ];
         };
 
-        boot = {
-          kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-          zfs.package = lib.mkOverride 99 pkgs.zfs_cachyos;
-        };
-
         time.timeZone = lib.mkDefault "Canada/Eastern";
 
         i18n = {
@@ -111,8 +106,6 @@
         hardware.graphics = {
           enable = lib.mkForce config.programs.niri.enable;
           enable32Bit = lib.mkForce config.programs.niri.enable;
-          package = lib.mkForce pkgs.mesa_git;
-          package32 = lib.mkForce pkgs.mesa32_git;
         };
 
         networking = {
