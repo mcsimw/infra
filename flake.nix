@@ -1,6 +1,50 @@
 {
   description = "MCSIMW's personal nix dotfiles";
 
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      flake.compootuers = {
+        perSystem = ./perSystem;
+        allSystems = ./allSystems;
+        perArch = ./perArch;
+      };
+      perSystem =
+        { system, ... }:
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = with inputs; [
+              nixpkgs-wayland.overlay
+              chaotic.overlays.cache-friendly
+              emacs-overlay.overlays.default
+              #nix.overlays.default
+            ];
+          };
+          treefmt = {
+            projectRootFile = "flake.nix";
+            settings.global.excludes = [
+              ".envrc"
+            ];
+            programs = {
+              nixfmt.enable = true;
+              deadnix.enable = true;
+              statix.enable = true;
+              dos2unix.enable = true;
+              stylua.enable = true;
+              shfmt.enable = true;
+              shellcheck.enable = true;
+            };
+          };
+        };
+      imports = with inputs; [
+        (import-tree ./packages)
+        compootuers.flakeModule
+        treefmt-nix.flakeModule
+      ];
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
 
@@ -171,7 +215,4 @@
     };
   };
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (inputs.import-tree ./parts) ]; };
 }

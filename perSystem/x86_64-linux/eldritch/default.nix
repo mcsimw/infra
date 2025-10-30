@@ -26,6 +26,7 @@ in
     gimp
     kdePackages.kdenlive
     (emacs-igc-pgtk.override { withTreeSitter = true; })
+    krita
   ];
 
   preservation.preserveAt."/persist".users.mcsimw = {
@@ -36,4 +37,5 @@ in
       ".config/openmw"
     ];
   };
+  services.flatpak.enable = true;
 }

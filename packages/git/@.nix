@@ -13,5 +13,4 @@
         env.GIT_CONFIG_GLOBAL = ./config;
       };
     };
-
 }
