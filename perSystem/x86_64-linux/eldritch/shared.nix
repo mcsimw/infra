@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
 
   hardware = {
@@ -20,14 +20,15 @@
   boot = {
     kernel.sysctl."vm.swapiness" = 10;
     kernelModules = [ "kvm_intel" ];
+    kernelPackages = lib.mkForce (pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "GENERIC_V4"; });
+    zfs.package = lib.mkForce pkgs.zfs_cachyos;
     kernelParams = [
       "zfs.zfs_arc_max=12884901888"
       "mitigations=off"
       "nopti"
       "tsx=on"
-
+      "nohibernate"
       "nowatchdog"
-
       "split_lock_detect=off"
     ];
     initrd = {

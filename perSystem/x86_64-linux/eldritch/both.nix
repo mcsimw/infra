@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
-    ./hardware.nix
+    ./shared.nix
   ];
 
   system.stateVersion = "25.11";

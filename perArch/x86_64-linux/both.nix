@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }:
 {
@@ -13,10 +12,4 @@
     };
   };
 
-  boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-    zfs.package = lib.mkOverride 99 (
-      if config.boot.kernelPackages ? cachyOverride then pkgs.zfs_cachyos else pkgs.zfs
-    );
-  };
 }
