@@ -14,6 +14,7 @@ in
   ];
 
   programs = {
+    openmw.enable = true;
     steam = {
       enable = niri;
       extraCompatPackages = [ pkgs.proton-cachyos ];
@@ -29,15 +30,6 @@ in
     krita
     efibootmgr
   ];
-
-  preservation.preserveAt."/persist".users.mcsimw = {
-    directories = [
-      ".local/share/Steam"
-      ".steam"
-      ".local/share/openmw"
-      ".config/openmw"
-    ];
-  };
 
   boot = {
     tmp.cleanOnBoot = true;
