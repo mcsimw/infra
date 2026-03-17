@@ -1,0 +1,16 @@
+local o = vim.o
+o.nu = true
+o.rnu = true
+o.cul = true
+o.ls = 3
+o.icm = "split"
+o.udf = true
+o.ut = 50
+o.gcr = ""
+o.swf = false
+o.so = 10
+o.siso = 8
+o.sm = true
+o.mat = 2
+o.ch = 2
+o.sc = false
