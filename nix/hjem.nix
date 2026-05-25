@@ -1,13 +1,13 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
   flake.modules.nixos = {
     default = config.flake.modules.nixos.hjem;
     hjem =
       { pkgs, ... }:
       let
-        hjem = import config.sources.hjem {
+        hjem = import inputs.hjem {
           inherit pkgs;
-          smfh = pkgs.callPackage (import "${config.sources.smfh}/package.nix") { };
+          smfh = pkgs.callPackage (import "${inputs.smfh}/package.nix") { };
         };
       in
       {
@@ -15,8 +15,7 @@
         hjem = {
           linker = hjem.packages.smfh;
           clobberByDefault = true;
-          extraModules =
-            "${config.sources.hjem-rum}/modules/collection" |> pkgs.lib.filesystem.listFilesRecursive;
+          extraModules = "${inputs.hjem-rum}/modules/collection" |> pkgs.lib.filesystem.listFilesRecursive;
         };
       };
   };

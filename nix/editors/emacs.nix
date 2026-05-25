@@ -1,4 +1,4 @@
-{ config, ... }:
+{ inputs, ... }:
 {
-  nixpkgs.overlays = [ (import config.sources.emacs-overlay) ];
+  nixpkgs.overlays = [ (import inputs.emacs-overlay) ];
 }

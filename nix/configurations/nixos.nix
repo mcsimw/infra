@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
   inherit (lib)
     mkDefault
@@ -12,11 +17,11 @@ let
     pathExists
     mapAttrs
     ;
-  nixosLib = import "${config.sources.nixpkgs}/nixos/lib" {
+  nixosLib = import "${inputs.nixpkgs}/nixos/lib" {
     featureFlags.minimalModules = { };
   };
-  baseModules = import "${config.sources.nixpkgs}/nixos/modules/module-list.nix" ++ [
-    "${config.sources.nixos-facter-modules}/modules/nixos/facter.nix"
+  baseModules = import "${inputs.nixpkgs}/nixos/modules/module-list.nix" ++ [
+    "${inputs.nixos-facter-modules}/modules/nixos/facter.nix"
   ];
   validateConfig =
     name: cfg:

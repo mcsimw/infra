@@ -1,6 +1,7 @@
 args@{
   config,
   lib,
+  inputs,
   ...
 }:
 let
@@ -10,11 +11,9 @@ let
     fileset
     mkEnableOption
     mkIf
-    genAttrs
     ;
   inherit (builtins) mapAttrs;
-  inherit (config) sources;
-  treefmt-nix = import sources.treefmt-nix;
+  treefmt-nix = import "${inputs.treefmt-nix}";
   root = ../.;
   projectSrc = fileset.toSource {
     inherit root;
@@ -23,47 +22,6 @@ let
       ../flake.nix
     ];
   };
-  callFlakeWithInputs =
-    flakeSrc: overrideInputs: revision:
-    let
-      flake = import (flakeSrc + "/flake.nix");
-      outputs = flake.outputs (
-        overrideInputs
-        // {
-          self = outputs // {
-            outPath = flakeSrc;
-            __toString = _: flakeSrc;
-            inputs = overrideInputs;
-            rev = revision;
-            shortRev = builtins.substring 0 7 revision;
-            lastModified = 0;
-            lastModifiedDate = "19700101";
-          };
-        }
-      );
-    in
-    outputs;
-  mkNixpkgsInput = systems: {
-    _type = "flake";
-    inherit lib;
-    legacyPackages = genAttrs systems (system: config.nixpkgs.pkgs.${system});
-    outPath = sources.nixpkgs;
-    __toString = _: sources.nixpkgs;
-  };
-  mkStatixPackage =
-    system:
-    let
-      nixpkgsInput = mkNixpkgsInput config.nixpkgs.systems;
-      flakePartsOutputs = callFlakeWithInputs sources.flake-parts {
-        nixpkgs-lib = { inherit lib; };
-      } sources.flake-parts.revision;
-      statixOutputs = callFlakeWithInputs sources.statix {
-        nixpkgs = nixpkgsInput;
-        flake-parts = flakePartsOutputs;
-        systems = sources.default; # This is the nix-systems/default repo
-      } sources.statix.revision;
-    in
-    statixOutputs.packages.${system}.default;
   treefmt = mapAttrs (
     _: pkgs:
     (treefmt-nix.evalModule pkgs {
@@ -80,7 +38,7 @@ in
 {
   flake = {
     packages = mapAttrs (system: _: {
-      statix = mkStatixPackage system;
+      statix = inputs.statix.packages.${system}.default;
     }) config.nixpkgs.pkgs;
     modules.nixos = {
       default =

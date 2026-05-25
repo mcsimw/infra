@@ -1,4 +1,9 @@
-{ config, desktops, ... }:
+{
+  config,
+  desktops,
+  inputs,
+  ...
+}:
 let
   inherit (config) sources;
   systems = import sources.default-linux;
@@ -7,7 +12,7 @@ in
   nixpkgs.overlays = [
     {
       overlay = _: prev: {
-        quickshell = prev.callPackage "${sources.quickshell}/default.nix" { };
+        quickshell = prev.callPackage "${inputs.quickshell}/default.nix" { };
       };
       inherit systems;
     }

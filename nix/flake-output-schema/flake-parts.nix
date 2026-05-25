@@ -1,12 +1,12 @@
-{ lib, sources, ... }:
+{ inputs, ... }:
 {
   config._module.args = {
-    flake-parts-lib = import "${sources.flake-parts}/lib.nix" { inherit lib; };
+    flake-parts-lib = inputs.flake-parts.lib;
     moduleLocation = ./../../.;
   };
   imports = [
-    "${sources.flake-parts}/modules/flake.nix"
-    "${sources.flake-parts}/modules/nixosConfigurations.nix"
-    "${sources.flake-parts}/extras/modules.nix"
+    "${inputs.flake-parts}/modules/flake.nix"
+    "${inputs.flake-parts}/modules/nixosConfigurations.nix"
+    inputs.flake-parts.flakeModules.modules
   ];
 }

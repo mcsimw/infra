@@ -1,7 +1,4 @@
-{ config, ... }:
-let
-  inherit (config) sources;
-in
+{ config, inputs, ... }:
 {
   nixpkgs.overlays = [
     #    (import config.sources.nix).overlays.default
@@ -21,7 +18,7 @@ in
               type = "github";
               owner = "NixOS";
               repo = "nixpkgs";
-              ref = sources.nixpkgs.revision;
+              ref = inputs.nixpkgs.rev;
             };
           };
           nixPath = [ "nixpkgs=/etc/nixpkgs" ];

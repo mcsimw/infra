@@ -1,7 +1,4 @@
-args@{ config, ... }:
-let
-  inherit (config) sources;
-in
+args@{ config, inputs, ... }:
 {
   flake = {
     modules.nixos = {
@@ -36,10 +33,10 @@ in
     };
     packages = builtins.mapAttrs (_: pkgs: {
       kakoune = pkgs.kakoune-unwrapped.overrideAttrs {
-        src = sources.kakoune;
-        version = sources.kakoune.revision or "unknown";
+        src = inputs.kakoune;
+        version = inputs.kakoune.rev or "unknown";
         postPatch = ''
-          echo "${sources.kakoune.revision or "unknown"}" > .version
+          echo "${inputs.kakoune.rev or "unknown"}" > .version
         '';
       };
     }) config.nixpkgs.pkgs;
